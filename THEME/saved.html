@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Saved</title>
+    <meta name="description" content="Your bookmarked posts, events, and businesses saved for later." />
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell">
+              <span class="notification-dot"></span>
+            </i>
+          </button>
+          <button class="user-btn" aria-label="User Profile">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search saved items..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Standard Sidebar -->
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"><i class="fa-solid fa-people-roof"></i>Communities</a>
+        <a href="events.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+        <a href="saved.html" class="current"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>Notifications
+          <span class="notif-count">2</span>
+        </a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Vicinity</a>
+        <a href="create-post.html" class="create-post"><i class="fa-solid fa-leaf"></i>Create Post</a>
+      </aside>
+
+      <!-- Saved Page Main Content -->
+      <div class="main-container saved-container">
+        <div class="saved-content">
+
+          <!-- Page Header -->
+          <div class="saved-page-header">
+            <div class="saved-page-title">
+              <h1><i class="fa-solid fa-bookmark"></i> Saved Items</h1>
+              <p>All your bookmarked posts, businesses, and events in one place.</p>
+            </div>
+            <span class="saved-total-badge">12 items</span>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="saved-tabs">
+            <button class="saved-tab-btn active" data-tab="all" id="tab-btn-all">
+              All <span class="saved-tab-count">12</span>
+            </button>
+            <button class="saved-tab-btn" data-tab="posts" id="tab-btn-posts">
+              <i class="fa-solid fa-newspaper"></i> Posts
+              <span class="saved-tab-count">5</span>
+            </button>
+            <button class="saved-tab-btn" data-tab="businesses" id="tab-btn-businesses">
+              <i class="fa-solid fa-store"></i> Businesses
+              <span class="saved-tab-count">4</span>
+            </button>
+            <button class="saved-tab-btn" data-tab="events" id="tab-btn-events">
+              <i class="fa-solid fa-calendar-days"></i> Events
+              <span class="saved-tab-count">3</span>
+            </button>
+          </div>
+
+          <!-- ─── ALL TAB ─── -->
+          <section id="tab-all" class="saved-pane active">
+
+            <!-- Saved Posts -->
+            <div class="saved-section-label">
+              <i class="fa-solid fa-newspaper"></i> Posts
+            </div>
+
+            <div class="saved-list">
+              <!-- Saved Post 1 -->
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#36a036;">AC</div>
+                      <span class="saved-author-name">Adekunle Charles</span>
+                      <span class="saved-item-type-pill notice">Notice</span>
+                    </div>
+                    <span class="saved-item-time">2 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    Community Announcement: There will be routine maintenance on the main water supply pipeline along Ogunlana Drive tomorrow...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Saved Post 2 -->
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#2b7a78;">CO</div>
+                      <span class="saved-author-name">Chidinma Okoro</span>
+                      <span class="saved-item-type-pill business">Local Business</span>
+                    </div>
+                    <span class="saved-item-time">4 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    Just stopped by the newly opened GreenBite Cafe on Adeniran Ogunsanya! Warm ambiance, fast Wi-Fi, and their fresh pastries...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Saved Post 3 -->
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#e07a5f;">TB</div>
+                      <span class="saved-author-name">Tunde Balogun</span>
+                      <span class="saved-item-type-pill event">Event</span>
+                    </div>
+                    <span class="saved-item-time">6 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    ⚽ Surulere Youth Football Tournament kicks off this Saturday at the National Stadium Practice Pitch! Come out...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saved Businesses -->
+            <div class="saved-section-label" style="margin-top:22px;">
+              <i class="fa-solid fa-store"></i> Businesses
+            </div>
+
+            <div class="saved-list">
+              <!-- Saved Business 1 -->
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img
+                    src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80"
+                    alt="GreenBite Cafe"
+                  />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">GreenBite Cafe & Bakery</h4>
+                    <span class="saved-item-time">Saved 2 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">14 Adeniran Ogunsanya, Surulere &bull; Cafes & Dining</p>
+                  <div class="saved-item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <span><strong>4.9</strong> &bull; Open Now</span>
+                  </div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Saved Business 2 -->
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img
+                    src="https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=200&q=80"
+                    alt="TechFix"
+                  />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Surulere TechFix & Gadgets</h4>
+                    <span class="saved-item-time">Saved 3 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">52 Bode Thomas Street, Surulere &bull; Tech & Repairs</p>
+                  <div class="saved-item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <span><strong>4.8</strong> &bull; Open Now</span>
+                  </div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saved Events -->
+            <div class="saved-section-label" style="margin-top:22px;">
+              <i class="fa-solid fa-calendar-days"></i> Events
+            </div>
+
+            <div class="saved-list">
+              <!-- Saved Event 1 -->
+              <div class="saved-item">
+                <div class="saved-event-date">
+                  <span class="sed-day">27</span>
+                  <span class="sed-month">Sep</span>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Surulere Youth Football Tournament</h4>
+                    <span class="saved-item-time">Saved yesterday</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    <i class="fa-regular fa-clock"></i> Sat, 9:00 AM &nbsp;&bull;&nbsp;
+                    <i class="fa-solid fa-location-dot"></i> National Stadium Practice Pitch
+                  </p>
+                  <span class="saved-item-type-pill sports">Sports</span>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="events.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Saved Event 2 -->
+              <div class="saved-item">
+                <div class="saved-event-date">
+                  <span class="sed-day">01</span>
+                  <span class="sed-month">Oct</span>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Nigeria Independence Day Block Party</h4>
+                    <span class="saved-item-time">Saved 2 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    <i class="fa-regular fa-clock"></i> Tue, 4:00 PM &nbsp;&bull;&nbsp;
+                    <i class="fa-solid fa-location-dot"></i> Bode Thomas Street Junction
+                  </p>
+                  <span class="saved-item-type-pill event">Community</span>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="events.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave" title="Remove bookmark">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- ─── POSTS TAB ─── -->
+          <section id="tab-posts" class="saved-pane">
+            <div class="saved-list">
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#36a036;">AC</div>
+                      <span class="saved-author-name">Adekunle Charles</span>
+                      <span class="saved-item-type-pill notice">Notice</span>
+                    </div>
+                    <span class="saved-item-time">2 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    Community Announcement: There will be routine maintenance on the main water supply pipeline along Ogunlana Drive tomorrow...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#2b7a78;">CO</div>
+                      <span class="saved-author-name">Chidinma Okoro</span>
+                      <span class="saved-item-type-pill business">Local Business</span>
+                    </div>
+                    <span class="saved-item-time">4 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    Just stopped by the newly opened GreenBite Cafe on Adeniran Ogunsanya! Warm ambiance, fast Wi-Fi...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#e07a5f;">TB</div>
+                      <span class="saved-author-name">Tunde Balogun</span>
+                      <span class="saved-item-type-pill event">Event</span>
+                    </div>
+                    <span class="saved-item-time">6 hours ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    ⚽ Surulere Youth Football Tournament kicks off this Saturday at the National Stadium Practice Pitch...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#6d597a;">FA</div>
+                      <span class="saved-author-name">Fatima Al-Hassan</span>
+                      <span class="saved-item-type-pill notice">Lost &amp; Found</span>
+                    </div>
+                    <span class="saved-item-time">Yesterday</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    Found a brown leather wallet with a student ID card near the bus stop outside Leisure Mall...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="index.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-icon post-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <div class="saved-item-author">
+                      <div class="saved-mini-avatar" style="background:#2b7a78;">BT</div>
+                      <span class="saved-author-name">Babatunde Adeleke</span>
+                      <span class="saved-item-type-pill business">Security Update</span>
+                    </div>
+                    <span class="saved-item-time">1 hour ago</span>
+                  </div>
+                  <p class="saved-item-preview">
+                    The new solar streetlights on Alaka-Bode Thomas connector road are now fully operational...
+                  </p>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="community.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ─── BUSINESSES TAB ─── -->
+          <section id="tab-businesses" class="saved-pane">
+            <div class="saved-list">
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt="GreenBite" />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">GreenBite Cafe & Bakery</h4>
+                    <span class="saved-item-time">Saved 2 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">14 Adeniran Ogunsanya, Surulere &bull; Cafes & Dining</p>
+                  <div class="saved-item-rating"><i class="fa-solid fa-star"></i><span><strong>4.9</strong> &bull; Open Now</span></div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=200&q=80" alt="TechFix" />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Surulere TechFix & Gadgets</h4>
+                    <span class="saved-item-time">Saved 3 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">52 Bode Thomas Street, Surulere &bull; Tech & Repairs</p>
+                  <div class="saved-item-rating"><i class="fa-solid fa-star"></i><span><strong>4.8</strong> &bull; Open Now</span></div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=200&q=80" alt="Royal Touch" />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Royal Touch Spa & Salon</h4>
+                    <span class="saved-item-time">Saved 4 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">22 Akerele Street, Surulere &bull; Beauty & Wellness</p>
+                  <div class="saved-item-rating"><i class="fa-solid fa-star"></i><span><strong>4.9</strong> &bull; Open Now</span></div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-item-thumb">
+                  <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=200&q=80" alt="Zenith Fitness" />
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Zenith Fitness Hub</h4>
+                    <span class="saved-item-time">Saved 5 days ago</span>
+                  </div>
+                  <p class="saved-item-preview">Near National Stadium, Surulere &bull; Sports & Fitness</p>
+                  <div class="saved-item-rating"><i class="fa-solid fa-star"></i><span><strong>4.6</strong> &bull; Open Now</span></div>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="business.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ─── EVENTS TAB ─── -->
+          <section id="tab-events" class="saved-pane">
+            <div class="saved-list">
+              <div class="saved-item">
+                <div class="saved-event-date">
+                  <span class="sed-day">27</span>
+                  <span class="sed-month">Sep</span>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Surulere Youth Football Tournament</h4>
+                    <span class="saved-item-time">Saved yesterday</span>
+                  </div>
+                  <p class="saved-item-preview"><i class="fa-regular fa-clock"></i> Sat, 9:00 AM &nbsp;&bull;&nbsp; <i class="fa-solid fa-location-dot"></i> National Stadium Practice Pitch</p>
+                  <span class="saved-item-type-pill sports">Sports</span>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="events.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-event-date">
+                  <span class="sed-day">28</span>
+                  <span class="sed-month">Sep</span>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Surulere Street Food Festival</h4>
+                    <span class="saved-item-time">Saved 2 days ago</span>
+                  </div>
+                  <p class="saved-item-preview"><i class="fa-regular fa-clock"></i> Sun, 11:00 AM &nbsp;&bull;&nbsp; <i class="fa-solid fa-location-dot"></i> Adeniran Ogunsanya St.</p>
+                  <span class="saved-item-type-pill event">Food & Culture</span>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="events.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+              <div class="saved-item">
+                <div class="saved-event-date">
+                  <span class="sed-day">01</span>
+                  <span class="sed-month">Oct</span>
+                </div>
+                <div class="saved-item-body">
+                  <div class="saved-item-top">
+                    <h4 class="saved-item-title">Nigeria Independence Day Block Party</h4>
+                    <span class="saved-item-time">Saved 2 days ago</span>
+                  </div>
+                  <p class="saved-item-preview"><i class="fa-regular fa-clock"></i> Tue, 4:00 PM &nbsp;&bull;&nbsp; <i class="fa-solid fa-location-dot"></i> Bode Thomas Street Junction</p>
+                  <span class="saved-item-type-pill event">Community</span>
+                </div>
+                <div class="saved-item-actions">
+                  <a href="events.html" class="btn-saved-view">View</a>
+                  <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item active">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      // Header dropdowns toggle
+      (function () {
+        const createWrapper = document.querySelector(".create-wrapper");
+        const createBtn = document.getElementById("createToggle");
+        if (createWrapper && createBtn) {
+          createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            createWrapper.classList.toggle("open");
+            const isOpen = createWrapper.classList.contains("open");
+            createBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        const accountWrapper = document.querySelector(".account-wrapper");
+        const accountBtn = document.getElementById("accountToggle");
+        if (accountWrapper && accountBtn) {
+          accountBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            accountWrapper.classList.toggle("open");
+            const isOpen = accountWrapper.classList.contains("open");
+            accountBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        document.addEventListener("click", function (e) {
+          if (createWrapper && !createWrapper.contains(e.target)) {
+            createWrapper.classList.remove("open");
+            if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+          }
+          if (accountWrapper && !accountWrapper.contains(e.target)) {
+            accountWrapper.classList.remove("open");
+            if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (createWrapper) {
+              createWrapper.classList.remove("open");
+              if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+            }
+            if (accountWrapper) {
+              accountWrapper.classList.remove("open");
+              if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabBtns = document.querySelectorAll(".saved-tab-btn");
+        const panes = document.querySelectorAll(".saved-pane");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-tab");
+
+            tabBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            panes.forEach((p) => {
+              p.classList.toggle("active", p.id === `tab-${target}`);
+            });
+          });
+        });
+
+        // Unsave button interaction
+        document.querySelectorAll(".btn-unsave").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const item = btn.closest(".saved-item");
+            if (!item) return;
+            item.style.opacity = "0";
+            item.style.transform = "translateX(20px)";
+            item.style.transition = "0.3s ease";
+            setTimeout(() => {
+              item.remove();
+              const remaining = document.querySelectorAll("#tab-all .saved-item").length;
+              const totalBadge = document.querySelector(".saved-total-badge");
+              if (totalBadge) totalBadge.textContent = `${remaining} item${remaining === 1 ? "" : "s"}`;
+              const allCount = document.querySelector("#tab-btn-all .saved-tab-count");
+              if (allCount) allCount.textContent = remaining;
+            }, 280);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

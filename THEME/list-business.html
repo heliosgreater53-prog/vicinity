@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - List Your Business</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <a href="notifications.html" class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"><span class="notification-dot"></span></i>
+          </a>
+          <a href="settings.html" class="user-btn" aria-label="User Profile"><i class="fa-regular fa-user"></i></a>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"><i class="fa-solid fa-people-roof"></i>Communities</a>
+        <a href="events.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html"><i class="fa-solid fa-bell"></i>Notifications</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Vicinity</a>
+        <a href="create-post.html" class="create-post"><i class="fa-solid fa-leaf"></i>Create Post</a>
+      </aside>
+
+      <div class="main-container business-container">
+        <div class="business-content">
+          <!-- List Business Hero -->
+          <section class="list-hero">
+            <div class="list-hero-content">
+              <span class="hero-tag">
+                <i class="fa-solid fa-store"></i> Merchant Registration
+              </span>
+              <h1>List Your Business</h1>
+              <p class="list-hero-subtitle">
+                Reach neighbors in Surulere, share your services, and grow your customer base with a verified listing.
+              </p>
+              <div class="list-stats">
+                <div class="stat-item">
+                  <span class="stat-number"><i class="fa-solid fa-users stat-icon"></i> 12,400+</span>
+                  <span class="stat-label">Active Neighbors</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number"><i class="fa-solid fa-shop stat-icon"></i> 890+</span>
+                  <span class="stat-label">Local Businesses</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number"><i class="fa-solid fa-bolt stat-icon"></i> 100% Free</span>
+                  <span class="stat-label">Instant Listing</span>
+                </div>
+              </div>
+            </div>
+            <div class="list-hero-icon">
+              <i class="fa-solid fa-store"></i>
+            </div>
+          </section>
+
+          <!-- Breadcrumbs -->
+          <nav class="list-breadcrumbs" aria-label="Breadcrumb">
+            <a href="business.html">Business Directory</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="#">List Your Business</a>
+          </nav>
+
+          <!-- Listing Form -->
+          <div class="list-form-container">
+            <div class="list-form-section">
+              <div class="section-header">
+                <h2>Business Information</h2>
+                <p>Basic details about your business</p>
+              </div>
+
+              <form class="list-form" id="businessForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="businessName" class="field-label">Business Name *</label>
+                    <div class="field-container">
+                      <input type="text" id="businessName" placeholder="e.g., GreenBite Cafe" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="businessType" class="field-label">Business Type *</label>
+                    <div class="field-container">
+                      <select id="businessType">
+                        <option value="">Select category</option>
+                        <option value="cafe">Cafes & Dining</option>
+                        <option value="auto">Auto Services</option>
+                        <option value="beauty">Beauty & Wellness</option>
+                        <option value="clothing">Clothing & Fashion</option>
+                        <option value="electronics">Electronics & Tech</option>
+                        <option value="food">Food Delivery</option>
+                        <option value="health">Health & Pharmacy</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="market">Markets & Grocery</option>
+                        <option value="repair">Repairs & Services</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="description" class="field-label">Business Description *</label>
+                  <div class="field-container textarea-container">
+                    <textarea id="description" rows="4" placeholder="Tell your neighbors about your business..."></textarea>
+                  </div>
+                  <p class="field-hint">Describe what makes your business special (max 300 characters)</p>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="address" class="field-label">Address *</label>
+                    <div class="field-container">
+                      <input type="text" id="address" placeholder="Street address, area" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="hours" class="field-label">Hours</label>
+                    <div class="field-container">
+                      <input type="text" id="hours" placeholder="e.g., 8AM - 8PM" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phone" class="field-label">Phone Number</label>
+                    <div class="field-container">
+                      <input type="tel" id="phone" placeholder="+234 80x xxx xxxx" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="field-label">Email</label>
+                    <div class="field-container">
+                      <input type="email" id="email" placeholder="info@you.com" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="website" class="field-label">Website / Social Media</label>
+                  <div class="field-container">
+                    <input type="url" id="website" placeholder="https://..." />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="priceRange" class="field-label">Price Range</label>
+                  <div class="field-container price-selector">
+                    <select id="priceRange">
+                      <option value="">Select range</option>
+                      <option value="₦">₦ - Budget</option>
+                      <option value="₦₦">₦₦ - Moderate</option>
+                      <option value="₦₦₦">₦₦₦ - Premium</option>
+                      <option value="₦₦₦₦">₦₦₦₦ - Luxury</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <a href="business.html" class="btn-secondary">Cancel</a>
+                  <button type="submit" class="btn-primary">Publish Listing</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Preview Section (hidden until form has content) -->
+          <div class="preview-section" id="previewSection">
+            <h2 class="preview-title">Preview</h2>
+            <div class="business-card preview-card" id="previewCard">
+              <div class="cardThumb">
+                <img id="previewImage" src="https://images.unsplash.com/photo-1504674900247-0877f964ce7d?auto=format&fit=crop&w=800&q=80" alt="Business preview" />
+                <span class="cardBadge" id="previewBadge">Cafe &amp; Dining</span>
+                <span class="cardStatus"><i class="fa-solid fa-circle"></i> Open Now</span>
+              </div>
+            <div class="cardBody">
+              <h3 class="cardTitle" id="previewTitle">Your Business Name</h3>
+              <div class="cardRating">
+                <i class="fa-solid fa-star"></i>
+                <span><strong id="previewRating">4.8</strong> (0 reviews)</span>
+              </div>
+              <p class="cardLocation">
+                <i class="fa-solid fa-location-dot"></i> <span id="previewLocation">Your Address</span>
+              </p>
+              <p class="cardDesc" id="previewDesc">
+                Your business description will appear here.
+              </p>
+            </div>
+            <div class="cardFooter">
+              <span class="cardPriceRange" id="previewPrice">₦₦ • Moderate</span>
+              <a href="#" class="btnView">View Listing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("businessForm");
+        const previewSection = document.getElementById("previewSection");
+
+        form.addEventListener("input", updatePreview);
+        form.addEventListener("change", updatePreview);
+
+        function updatePreview() {
+          const name = document.getElementById("businessName").value || "Your Business Name";
+          const type = document.getElementById("businessType").value;
+          const address = document.getElementById("address").value || "Your Address";
+          const price = document.getElementById("priceRange").value;
+          const desc = document.getElementById("description").value || "Your business description will appear here.";
+
+          const categories = {
+            cafe: "Cafes & Dining",
+            auto: "Auto Services",
+            beauty: "Beauty & Wellness",
+            clothing: "Clothing & Fashion",
+            electronics: "Electronics & Tech",
+            food: "Food Delivery",
+            health: "Health & Pharmacy",
+            home: "Home & Garden",
+            market: "Markets & Grocery",
+            repair: "Repairs & Services"
+          };
+
+          document.getElementById("previewTitle").textContent = name;
+          document.getElementById("previewBadge").textContent = categories[type] || "Business";
+          document.getElementById("previewLocation").textContent = address;
+          document.getElementById("previewDesc").textContent = desc.substring(0, 80) + "..." ;
+          document.getElementById("previewPrice").textContent = price || "₦₦ • Moderate";
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("businessName").value;
+          if (!name) {
+            alert("Please enter your business name");
+            return;
+          }
+
+          if (confirm("Your business listing will be reviewed by our team before being published to the directory. Save changes?")) {
+            alert("Business listing submitted successfully! It will appear in the directory after review.");
+            window.location.href = "business.html";
+          }
+        });
+
+        // Initialize preview
+        updatePreview();
+      });
+
+      // Header dropdowns toggle
+      (function () {
+        const createWrapper = document.querySelector(".create-wrapper");
+        const createBtn = document.getElementById("createToggle");
+        if (createWrapper && createBtn) {
+          createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            createWrapper.classList.toggle("open");
+            const isOpen = createWrapper.classList.contains("open");
+            createBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        const accountWrapper = document.querySelector(".account-wrapper");
+        const accountBtn = document.getElementById("accountToggle");
+        if (accountWrapper && accountBtn) {
+          accountBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            accountWrapper.classList.toggle("open");
+            const isOpen = accountWrapper.classList.contains("open");
+            accountBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        document.addEventListener("click", function (e) {
+          if (createWrapper && !createWrapper.contains(e.target)) {
+            createWrapper.classList.remove("open");
+            if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+          }
+          if (accountWrapper && !accountWrapper.contains(e.target)) {
+            accountWrapper.classList.remove("open");
+            if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (createWrapper) {
+              createWrapper.classList.remove("open");
+              if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+            }
+            if (accountWrapper) {
+              accountWrapper.classList.remove("open");
+              if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+          if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+            const searchInput = document.querySelector(".header-search input");
+            if (searchInput) {
+              e.preventDefault();
+              searchInput.focus();
+            }
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+    </script>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item active">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+  </body>
+</html>

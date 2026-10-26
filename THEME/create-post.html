@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Create Post</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"><span class="notification-dot"></span></i>
+          </button>
+          <button class="user-btn" aria-label="User Profile"><i class="fa-regular fa-user"></i></button>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"
+          ><i class="fa-solid fa-people-roof"></i>Communities</a
+        >
+        <a href="events.html"
+          ><i class="fa-solid fa-calendar-days"></i>Events</a
+        >
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html"
+          ><i class="fa-solid fa-bell"></i>Notifications</a
+        >
+        <a href="about.html"
+          ><i class="fa-solid fa-info-circle"></i>About Vicinity</a
+        >
+        <a href="create-post.html" class="create-post"
+          ><i class="fa-solid fa-leaf"></i>Create Post</a
+        >
+      </aside>
+
+      <div class="main-container feed-container">
+        <div class="feed-content">
+          <!-- Create Post Hero -->
+          <section class="create-hero">
+            <div class="create-hero-content">
+              <h1>Create a Post</h1>
+              <p class="create-hero-subtitle">
+                Share updates, ask questions, or announce events to your
+                neighbors
+              </p>
+            </div>
+            <div class="create-hero-icon">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+          </section>
+
+          <!-- Breadcrumbs -->
+          <nav class="create-breadcrumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="#">Create Post</a>
+          </nav>
+
+          <!-- Create Post Form -->
+          <div class="create-form-container">
+            <form class="create-form" id="postForm">
+              <div class="form-section">
+                <h3 class="section-title">Post Content</h3>
+
+                <div class="form-group">
+                  <label for="postType" class="field-label">Post Type *</label>
+                  <div class="field-container">
+                    <select id="postType">
+                      <option value="">Select post type</option>
+                      <option value="general">General Discussion</option>
+                      <option value="notice">Notice / Announcement</option>
+                      <option value="event">Event</option>
+                      <option value="business">Local Business</option>
+                      <option value="lostfound">Lost & Found</option>
+                      <option value="recommendation">Recommendation</option>
+                      <option value="question">Question</option>
+                      <option value="safety">Safety Alert</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="postTitle" class="field-label">Title *</label>
+                  <div class="field-container">
+                    <input
+                      type="text"
+                      id="postTitle"
+                      placeholder="What's happening in your community?"
+                    />
+                  </div>
+                  <p class="field-hint">
+                    Clear, engaging title (max 100 characters)
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label for="postContent" class="field-label">Content *</label>
+                  <div class="field-container textarea-container">
+                    <textarea
+                      id="postContent"
+                      rows="6"
+                      placeholder="Write your post here..."
+                    ></textarea>
+                  </div>
+                  <p class="field-hint">
+                    Share details, ask questions, or start a discussion (max
+                    2000 characters)
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label class="field-label">Post To</label>
+                  <div class="field-container">
+                    <select id="postDestination">
+                      <option value="feed">Main Community Feed</option>
+                      <optgroup label="Your Groups">
+                        <option value="group-1">
+                          Bode Thomas Security Watch
+                        </option>
+                        <option value="group-2">
+                          Surulere Tech Enthusiasts
+                        </option>
+                        <option value="group-3">
+                          Adeniran Market Traders & Buyers
+                        </option>
+                      </optgroup>
+                      <option value="new-group">
+                        Create New Group Instead
+                      </option>
+                    </select>
+                  </div>
+                  <p class="field-hint">Choose where this post will appear</p>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3 class="section-title">Attachments</h3>
+
+                <div class="attachment-options">
+                  <label class="attachment-btn">
+                    <input
+                      type="file"
+                      id="postImages"
+                      accept="image/*"
+                      multiple
+                      class="file-input"
+                    />
+                    <i class="fa-solid fa-image"></i>
+                    <span>Add Photos</span>
+                  </label>
+                  <label class="attachment-btn">
+                    <input
+                      type="file"
+                      id="postVideo"
+                      accept="video/*"
+                      class="file-input"
+                    />
+                    <i class="fa-solid fa-video"></i>
+                    <span>Add Video</span>
+                  </label>
+                  <label class="attachment-btn">
+                    <input
+                      type="file"
+                      id="postDocument"
+                      accept=".pdf,.doc,.docx"
+                      class="file-input"
+                    />
+                    <i class="fa-solid fa-file"></i>
+                    <span>Add Document</span>
+                  </label>
+                </div>
+
+                <div class="media-preview" id="mediaPreview"></div>
+
+                <p class="field-hint">
+                  Max 10 images, 1 video (50MB), 3 documents (10MB each)
+                </p>
+              </div>
+
+              <div class="form-section">
+                <h3 class="section-title">Post Settings</h3>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Allow Comments</h4>
+                    <p>Let neighbors reply to your post</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="checkbox-option">
+                      <input type="checkbox" name="allowComments" checked />
+                      <span class="checkbox-custom"></span>
+                      <span>Enable comments</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Anonymous Post</h4>
+                    <p>Hide your name from the post (admins still see it)</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="checkbox-option">
+                      <input type="checkbox" name="anonymousPost" />
+                      <span class="checkbox-custom"></span>
+                      <span>Post anonymously</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Notify Group Members</h4>
+                    <p>Send push notification to group members</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="checkbox-option">
+                      <input type="checkbox" name="notifyMembers" checked />
+                      <span class="checkbox-custom"></span>
+                      <span>Send notifications</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <a href="index.html" class="btn-secondary">Cancel</a>
+                <button type="button" class="btn-ghost" id="saveDraft">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Draft
+                </button>
+                <button type="submit" class="btn-primary">
+                  <i class="fa-solid fa-paper-plane"></i> Publish Post
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Preview Section -->
+          <div class="preview-section" id="previewSection">
+            <h2 class="preview-title">Post Preview</h2>
+            <article class="post preview-card" id="previewCard">
+              <div class="post-header">
+                <div class="post-user-info">
+                  <div class="post-profile" id="previewProfile">
+                    <p class="profile-initials">JD</p>
+                  </div>
+                  <div class="post-info">
+                    <p class="name" id="previewAuthor">John Doe</p>
+                    <p class="post-meta" id="previewMeta">
+                      Surulere Central &bull; Just now
+                    </p>
+                  </div>
+                </div>
+                <span class="post-tag" id="previewTag">General</span>
+              </div>
+              <div class="post-content">
+                <p class="post-text" id="previewText">
+                  Start writing to see a preview...
+                </p>
+                <div class="post-media" id="previewMedia"></div>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span>0 Likes</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-comment"></i>
+                  <span>0 Comments</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Event</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      // Create dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".create-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("createToggle");
+        const dropdown = document.getElementById("createDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+
+      // Account profile dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".account-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("accountToggle");
+        const dropdown = document.getElementById("accountDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+
+        var logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+
+      // Mobile sidebar toggle
+      (function () {
+        var mobileMenuBtn = document.getElementById("mobileMenuToggle");
+        var sidebar = document.querySelector(".mobile-sidebar");
+        var sidebarClose = document.getElementById("sidebarClose");
+        var sidebarOverlay = document.querySelector(".sidebar-overlay");
+
+        if (!mobileMenuBtn || !sidebar) return;
+
+        function openSidebar() {
+          sidebar.classList.add("open");
+        }
+        function closeSidebar() {
+          sidebar.classList.remove("open");
+        }
+
+        mobileMenuBtn.addEventListener("click", openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeSidebar();
+        });
+      })();
+
+      // Create Post Live Preview & Submission Logic
+      (function () {
+        const postForm = document.getElementById("postForm");
+        const postType = document.getElementById("postType");
+        const postTitle = document.getElementById("postTitle");
+        const postContent = document.getElementById("postContent");
+        const anonCheckbox = document.querySelector('input[name="anonymousPost"]');
+        const postImages = document.getElementById("postImages");
+        const mediaPreview = document.getElementById("mediaPreview");
+        const previewTag = document.getElementById("previewTag");
+        const previewText = document.getElementById("previewText");
+        const previewAuthor = document.getElementById("previewAuthor");
+        const previewProfile = document.getElementById("previewProfile");
+        const previewMedia = document.getElementById("previewMedia");
+        const saveDraftBtn = document.getElementById("saveDraft");
+
+        const typeLabels = {
+          "": "General",
+          general: "General Discussion",
+          notice: "Notice / Announcement",
+          event: "Event",
+          business: "Local Business",
+          lostfound: "Lost & Found",
+          recommendation: "Recommendation",
+          question: "Question",
+          safety: "Safety Alert"
+        };
+
+        function escapeHTML(str) {
+          return str.replace(/[&<>'"]/g, 
+            tag => ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              "'": '&#39;',
+              '"': '&quot;'
+            }[tag] || tag)
+          );
+        }
+
+        function updatePreview() {
+          if (!previewTag || !previewText) return;
+
+          // Type
+          const selectedType = postType ? postType.value : "";
+          previewTag.textContent = typeLabels[selectedType] || "General";
+
+          // Author
+          const isAnon = anonCheckbox && anonCheckbox.checked;
+          if (previewAuthor) {
+            previewAuthor.textContent = isAnon ? "Anonymous Neighbor" : "John Doe";
+          }
+          if (previewProfile) {
+            previewProfile.innerHTML = `<p class="profile-initials">${isAnon ? '?' : 'JD'}</p>`;
+          }
+
+          // Text / Content
+          const titleVal = postTitle ? postTitle.value.trim() : "";
+          const contentVal = postContent ? postContent.value.trim() : "";
+
+          if (titleVal || contentVal) {
+            let html = "";
+            if (titleVal) {
+              html += `<strong style="display:block;font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary);">${escapeHTML(titleVal)}</strong>`;
+            }
+            if (contentVal) {
+              html += `<span style="white-space:pre-wrap;color:var(--text-secondary);">${escapeHTML(contentVal)}</span>`;
+            }
+            previewText.innerHTML = html;
+          } else {
+            previewText.innerHTML = "Start writing to see a preview...";
+          }
+        }
+
+        if (postForm) {
+          postForm.addEventListener("input", updatePreview);
+          postForm.addEventListener("change", updatePreview);
+        }
+
+        // Image Attachment Preview
+        if (postImages) {
+          postImages.addEventListener("change", function (e) {
+            const files = Array.from(e.target.files || []);
+            if (!files.length) return;
+
+            if (mediaPreview) mediaPreview.innerHTML = "";
+            if (previewMedia) previewMedia.innerHTML = "";
+
+            files.slice(0, 4).forEach(file => {
+              const reader = new FileReader();
+              reader.onload = function (evt) {
+                const imgThumb = document.createElement("img");
+                imgThumb.src = evt.target.result;
+                imgThumb.style.width = "72px";
+                imgThumb.style.height = "72px";
+                imgThumb.style.objectFit = "cover";
+                imgThumb.style.borderRadius = "8px";
+                imgThumb.style.border = "1px solid var(--border-color)";
+                if (mediaPreview) mediaPreview.appendChild(imgThumb.cloneNode());
+
+                const previewImg = document.createElement("img");
+                previewImg.src = evt.target.result;
+                previewImg.style.maxHeight = "260px";
+                previewImg.style.width = "100%";
+                previewImg.style.objectFit = "cover";
+                previewImg.style.borderRadius = "10px";
+                previewImg.style.marginTop = "0.75rem";
+                if (previewMedia) previewMedia.appendChild(previewImg);
+              };
+              reader.readAsDataURL(file);
+            });
+          });
+        }
+
+        // Save Draft
+        if (saveDraftBtn) {
+          saveDraftBtn.addEventListener("click", function () {
+            const title = postTitle ? postTitle.value.trim() : "";
+            if (!title) {
+              alert("Please enter at least a title before saving a draft.");
+              return;
+            }
+            localStorage.setItem("vicinity_post_draft", JSON.stringify({
+              type: postType ? postType.value : "",
+              title: title,
+              content: postContent ? postContent.value.trim() : "",
+              date: new Date().toISOString()
+            }));
+            alert("Draft saved successfully to local storage!");
+          });
+        }
+
+        // Form Submit
+        if (postForm) {
+          postForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const type = postType ? postType.value : "";
+            const title = postTitle ? postTitle.value.trim() : "";
+            const content = postContent ? postContent.value.trim() : "";
+
+            if (!type) {
+              alert("Please select a post type.");
+              if (postType) postType.focus();
+              return;
+            }
+            if (!title) {
+              alert("Please provide a title for your post.");
+              if (postTitle) postTitle.focus();
+              return;
+            }
+            if (!content) {
+              alert("Please write the post content.");
+              if (postContent) postContent.focus();
+              return;
+            }
+
+            alert("Post published successfully to your community feed!");
+            window.location.href = "index.html";
+          });
+        }
+
+        // Keyboard search shortcut
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            const searchInput = document.querySelector(".header-search input");
+            if (searchInput) searchInput.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

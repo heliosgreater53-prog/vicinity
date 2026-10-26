@@ -1,0 +1,846 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Your Community Connected</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button
+              class="create-btn"
+              id="createToggle"
+              aria-label="Create"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button
+            class="messenger-btn"
+            id="messengerToggle"
+            aria-label="Messenger"
+            title="Messenger"
+          >
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"
+              ><span class="notification-dot"></span
+            ></i>
+          </button>
+          <button class="user-btn" aria-label="User Profile">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="account-wrapper">
+            <button
+              class="account-profile"
+              id="accountToggle"
+              aria-label="Account menu"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a
+                href="notifications.html"
+                class="acc-item notifications"
+                role="menuitem"
+              >
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html" class="current"
+          ><i class="fa-solid fa-home"></i>Home</a
+        >
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"
+          ><i class="fa-solid fa-people-roof"></i>Communities</a
+        >
+        <a href="events.html"
+          ><i class="fa-solid fa-calendar-days"></i>Events</a
+        >
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html"
+          ><i class="fa-solid fa-bell"></i>Notifications
+          <span class="notif-count"> 2 </span></a
+        >
+        <a href="about.html"
+          ><i class="fa-solid fa-info-circle"></i>About Vicinity</a
+        >
+        <a href="create-post.html" class="create-post"
+          ><i class="fa-solid fa-leaf"></i>Create Post</a
+        >
+      </aside>
+
+      <div class="main-container">
+        <div class="feed-content">
+          <div class="composer">
+            <div class="composer-upper">
+              <div class="composer-profile">
+                <p class="profile-initial">JD</p>
+              </div>
+              <div class="composer-link">
+                <a href=""> What's happening in your community? </a>
+              </div>
+            </div>
+            <div class="composer-lower">
+              <button class="composer-button">
+                <i class="fa-solid fa-image"></i>
+                <span>Image</span>
+              </button>
+              <button class="composer-button">
+                <i class="fa-solid fa-video"></i>
+                <span>Video</span>
+              </button>
+              <button class="composer-button">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </button>
+            </div>
+          </div>
+          <div class="posts">
+            <!-- Post 1: Notice / Announcement -->
+            <article class="post">
+              <div class="post-header">
+                <div class="post-user-info">
+                  <div class="post-profile">
+                    <p class="profile-initials">AC</p>
+                  </div>
+                  <div class="post-info">
+                    <p class="name">Adekunle Charles</p>
+                    <p class="post-meta">Surulere Central &bull; 2 hours ago</p>
+                  </div>
+                </div>
+                <div class="post-menu">
+                  <button class="post-menu-btn" aria-label="Post options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                  <div class="post-menu-dropdown">
+                    <a href="#" class="post-menu-item">
+                      <i class="fa-solid fa-thumbtack"></i>
+                      <span>Pin post</span>
+                    </a>
+                    <a href="#" class="post-menu-item danger">
+                      <i class="fa-solid fa-flag"></i>
+                      <span>Report</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <p class="post-text">
+                  Community Announcement: There will be routine maintenance on
+                  the main water supply pipeline along Ogunlana Drive tomorrow
+                  between 9:00 AM and 2:00 PM. Please store adequate water for
+                  your households beforehand!
+                </p>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span>18 Likes</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-comment"></i>
+                  <span>6 Comments</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Post 2: Local Business with Image -->
+            <article class="post">
+              <div class="post-header">
+                <div class="post-user-info">
+                  <div class="post-profile" style="background-color: #2b7a78">
+                    <p class="profile-initials">CO</p>
+                  </div>
+                  <div class="post-info">
+                    <p class="name">Chidinma Okoro</p>
+                    <p class="post-meta">
+                      Adeniran Ogunsanya &bull; 4 hours ago
+                    </p>
+                  </div>
+                </div>
+                <div class="post-menu">
+                  <button class="post-menu-btn" aria-label="Post options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                  <div class="post-menu-dropdown">
+                    <a href="#" class="post-menu-item">
+                      <i class="fa-solid fa-thumbtack"></i>
+                      <span>Pin post</span>
+                    </a>
+                    <a href="#" class="post-menu-item danger">
+                      <i class="fa-solid fa-flag"></i>
+                      <span>Report</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <p class="post-text">
+                  Just stopped by the newly opened GreenBite Cafe on Adeniran
+                  Ogunsanya! Warm ambiance, fast Wi-Fi, and their fresh pastries
+                  are fantastic. Great new spot for remote work and quick
+                  meetings in the neighborhood. ☕🥐
+                </p>
+                <div class="post-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+                    alt="GreenBite Cafe Interior"
+                  />
+                </div>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span>42 Likes</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-comment"></i>
+                  <span>14 Comments</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Post 3: Community Event -->
+            <article class="post">
+              <div class="post-header">
+                <div class="post-user-info">
+                  <div class="post-profile" style="background-color: #e07a5f">
+                    <p class="profile-initials">TB</p>
+                  </div>
+                  <div class="post-info">
+                    <p class="name">Tunde Balogun</p>
+                    <p class="post-meta">Stadium Road &bull; 6 hours ago</p>
+                  </div>
+                </div>
+                <div class="post-menu">
+                  <button class="post-menu-btn" aria-label="Post options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                  <div class="post-menu-dropdown">
+                    <a href="#" class="post-menu-item">
+                      <i class="fa-solid fa-thumbtack"></i>
+                      <span>Pin post</span>
+                    </a>
+                    <a href="#" class="post-menu-item danger">
+                      <i class="fa-solid fa-flag"></i>
+                      <span>Report</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <p class="post-text">
+                  ⚽ Surulere Youth Football Tournament kicks off this Saturday
+                  at the National Stadium Practice Pitch! Come out with family
+                  and friends to cheer on our local street teams. Admission is
+                  free for everyone. Let's support our local talents!
+                </p>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span>65 Likes</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-comment"></i>
+                  <span>21 Comments</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Post 4: Lost & Found -->
+            <article class="post">
+              <div class="post-header">
+                <div class="post-user-info">
+                  <div class="post-profile" style="background-color: #6d597a">
+                    <p class="profile-initials">FA</p>
+                  </div>
+                  <div class="post-info">
+                    <p class="name">Fatima Al-Hassan</p>
+                    <p class="post-meta">Bode Thomas &bull; Yesterday</p>
+                  </div>
+                </div>
+                <div class="post-menu">
+                  <button class="post-menu-btn" aria-label="Post options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                  <div class="post-menu-dropdown">
+                    <a href="#" class="post-menu-item">
+                      <i class="fa-solid fa-thumbtack"></i>
+                      <span>Pin post</span>
+                    </a>
+                    <a href="#" class="post-menu-item danger">
+                      <i class="fa-solid fa-flag"></i>
+                      <span>Report</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                <p class="post-text">
+                  Found a brown leather wallet with a student ID card near the
+                  bus stop outside Leisure Mall earlier today. If you or someone
+                  you know lost one, please leave a comment or message me with
+                  the name on the ID to claim it.
+                </p>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <span>29 Likes</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-regular fa-comment"></i>
+                  <span>11 Comments</span>
+                </button>
+                <button class="post-action-btn">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Navigation (Mobile) -->
+      <nav class="floating-nav">
+        <a href="index.html" class="nav-item active">
+          <i class="fa-solid fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="business.html" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span>Business</span>
+        </a>
+        <a href="community.html" class="nav-item">
+          <i class="fa-solid fa-people-roof"></i>
+          <span>Community</span>
+        </a>
+        <a href="events.html" class="nav-item">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>Event</span>
+        </a>
+        <a href="saved.html" class="nav-item">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Saved</span>
+        </a>
+      </nav>
+    </main>
+
+    <!-- Mobile Sidebar -->
+    <aside class="mobile-sidebar">
+      <div class="sidebar-overlay"></div>
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2>Vicinity</h2>
+          </div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+
+        <div class="sidebar-nav">
+          <a href="index.html" class="current">
+            <i class="fa-solid fa-home"></i>Home
+          </a>
+          <a href="business.html">
+            <i class="fa-solid fa-store"></i>Business
+          </a>
+          <a href="community.html">
+            <i class="fa-solid fa-people-roof"></i>Communities
+          </a>
+          <a href="events.html">
+            <i class="fa-solid fa-calendar-days"></i>Events
+          </a>
+          <a href="saved.html"> <i class="fa-solid fa-bookmark"></i>Saved </a>
+          <a href="settings.html"> <i class="fa-solid fa-gear"></i>Settings </a>
+          <a href="notifications.html">
+            <i class="fa-solid fa-bell"></i>Notifications
+            <span class="notif-count">2</span>
+          </a>
+          <a href="about.html">
+            <i class="fa-solid fa-info-circle"></i>About Vicinity
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <a href="create-post.html" class="create-post">
+          <i class="fa-solid fa-leaf"></i>Create Post
+        </a>
+        <div class="sidebar-links">
+          <a href="settings.html"> <i class="fa-solid fa-gear"></i>Settings </a>
+          <a href="#" class="sidebar-logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="msg-window" id="msgWindow">
+      <div class="msg-header">
+        <div class="msg-title">
+          <i class="fa-solid fa-comments"></i>
+          <span>Messenger</span>
+        </div>
+        <button class="msg-close" id="msgClose">&times;</button>
+      </div>
+      <div class="msg-content">
+        <div class="msg-contacts" id="msgContacts">
+          <!-- Contacts injected by JS -->
+        </div>
+        <div class="msg-chat">
+          <div class="msg-messages" id="msgMessages">
+            <div class="message received">
+              <div class="msg-bubble">
+                Hey! How's your community project going?
+              </div>
+              <span class="msg-time">10:24 AM</span>
+            </div>
+          </div>
+          <div class="msg-input-area">
+            <input type="text" id="msgInput" placeholder="Type a message..." />
+            <button id="msgSend">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Create dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".create-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("createToggle");
+        const dropdown = document.getElementById("createDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        // Close when clicking outside
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        // Close on Escape
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+    </script>
+
+    <script>
+      // Account profile dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".account-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("accountToggle");
+        const dropdown = document.getElementById("accountDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+
+        var logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+
+      // Messenger toggle & logic
+      (function () {
+        var toggleBtn = document.getElementById("messengerToggle");
+        var msgWindow = document.getElementById("msgWindow");
+        var closeBtn = document.getElementById("msgClose");
+        var contactsEl = document.getElementById("msgContacts");
+        var messagesEl = document.getElementById("msgMessages");
+        var inputEl = document.getElementById("msgInput");
+        var sendBtn = document.getElementById("msgSend");
+
+        if (!toggleBtn || !msgWindow) return;
+
+        var contacts = [
+          {
+            id: "sarah",
+            name: "Sarah M.",
+            initial: "S",
+            lastMsg: "See you at the event tomorrow!",
+            messages: [
+              {
+                text: "Hey! How's your community project going?",
+                time: "10:24 AM",
+                sent: false,
+              },
+              {
+                text: "Going well, thanks! Just finished the new group.",
+                time: "10:25 AM",
+                sent: true,
+              },
+              {
+                text: "Nice, let me know if you need any help.",
+                time: "10:27 AM",
+                sent: false,
+              },
+              { text: "Will do, thanks!", time: "10:28 AM", sent: true },
+            ],
+          },
+          {
+            id: "michael",
+            name: "Michael R.",
+            initial: "M",
+            lastMsg: "The event is confirmed for Saturday.",
+            messages: [
+              {
+                text: "Did you finalize the event details?",
+                time: "9:10 AM",
+                sent: false,
+              },
+              {
+                text: "Yes, it's confirmed for Saturday at 2pm.",
+                time: "9:12 AM",
+                sent: true,
+              },
+              {
+                text: "Great, I'll bring the supplies.",
+                time: "9:15 AM",
+                sent: false,
+              },
+              { text: "Perfect, see you there!", time: "9:16 AM", sent: true },
+            ],
+          },
+          {
+            id: "aisha",
+            name: "Aisha K.",
+            initial: "A",
+            lastMsg: "The market is open every Thursday now.",
+            messages: [
+              {
+                text: "Have you seen the new market schedule?",
+                time: "8:30 AM",
+                sent: false,
+              },
+              {
+                text: "Yes, it's every Thursday starting next week.",
+                time: "8:35 AM",
+                sent: true,
+              },
+              {
+                text: "Awesome, I'll spread the word.",
+                time: "8:37 AM",
+                sent: false,
+              },
+            ],
+          },
+          {
+            id: "chidi",
+            name: "Chidi O.",
+            initial: "C",
+            lastMsg: "The community garden looks amazing!",
+            messages: [
+              {
+                text: "Did you check out the community garden?",
+                time: "7:00 PM",
+                sent: false,
+              },
+              {
+                text: "Yes, the garden looks amazing!",
+                time: "7:05 PM",
+                sent: true,
+              },
+              {
+                text: "I'll volunteer this weekend.",
+                time: "7:10 PM",
+                sent: false,
+              },
+            ],
+          },
+        ];
+
+        var currentContact = null;
+
+        function renderContacts() {
+          contactsEl.innerHTML = contacts
+            .map(function (c) {
+              return (
+                '<div class="contact-item' +
+                (c.id === currentContact ? " active" : "") +
+                '" data-id="' +
+                c.id +
+                '">' +
+                '<div class="contact-avatar">' +
+                c.initial +
+                "</div>" +
+                '<div class="contact-info">' +
+                '<div class="contact-name">' +
+                c.name +
+                "</div>" +
+                '<div class="contact-last-msg">' +
+                c.lastMsg +
+                "</div>" +
+                "</div>" +
+                "</div>"
+              );
+            })
+            .join("");
+          contactsEl.querySelectorAll(".contact-item").forEach(function (el) {
+            el.addEventListener("click", function () {
+              selectContact(this.getAttribute("data-id"));
+            });
+          });
+        }
+
+        function selectContact(id) {
+          currentContact = id;
+          renderContacts();
+          var contact = contacts.find(function (c) {
+            return c.id === id;
+          });
+          if (!contact) return;
+          messagesEl.innerHTML = contact.messages
+            .map(function (m) {
+              return (
+                '<div class="message ' +
+                (m.sent ? "sent" : "received") +
+                '">' +
+                '<div class="msg-bubble">' +
+                m.text +
+                "</div>" +
+                '<span class="msg-time">' +
+                m.time +
+                "</span>" +
+                "</div>"
+              );
+            })
+            .join("");
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function sendMessage() {
+          var text = inputEl.value.trim();
+          if (!text || !currentContact) return;
+          var contact = contacts.find(function (c) {
+            return c.id === currentContact;
+          });
+          if (!contact) return;
+          var now = new Date();
+          var time =
+            now.getHours() +
+            ":" +
+            (now.getMinutes() < 10 ? "0" : "") +
+            now.getMinutes();
+          contact.messages.push({ text: text, time: time, sent: true });
+          contact.lastMsg = text;
+          inputEl.value = "";
+          selectContact(currentContact);
+          renderContacts();
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          msgWindow.classList.add("open");
+          toggleBtn.style.display = "none";
+        });
+        closeBtn.addEventListener("click", function () {
+          msgWindow.classList.remove("open");
+          toggleBtn.style.display = "";
+        });
+
+        if (sendBtn) {
+          sendBtn.addEventListener("click", sendMessage);
+        }
+        if (inputEl) {
+          inputEl.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") sendMessage();
+          });
+        }
+
+        renderContacts();
+      })();
+
+      // Mobile sidebar toggle
+      (function () {
+        var mobileMenuBtn = document.getElementById("mobileMenuToggle");
+        var sidebar = document.querySelector(".mobile-sidebar");
+        var sidebarClose = document.getElementById("sidebarClose");
+        var sidebarOverlay = document.querySelector(".sidebar-overlay");
+
+        if (!mobileMenuBtn || !sidebar) return;
+
+        function openSidebar() {
+          sidebar.classList.add("open");
+        }
+        function closeSidebar() {
+          sidebar.classList.remove("open");
+        }
+
+        mobileMenuBtn.addEventListener("click", openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener("click", closeSidebar);
+        if (sidebarOverlay)
+          sidebarOverlay.addEventListener("click", closeSidebar);
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeSidebar();
+        });
+      })();
+    </script>
+  </body>
+</html>

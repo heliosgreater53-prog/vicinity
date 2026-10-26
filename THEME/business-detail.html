@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - GreenBite Cafe & Bakery</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell">
+              <span class="notification-dot"></span>
+            </i>
+          </button>
+          <button class="user-btn" aria-label="User Profile">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Navigation Sidebar -->
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"><i class="fa-solid fa-people-roof"></i>Communities</a>
+        <a href="events.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>Notifications
+          <span class="notif-count">2</span>
+        </a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Vicinity</a>
+        <a href="create-post.html" class="create-post"><i class="fa-solid fa-leaf"></i>Create Post</a>
+      </aside>
+
+      <!-- Main Business Detail -->
+      <div class="main-container business-container">
+        <div class="business-content">
+          <!-- Back Button & Hero -->
+          <section class="business-hero">
+            <a href="business.html" class="back-link">
+              <i class="fa-solid fa-arrow-left"></i> Back to Directory
+            </a>
+            <span class="hero-tag">
+              <i class="fa-solid fa-shop"></i> Local Marketplace
+            </span>
+            <h1>GreenBite Cafe & Bakery</h1>
+          </section>
+
+          <!-- Business Details -->
+          <section class="business-details">
+            <div class="detail-hero">
+              <div class="detail-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+                  alt="GreenBite Cafe & Bakery"
+                />
+                <span class="detail-badge">Cafes & Dining</span>
+                <span class="detail-status"><i class="fa-solid fa-circle"></i> Open Now</span>
+              </div>
+              <div class="detail-info">
+                <div class="detail-rating">
+                  <i class="fa-solid fa-star"></i>
+                  <span><strong>4.9</strong> (64 reviews)</span>
+                </div>
+                <p class="detail-location">
+                  <i class="fa-solid fa-location-dot"></i> 14 Adeniran Ogunsanya, Surulere
+                </p>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="detail-actions">
+              <a href="#" class="btn-follow">
+                <i class="fa-solid fa-heart"></i> Follow
+              </a>
+              <a href="#" class="btn-message">
+                <i class="fa-solid fa-message"></i> Message
+              </a>
+            </div>
+
+            <!-- Business Description -->
+            <div class="detail-description">
+              <h2>About GreenBite Cafe & Bakery</h2>
+              <p>
+                Artisanal coffees, fresh sourdough bread, healthy pastries, and a peaceful co-working vibe with fast Wi-Fi. We source our beans directly from Nigerian farmers and bake daily on-site. Open from 8AM to 8PM, seven days a week. Perfect for remote work, study sessions, or casual catch-ups with friends.
+              </p>
+            </div>
+
+            <!-- Menu Section -->
+            <div class="detail-section">
+              <h2>Our Menu</h2>
+              <div class="menu-grid">
+                <div class="menu-item">
+                  <span class="menu-name">Cold Brew Coffee</span>
+                  <span class="menu-price">₦800</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-name">Fresh Sourdough</span>
+                  <span class="menu-price">₦500</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-name">Avocado Toast</span>
+                  <span class="menu-price">₦700</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-name">Carrot Cake</span>
+                  <span class="menu-price">₦650</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="detail-section">
+              <h2>Our Services</h2>
+              <div class="services-list">
+                <div class="service-item">
+                  <i class="fa-solid fa-wifi"></i>
+                  <span>Free Wi-Fi</span>
+                </div>
+                <div class="service-item">
+                  <i class="fa-solid fa-tablet-button"></i>
+                  <span>Power Outlets</span>
+                </div>
+                <div class="service-item">
+                  <i class="fa-solid fa-bicycle"></i>
+                  <span>Bike Parking</span>
+                </div>
+                <div class="service-item">
+                  <i class="fa-solid fa-dog"></i>
+                  <span>Pet-Friendly</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hours Section -->
+            <div class="detail-section">
+              <h2>Opening Hours</h2>
+              <div class="hours-grid">
+                <div class="hour-item">
+                  <span>Monday - Friday</span>
+                  <span>8AM - 8PM</span>
+                </div>
+                <div class="hour-item">
+                  <span>Saturday</span>
+                  <span>9AM - 6PM</span>
+                </div>
+                <div class="hour-item">
+                  <span>Sunday</span>
+                  <span>10AM - 4PM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="detail-section contact-section">
+              <h2>Contact Us</h2>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>+234 803 123 4567</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span>info@greenbite.ng</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-globe"></i>
+                  <span>www.greenbite.ng</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item active">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      // Header dropdowns toggle
+      (function () {
+        const createWrapper = document.querySelector(".create-wrapper");
+        const createBtn = document.getElementById("createToggle");
+        if (createWrapper && createBtn) {
+          createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            createWrapper.classList.toggle("open");
+            const isOpen = createWrapper.classList.contains("open");
+            createBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        const accountWrapper = document.querySelector(".account-wrapper");
+        const accountBtn = document.getElementById("accountToggle");
+        if (accountWrapper && accountBtn) {
+          accountBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            accountWrapper.classList.toggle("open");
+            const isOpen = accountWrapper.classList.contains("open");
+            accountBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        document.addEventListener("click", function (e) {
+          if (createWrapper && !createWrapper.contains(e.target)) {
+            createWrapper.classList.remove("open");
+            if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+          }
+          if (accountWrapper && !accountWrapper.contains(e.target)) {
+            accountWrapper.classList.remove("open");
+            if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (createWrapper) {
+              createWrapper.classList.remove("open");
+              if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+            }
+            if (accountWrapper) {
+              accountWrapper.classList.remove("open");
+              if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const backLink = document.querySelector(".back-link");
+        if (backLink) {
+          backLink.addEventListener("click", (e) => {
+            if (window.history.length > 1) {
+              e.preventDefault();
+              window.history.back();
+            }
+          });
+        }
+
+        const followBtn = document.querySelector(".btn-follow");
+        if (followBtn) {
+          followBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const isFollowing = followBtn.classList.toggle("following");
+            if (isFollowing) {
+              followBtn.innerHTML = '<i class="fa-solid fa-heart" style="color:#e74c3c;"></i> Following';
+              followBtn.style.borderColor = "#e74c3c";
+              followBtn.style.color = "#e74c3c";
+            } else {
+              followBtn.innerHTML = '<i class="fa-solid fa-heart"></i> Follow';
+              followBtn.style.borderColor = "";
+              followBtn.style.color = "";
+            }
+          });
+        }
+
+        const messageBtn = document.querySelector(".btn-message");
+        if (messageBtn) {
+          messageBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const messengerToggle = document.getElementById("messengerToggle");
+            if (messengerToggle) {
+              messengerToggle.click();
+            } else {
+              alert("Opening direct message with GreenBite Cafe & Bakery...");
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity – Your Community, Connected</title>
+    <meta
+      name="description"
+      content="Vicinity connects you with your local community. Discover local businesses, join community groups, attend nearby events, and stay informed about what matters in your neighborhood."
+    />
+    <link rel="stylesheet" href="<?= asset('modern.css') ?>" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* =========================================================
+         LANDING PAGE – Scoped Styles
+         ========================================================= */
+
+      body.landing-body {
+        background: var(--bg);
+        overflow-x: hidden;
+      }
+
+      /* ── NAVBAR ── */
+      .landing-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: var(--z-header);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(1rem, 5vw, 3rem);
+        height: 68px;
+        background: hsla(216, 20%, 97%, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-light);
+        transition: background var(--t-normal), box-shadow var(--t-normal);
+      }
+      .landing-nav.scrolled {
+        box-shadow: var(--shadow-md);
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--text-1);
+      }
+      .nav-logo-icon {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        border-radius: var(--r-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        box-shadow: 0 2px 12px var(--accent-glow);
+        flex-shrink: 0;
+      }
+      .nav-brand-name {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--text-1);
+        letter-spacing: -0.3px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-2);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: var(--r-full);
+        transition: color var(--t-fast), background var(--t-fast);
+      }
+      .nav-links a:hover {
+        color: var(--text-1);
+        background: var(--surface-3);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-outline {
+        padding: 8px 20px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--r-full);
+        background: transparent;
+        color: var(--text-1);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: border-color var(--t-fast), background var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+      }
+      .btn-outline:hover {
+        background: var(--surface-3);
+      }
+      .btn-primary {
+        padding: 8px 20px;
+        border-radius: var(--r-full);
+        background: var(--accent);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        transition: background var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 10px var(--accent-glow);
+      }
+      .btn-primary:hover {
+        background: var(--accent-dark);
+        box-shadow: var(--shadow-accent);
+        transform: translateY(-1px);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+      }
+      .hamburger span {
+        width: 22px;
+        height: 2px;
+        background: var(--text-2);
+        border-radius: 2px;
+        transition: var(--t-normal);
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px clamp(1rem, 5vw, 3rem) 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.22;
+        animation: orbFloat 8s ease-in-out infinite;
+      }
+      .hero-orb-1 {
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(circle, hsl(140, 62%, 39%), transparent 70%);
+        top: -120px;
+        right: -80px;
+        animation-delay: 0s;
+      }
+      .hero-orb-2 {
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, hsl(210, 80%, 55%), transparent 70%);
+        bottom: 0;
+        left: -80px;
+        animation-delay: 3s;
+      }
+      .hero-orb-3 {
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, hsl(36, 90%, 60%), transparent 70%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: 5s;
+        opacity: 0.1;
+      }
+      @keyframes orbFloat {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-24px) scale(1.05); }
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+        margin: 0 auto;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent-light);
+        color: var(--accent-dark);
+        border: 1px solid var(--accent-muted);
+        border-radius: var(--r-full);
+        padding: 6px 16px;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        margin-bottom: 28px;
+        animation: fadeUp 0.6s var(--ease-out) both;
+      }
+      .hero-title {
+        font-size: clamp(2.4rem, 6vw, 4.2rem);
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--text-1);
+        letter-spacing: -1.5px;
+        margin-bottom: 22px;
+        animation: fadeUp 0.6s var(--ease-out) 0.1s both;
+      }
+      .hero-title .accent-word {
+        color: var(--accent);
+        position: relative;
+        display: inline-block;
+      }
+      .hero-title .accent-word::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+        border-radius: 2px;
+        opacity: 0.5;
+      }
+      .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.18rem);
+        color: var(--text-2);
+        line-height: 1.7;
+        max-width: 560px;
+        margin: 0 auto 36px;
+        animation: fadeUp 0.6s var(--ease-out) 0.2s both;
+      }
+      .hero-cta-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s var(--ease-out) 0.3s both;
+      }
+      .btn-hero-primary {
+        padding: 14px 32px;
+        border-radius: var(--r-full);
+        background: var(--accent);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        transition: background var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 20px var(--accent-glow);
+      }
+      .btn-hero-primary:hover {
+        background: var(--accent-dark);
+        box-shadow: 0 6px 28px hsla(140, 62%, 39%, 0.45);
+        transform: translateY(-2px);
+      }
+      .btn-hero-secondary {
+        padding: 14px 28px;
+        border-radius: var(--r-full);
+        background: var(--surface);
+        color: var(--text-1);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: 1.5px solid var(--border);
+        transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-hero-secondary:hover {
+        background: var(--surface-3);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      .hero-trust {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 44px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s var(--ease-out) 0.45s both;
+      }
+      .trust-avatars { display: flex; align-items: center; }
+      .trust-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2.5px solid var(--surface);
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        margin-left: -8px;
+      }
+      .trust-avatar:first-child { margin-left: 0; }
+      .trust-text { font-size: 13.5px; color: var(--text-2); }
+      .trust-text strong { color: var(--text-1); font-weight: 700; }
+      .hero-divider { width: 1px; height: 18px; background: var(--border); }
+      .hero-stars { display: flex; align-items: center; gap: 6px; }
+      .stars { color: hsl(42, 95%, 52%); font-size: 13px; letter-spacing: 1px; }
+      .star-text { font-size: 13px; color: var(--text-2); }
+
+      /* ── HERO MOCKUP ── */
+      .hero-mockup {
+        position: relative;
+        z-index: 1;
+        margin-top: 64px;
+        max-width: 900px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeUp 0.8s var(--ease-out) 0.5s both;
+      }
+      .mockup-browser {
+        background: var(--surface);
+        border-radius: var(--r-xl);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-xl);
+        overflow: hidden;
+      }
+      .mockup-browser-bar {
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border);
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .browser-dots { display: flex; gap: 6px; }
+      .browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+      .browser-dot:nth-child(1) { background: #ff5f57; }
+      .browser-dot:nth-child(2) { background: #febc2e; }
+      .browser-dot:nth-child(3) { background: #28c840; }
+      .browser-url {
+        flex: 1;
+        background: var(--surface-3);
+        border-radius: var(--r-full);
+        padding: 6px 14px;
+        font-size: 12px;
+        color: var(--text-3);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+      .mockup-screen {
+        padding: 24px;
+        background: var(--bg);
+        min-height: 280px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 16px;
+      }
+      .mockup-sidebar {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: 14px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .mockup-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: var(--r-md);
+        font-size: 12.5px;
+        color: var(--text-2);
+        font-weight: 500;
+      }
+      .mockup-nav-item.active {
+        background: var(--accent-light);
+        color: var(--accent-dark);
+        font-weight: 600;
+      }
+      .mockup-feed { display: flex; flex-direction: column; gap: 12px; }
+      .mockup-post {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: 14px;
+        border: 1px solid var(--border);
+      }
+      .mockup-post-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .mockup-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .mockup-post-name { font-size: 12.5px; font-weight: 600; color: var(--text-1); line-height: 1; margin-bottom: 2px; }
+      .mockup-post-time { font-size: 11px; color: var(--text-3); }
+      .mockup-post-body { font-size: 12px; color: var(--text-2); line-height: 1.5; margin-bottom: 10px; }
+      .mockup-post-actions { display: flex; gap: 8px; }
+      .mockup-action {
+        font-size: 11px;
+        color: var(--text-3);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: var(--r-full);
+        background: var(--surface-2);
+      }
+
+      /* ── STATS BAR ── */
+      .stats-bar {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 40px clamp(1rem, 5vw, 3rem);
+      }
+      .stats-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stat-item {
+        text-align: center;
+        padding: 0 24px;
+        position: relative;
+      }
+      .stat-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 10%;
+        height: 80%;
+        width: 1px;
+        background: var(--border);
+      }
+      .stat-number {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--accent);
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-label { font-size: 13.5px; color: var(--text-2); font-weight: 500; }
+
+      /* ── SECTIONS ── */
+      .section { padding: 100px clamp(1rem, 5vw, 3rem); }
+      .section-inner { max-width: 1100px; margin: 0 auto; }
+      .section-eyebrow {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .section-title {
+        text-align: center;
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 800;
+        color: var(--text-1);
+        letter-spacing: -0.8px;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+      .section-subtitle {
+        text-align: center;
+        font-size: 16px;
+        color: var(--text-2);
+        max-width: 540px;
+        margin: 0 auto 64px;
+        line-height: 1.65;
+      }
+
+      /* ── FEATURES GRID ── */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 28px;
+        transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        position: relative;
+        overflow: hidden;
+      }
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, var(--accent-light) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity var(--t-normal);
+        border-radius: inherit;
+      }
+      .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-muted); }
+      .feature-card:hover::before { opacity: 1; }
+      .feature-card.featured {
+        grid-column: span 2;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        border-color: transparent;
+      }
+      .feature-card.featured .feature-icon { background: rgba(255,255,255,0.2); color: #fff; }
+      .feature-card.featured .feature-title { color: #fff; }
+      .feature-card.featured .feature-desc { color: rgba(255,255,255,0.82); }
+      .feature-card.featured .feature-link { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3); }
+      .feature-card.featured::before { display: none; }
+      .feature-card.featured:hover { box-shadow: var(--shadow-accent); border-color: transparent; }
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--accent-light);
+        color: var(--accent);
+        border-radius: var(--r-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .feature-title { font-size: 17px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; position: relative; z-index: 1; }
+      .feature-desc { font-size: 14px; color: var(--text-2); line-height: 1.65; position: relative; z-index: 1; margin-bottom: 20px; }
+      .feature-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid var(--accent-muted);
+        padding-bottom: 1px;
+        position: relative;
+        z-index: 1;
+        transition: gap var(--t-fast), border-color var(--t-fast);
+      }
+      .feature-link:hover { gap: 10px; border-color: var(--accent); }
+
+      /* ── HOW IT WORKS ── */
+      .how-section {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .steps-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        position: relative;
+        margin-top: 0;
+      }
+      .steps-row::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: calc(12.5% + 28px);
+        right: calc(12.5% + 28px);
+        height: 2px;
+        background-image: repeating-linear-gradient(90deg, var(--accent-muted) 0px, var(--accent-muted) 8px, transparent 8px, transparent 16px);
+        z-index: 0;
+      }
+      .step-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .step-num {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        box-shadow: 0 0 0 6px var(--surface), 0 0 0 8px var(--accent-muted);
+      }
+      .step-title { font-size: 15px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+      .step-desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+      /* ── TESTIMONIALS ── */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .testimonial-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 28px;
+        transition: transform var(--t-normal), box-shadow var(--t-normal);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+      .testimonial-stars { color: hsl(42, 95%, 52%); font-size: 13px; letter-spacing: 2px; }
+      .testimonial-quote { font-size: 14.5px; color: var(--text-1); line-height: 1.7; font-style: italic; flex: 1; }
+      .testimonial-author { display: flex; align-items: center; gap: 12px; }
+      .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .testimonial-name { font-size: 13.5px; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+      .testimonial-meta { font-size: 12px; color: var(--text-3); }
+
+      /* ── CTA ── */
+      .cta-section { padding: 100px clamp(1rem, 5vw, 3rem); }
+      .cta-card {
+        max-width: 900px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 60%, var(--accent-deeper) 100%);
+        border-radius: var(--r-2xl);
+        padding: 72px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px hsla(140, 62%, 39%, 0.35);
+      }
+      .cta-card::before {
+        content: "";
+        position: absolute;
+        top: -80px; right: -80px;
+        width: 320px; height: 320px;
+        background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+        border-radius: 50%;
+      }
+      .cta-card::after {
+        content: "";
+        position: absolute;
+        bottom: -60px; left: -60px;
+        width: 240px; height: 240px;
+        background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+        border-radius: 50%;
+      }
+      .cta-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+      .cta-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; letter-spacing: -1px; line-height: 1.15; margin-bottom: 18px; position: relative; z-index: 1; }
+      .cta-subtitle { font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.6; max-width: 480px; margin: 0 auto 36px; position: relative; z-index: 1; }
+      .cta-buttons { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+      .btn-cta-white {
+        padding: 14px 32px;
+        border-radius: var(--r-full);
+        background: #fff;
+        color: var(--accent-dark);
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      }
+      .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+      .btn-cta-ghost {
+        padding: 14px 28px;
+        border-radius: var(--r-full);
+        background: rgba(255,255,255,0.12);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: 1.5px solid rgba(255,255,255,0.3);
+        transition: background var(--t-fast), transform var(--t-fast);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(8px);
+      }
+      .btn-cta-ghost:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+      /* ── FOOTER ── */
+      .landing-footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 60px clamp(1rem, 5vw, 3rem) 32px;
+      }
+      .footer-inner { max-width: 1100px; margin: 0 auto; }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      .footer-brand { max-width: 280px; }
+      .footer-brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+      .footer-logo-icon {
+        width: 34px; height: 34px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        border-radius: var(--r-md);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 14px;
+      }
+      .footer-brand-name { font-size: 18px; font-weight: 800; color: var(--text-1); }
+      .footer-brand-desc { font-size: 13.5px; color: var(--text-2); line-height: 1.65; margin-bottom: 18px; }
+      .footer-social { display: flex; gap: 8px; }
+      .social-btn {
+        width: 36px; height: 36px;
+        border-radius: var(--r-md);
+        background: var(--surface-3);
+        border: 1px solid var(--border);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-2); font-size: 14px;
+        text-decoration: none;
+        transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+      }
+      .social-btn:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent-muted); }
+      .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--text-1); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px; }
+      .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+      .footer-col ul li a { text-decoration: none; font-size: 13.5px; color: var(--text-2); transition: color var(--t-fast); }
+      .footer-col ul li a:hover { color: var(--accent); }
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .footer-copy { font-size: 13px; color: var(--text-3); }
+      .footer-copy a { color: var(--accent); text-decoration: none; }
+      .footer-legal { display: flex; gap: 20px; }
+      .footer-legal a { font-size: 13px; color: var(--text-3); text-decoration: none; transition: color var(--t-fast); }
+      .footer-legal a:hover { color: var(--text-2); }
+
+      /* ── MOBILE NAV ── */
+      .mobile-nav-menu {
+        display: none;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 16px;
+        flex-direction: column;
+        gap: 4px;
+        z-index: calc(var(--z-header) - 1);
+        box-shadow: var(--shadow-lg);
+      }
+      .mobile-nav-menu.open { display: flex; }
+      .mobile-nav-menu a {
+        text-decoration: none;
+        color: var(--text-1);
+        font-size: 15px;
+        font-weight: 500;
+        padding: 12px 14px;
+        border-radius: var(--r-md);
+        transition: background var(--t-fast);
+      }
+      .mobile-nav-menu a:hover { background: var(--surface-2); }
+      .mobile-nav-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+      }
+      .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 1024px) {
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+        .feature-card.featured { grid-column: span 2; }
+        .footer-top { grid-template-columns: 1fr 1fr; }
+        .footer-brand { grid-column: span 2; max-width: 100%; }
+        .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
+        .stat-item:nth-child(2)::after, .stat-item:nth-child(4)::after { display: none; }
+      }
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
+        .features-grid { grid-template-columns: 1fr; }
+        .feature-card.featured { grid-column: span 1; }
+        .steps-row { grid-template-columns: 1fr 1fr; gap: 40px 0; }
+        .steps-row::before { display: none; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+        .mockup-screen { grid-template-columns: 1fr; }
+        .mockup-sidebar { display: none; }
+        .cta-card { padding: 48px 24px; }
+        .footer-top { grid-template-columns: 1fr; }
+        .footer-brand { grid-column: span 1; }
+        .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+      }
+      @media (max-width: 520px) {
+        .steps-row { grid-template-columns: 1fr; }
+        .stats-inner { grid-template-columns: repeat(2, 1fr); }
+        .stat-item::after { display: none; }
+      }
+    </style>
+  </head>
+  <body class="landing-body">
+
+    <!-- NAVBAR -->
+    <nav class="landing-nav" id="landingNav" role="navigation" aria-label="Main navigation">
+      <a href="landing.html" class="nav-brand">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <span class="nav-brand-name">Vicinity</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#testimonials">Community</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/login" class="btn-outline">Log in</a>
+        <a href="/signup" class="btn-primary">
+          <i class="fa-solid fa-leaf" aria-hidden="true"></i> Get Started
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-nav-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#testimonials">Community</a>
+      <a href="/about">About</a>
+      <div class="mobile-nav-divider"></div>
+      <a href="/login">Log in</a>
+      <a href="/signup" style="color: var(--accent); font-weight: 700;">
+        <i class="fa-solid fa-leaf"></i> Get Started — it's free
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-label="Hero section">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge" role="note">
+          <i class="fa-solid fa-location-dot"></i>
+          Now available across all Lagos LGAs
+        </div>
+
+        <h1 class="hero-title">
+          Where <span class="accent-word">Neighbors</span><br />
+          Become Community
+        </h1>
+
+        <p class="hero-subtitle">
+          Vicinity connects you with local businesses, community groups, and
+          events right in your neighborhood. Stay informed, stay connected,
+          and help your community thrive.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="/signup" class="btn-hero-primary" id="heroGetStarted">
+            <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+            Get Started Free
+          </a>
+          <a href="#features" class="btn-hero-secondary" id="heroLearnMore">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+            See how it works
+          </a>
+        </div>
+
+        <div class="hero-trust" aria-label="Social proof">
+          <div class="trust-avatars" aria-hidden="true">
+            <div class="trust-avatar" style="background:#2b7a78">AC</div>
+            <div class="trust-avatar" style="background:#e07a5f">TB</div>
+            <div class="trust-avatar" style="background:#6d597a">FA</div>
+            <div class="trust-avatar" style="background:#3d405b">MR</div>
+            <div class="trust-avatar" style="background:#81b29a">CK</div>
+          </div>
+          <p class="trust-text">Trusted by <strong>12,400+</strong> neighbors</p>
+          <div class="hero-divider" aria-hidden="true"></div>
+          <div class="hero-stars">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <span class="star-text"><strong>4.9</strong> community rating</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Browser Mockup -->
+      <div class="hero-mockup" aria-label="App preview">
+        <div class="mockup-browser">
+          <div class="mockup-browser-bar" aria-hidden="true">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="browser-url">
+              <i class="fa-solid fa-lock" style="font-size:10px; color: var(--accent)"></i>
+              vicinity.app/home
+            </div>
+          </div>
+          <div class="mockup-screen" aria-hidden="true">
+            <div class="mockup-sidebar">
+              <div class="mockup-nav-item active"><i class="fa-solid fa-home"></i> Home</div>
+              <div class="mockup-nav-item"><i class="fa-solid fa-store"></i> Business</div>
+              <div class="mockup-nav-item"><i class="fa-solid fa-people-roof"></i> Communities</div>
+              <div class="mockup-nav-item"><i class="fa-solid fa-calendar-days"></i> Events</div>
+              <div class="mockup-nav-item"><i class="fa-solid fa-bookmark"></i> Saved</div>
+            </div>
+            <div class="mockup-feed">
+              <div class="mockup-post">
+                <div class="mockup-post-header">
+                  <div class="mockup-avatar" style="background:#2b7a78">AC</div>
+                  <div>
+                    <div class="mockup-post-name">Adekunle Charles</div>
+                    <div class="mockup-post-time">Surulere Central · 2h ago</div>
+                  </div>
+                </div>
+                <div class="mockup-post-body">
+                  Community Announcement: Water supply maintenance on Ogunlana Drive tomorrow 9AM–2PM. Please store water! 💧
+                </div>
+                <div class="mockup-post-actions">
+                  <span class="mockup-action"><i class="fa-regular fa-thumbs-up"></i> 18</span>
+                  <span class="mockup-action"><i class="fa-regular fa-comment"></i> 6</span>
+                  <span class="mockup-action"><i class="fa-solid fa-share-nodes"></i></span>
+                </div>
+              </div>
+              <div class="mockup-post">
+                <div class="mockup-post-header">
+                  <div class="mockup-avatar" style="background:#e07a5f">CO</div>
+                  <div>
+                    <div class="mockup-post-name">Chidinma Okoro</div>
+                    <div class="mockup-post-time">Adeniran Ogunsanya · 4h ago</div>
+                  </div>
+                </div>
+                <div class="mockup-post-body">
+                  Just stopped by the newly opened GreenBite Cafe! Great spot for remote work ☕🥐
+                </div>
+                <div class="mockup-post-actions">
+                  <span class="mockup-action"><i class="fa-regular fa-thumbs-up"></i> 42</span>
+                  <span class="mockup-action"><i class="fa-regular fa-comment"></i> 14</span>
+                  <span class="mockup-action"><i class="fa-solid fa-share-nodes"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar" aria-label="Platform statistics">
+      <div class="stats-inner">
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number">12K+</div>
+          <div class="stat-label">Active Neighbors</div>
+        </div>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.1s">
+          <div class="stat-number">340+</div>
+          <div class="stat-label">Local Businesses</div>
+        </div>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.2s">
+          <div class="stat-number">180+</div>
+          <div class="stat-label">Community Groups</div>
+        </div>
+        <div class="stat-item animate-on-scroll" style="transition-delay:0.3s">
+          <div class="stat-number">95+</div>
+          <div class="stat-label">Monthly Events</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-inner">
+        <p class="section-eyebrow animate-on-scroll">Everything you need</p>
+        <h2 class="section-title animate-on-scroll" id="features-title">
+          A platform built for<br />real neighborhoods
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          From local business discovery to community organizing — Vicinity
+          puts everything your neighborhood needs in one place.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card featured animate-on-scroll">
+            <div class="feature-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
+            <h3 class="feature-title">Your Community Feed</h3>
+            <p class="feature-desc">
+              Stay updated with everything happening in your local area. News,
+              announcements, lost & found, and real conversations — curated just
+              for your neighborhood. No algorithm manipulation, just real community
+              voices from people who live where you live.
+            </p>
+            <a href="/" class="feature-link">
+              Explore the feed <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.1s">
+            <div class="feature-icon"><i class="fa-solid fa-store"></i></div>
+            <h3 class="feature-title">Local Business Directory</h3>
+            <p class="feature-desc">
+              Discover verified businesses near you — from cafes and repair shops
+              to tutors and salons. Support local and keep your money in your community.
+            </p>
+            <a href="/businesses" class="feature-link">
+              Browse businesses <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.2s">
+            <div class="feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <h3 class="feature-title">Community Groups</h3>
+            <p class="feature-desc">
+              Create or join groups for interest, profession, or cause. Build
+              lasting connections with neighbors who share your passions.
+            </p>
+            <a href="/community" class="feature-link">
+              View groups <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.05s">
+            <div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <h3 class="feature-title">Local Events</h3>
+            <p class="feature-desc">
+              Never miss a neighborhood gathering. Markets, clean-ups, concerts,
+              and workshops — all local events at your fingertips.
+            </p>
+            <a href="/events" class="feature-link">
+              See upcoming events <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="feature-card animate-on-scroll" style="transition-delay:0.15s">
+            <div class="feature-icon"><i class="fa-solid fa-comment-dots"></i></div>
+            <h3 class="feature-title">Messenger</h3>
+            <p class="feature-desc">
+              Private messaging with your neighbors. Coordinate, collaborate, and
+              build real friendships within your trusted community space.
+            </p>
+            <a href="/" class="feature-link">
+              Start chatting <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section" id="how-it-works" aria-labelledby="how-title">
+      <div class="section-inner">
+        <p class="section-eyebrow animate-on-scroll">Simple to start</p>
+        <h2 class="section-title animate-on-scroll" id="how-title">Up and running in minutes</h2>
+        <p class="section-subtitle animate-on-scroll">
+          Getting connected to your community has never been easier.
+        </p>
+
+        <div class="steps-row">
+          <div class="step-item animate-on-scroll">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3 class="step-title">Create your account</h3>
+            <p class="step-desc">Sign up in under 2 minutes. No spam, no nonsense — just you and your community.</p>
+          </div>
+          <div class="step-item animate-on-scroll" style="transition-delay:0.12s">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3 class="step-title">Set your location</h3>
+            <p class="step-desc">Pick your LGA and neighborhood. Vicinity tailors everything to your exact area.</p>
+          </div>
+          <div class="step-item animate-on-scroll" style="transition-delay:0.24s">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3 class="step-title">Join groups & events</h3>
+            <p class="step-desc">Explore what's happening near you and connect with neighbors who share your interests.</p>
+          </div>
+          <div class="step-item animate-on-scroll" style="transition-delay:0.36s">
+            <div class="step-num" aria-hidden="true">4</div>
+            <h3 class="step-title">Build your community</h3>
+            <p class="step-desc">Post, comment, share, and support local businesses. Your neighborhood depends on it!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="section-inner">
+        <p class="section-eyebrow animate-on-scroll">Real neighbors, real stories</p>
+        <h2 class="section-title animate-on-scroll" id="testimonials-title">
+          Loved across the community
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Thousands of neighbors across Lagos use Vicinity every day to stay
+          connected, informed, and supported.
+        </p>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card animate-on-scroll">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              "I found my tailor, my mechanic, and my yoga class all through
+              Vicinity within the first week. The local directory is a
+              game-changer for discovering quality businesses in Surulere."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:#2b7a78" aria-hidden="true">AC</div>
+              <div>
+                <div class="testimonial-name">Adekunle Charles</div>
+                <div class="testimonial-meta">Surulere Central · Resident since 2019</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card animate-on-scroll" style="transition-delay:0.1s">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              "As a small business owner, listing on Vicinity doubled my walk-in
+              customers in just two months. Real neighbors, real traffic — better
+              than any ad I've ever run."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:#e07a5f" aria-hidden="true">CO</div>
+              <div>
+                <div class="testimonial-name">Chidinma Okoro</div>
+                <div class="testimonial-meta">Owner, GreenBite Cafe · Adeniran Ogunsanya</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card animate-on-scroll" style="transition-delay:0.2s">
+            <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              "The community groups feature helped me organize a neighborhood
+              clean-up with 60+ volunteers in just 48 hours. Vicinity is the
+              civic tool we've always needed."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:#6d597a" aria-hidden="true">FA</div>
+              <div>
+                <div class="testimonial-name">Fatima Al-Hassan</div>
+                <div class="testimonial-meta">Community Organizer · Bode Thomas</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div class="cta-card animate-on-scroll">
+        <p class="cta-eyebrow">Ready to connect?</p>
+        <h2 class="cta-title" id="cta-title">
+          Your neighborhood is<br />waiting for you
+        </h2>
+        <p class="cta-subtitle">
+          Join thousands of neighbors already making their community stronger.
+          Sign up free today — no credit card required.
+        </p>
+        <div class="cta-buttons">
+          <a href="/signup" class="btn-cta-white" id="ctaSignup">
+            <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+            Create Free Account
+          </a>
+          <a href="/login" class="btn-cta-ghost" id="ctaLogin">
+            Already a member? Log in
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="landing-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-brand-row">
+              <div class="footer-logo-icon" aria-hidden="true">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <span class="footer-brand-name">Vicinity</span>
+            </div>
+            <p class="footer-brand-desc">
+              Building stronger communities one neighborhood at a time. Your local
+              connection to businesses, events, and the people who make your
+              community great.
+            </p>
+            <div class="footer-social" aria-label="Social media links">
+              <a href="#" class="social-btn" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <nav class="footer-col" aria-label="Platform links">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="/">Home Feed</a></li>
+              <li><a href="/businesses">Business Directory</a></li>
+              <li><a href="/community">Groups</a></li>
+              <li><a href="/events">Events</a></li>
+              <li><a href="saved.html">Saved</a></li>
+            </ul>
+          </nav>
+
+          <nav class="footer-col" aria-label="Company links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About Vicinity</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+
+          <nav class="footer-col" aria-label="Account links">
+            <h4>Account</h4>
+            <ul>
+              <li><a href="/signup">Get Started</a></li>
+              <li><a href="/login">Log In</a></li>
+              <li><a href="settings.html">Settings</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            &copy; 2026 <a href="landing.html">Vicinity</a>. All rights reserved.
+            Made with <i class="fa-solid fa-heart" style="color: var(--danger); font-size: 11px;"></i> in Lagos, Nigeria.
+          </p>
+          <div class="footer-legal">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        // Navbar scroll effect
+        var nav = document.getElementById("landingNav");
+        window.addEventListener("scroll", function () {
+          nav.classList.toggle("scrolled", window.scrollY > 20);
+        });
+
+        // Hamburger menu
+        var hamburger = document.getElementById("hamburger");
+        var mobileMenu = document.getElementById("mobileMenu");
+        hamburger.addEventListener("click", function () {
+          var isOpen = mobileMenu.classList.toggle("open");
+          hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+        document.addEventListener("click", function (e) {
+          if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.remove("open");
+            hamburger.setAttribute("aria-expanded", "false");
+          }
+        });
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.remove("open");
+            hamburger.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // Scroll animations
+        var animEls = document.querySelectorAll(".animate-on-scroll");
+        if ("IntersectionObserver" in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+          animEls.forEach(function (el) { observer.observe(el); });
+        } else {
+          animEls.forEach(function (el) { el.classList.add("visible"); });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener("click", function (e) {
+            var target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              e.preventDefault();
+              window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+            }
+          });
+        });
+
+        // Stat counter animation
+        function animateCounter(el, target, suffix) {
+          var startTime = null;
+          var duration = 1800;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            var p = Math.min((ts - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.floor(ease * target) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        var statsAnimated = false;
+        var statsBar = document.querySelector(".stats-bar");
+        if (statsBar && "IntersectionObserver" in window) {
+          var statsObs = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting && !statsAnimated) {
+              statsAnimated = true;
+              var nums = document.querySelectorAll(".stat-number");
+              var data = [
+                { el: nums[0], val: 12, suffix: "K+" },
+                { el: nums[1], val: 340, suffix: "+" },
+                { el: nums[2], val: 180, suffix: "+" },
+                { el: nums[3], val: 95, suffix: "+" }
+              ];
+              data.forEach(function (d) { if (d.el) animateCounter(d.el, d.val, d.suffix); });
+              statsObs.disconnect();
+            }
+          }, { threshold: 0.4 });
+          statsObs.observe(statsBar);
+        }
+      })();
+    </script>
+  </body>
+</html>

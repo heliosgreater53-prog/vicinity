@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Events</title>
+    <meta name="description" content="Discover and attend local community events in your vicinity." />
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell">
+              <span class="notification-dot"></span>
+            </i>
+          </button>
+          <button class="user-btn" aria-label="User Profile">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search events, dates, venues..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Standard Sidebar -->
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"><i class="fa-solid fa-people-roof"></i>Communities</a>
+        <a href="events.html" class="current"><i class="fa-solid fa-calendar-days"></i>Events</a>
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html">
+          <i class="fa-solid fa-bell"></i>Notifications
+          <span class="notif-count">2</span>
+        </a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Vicinity</a>
+        <a href="create-post.html" class="create-post"><i class="fa-solid fa-leaf"></i>Create Post</a>
+      </aside>
+
+      <!-- Events Main Content -->
+      <div class="main-container events-container">
+        <div class="events-content">
+
+          <!-- Hero Section -->
+          <section class="events-hero">
+            <div class="events-hero-left">
+              <span class="hero-tag">
+                <i class="fa-solid fa-calendar-star"></i> Community Events
+              </span>
+              <h1>What's Happening Around You</h1>
+              <p>
+                Discover local meetups, markets, sports days, and neighbourhood
+                gatherings happening right here in Surulere.
+              </p>
+              <a href="create-event.html" class="hero-btn">
+                <i class="fa-solid fa-plus"></i> Create an Event
+              </a>
+            </div>
+            <div class="events-hero-right">
+              <div class="events-hero-stat">
+                <span class="stat-num">24</span>
+                <span class="stat-label">Upcoming Events</span>
+              </div>
+              <div class="events-hero-divider"></div>
+              <div class="events-hero-stat">
+                <span class="stat-num">8</span>
+                <span class="stat-label">This Weekend</span>
+              </div>
+              <div class="events-hero-divider"></div>
+              <div class="events-hero-stat">
+                <span class="stat-num">142</span>
+                <span class="stat-label">Community Members Going</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tab Navigation -->
+          <div class="events-tabs">
+            <button class="events-tab-btn active" data-tab="upcoming">
+              <i class="fa-solid fa-clock"></i> Upcoming Events
+            </button>
+            <button class="events-tab-btn" data-tab="all">
+              <i class="fa-solid fa-calendar-days"></i> All Events
+            </button>
+          </div>
+
+          <!-- ─── TAB 1: UPCOMING EVENTS ─── -->
+          <section id="tab-upcoming" class="events-pane active">
+
+            <!-- This Weekend highlight -->
+            <div class="events-section-label">
+              <i class="fa-solid fa-fire"></i> This Weekend
+            </div>
+            <div class="events-featured-grid">
+
+              <!-- Featured Card 1 -->
+              <div class="event-card featured">
+                <div class="event-card-thumb">
+                  <img
+                    src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
+                    alt="Youth Football Tournament"
+                  />
+                  <span class="event-date-badge">
+                    <span class="badge-day">27</span>
+                    <span class="badge-month">Sep</span>
+                  </span>
+                  <span class="event-category-badge">Sports</span>
+                </div>
+                <div class="event-card-body">
+                  <h3 class="event-title">Surulere Youth Football Tournament</h3>
+                  <div class="event-meta-row">
+                    <span><i class="fa-regular fa-clock"></i> Sat, 9:00 AM</span>
+                    <span><i class="fa-solid fa-location-dot"></i> National Stadium Practice Pitch</span>
+                  </div>
+                  <p class="event-desc">
+                    Local street teams battle it out in a day-long friendly tournament.
+                    Free entry, refreshments available, all ages welcome!
+                  </p>
+                  <div class="event-footer">
+                    <div class="event-attendees">
+                      <div class="attendee-avatars">
+                        <span class="attendee-dot" style="background:#36a036;"></span>
+                        <span class="attendee-dot" style="background:#2b7a78;"></span>
+                        <span class="attendee-dot" style="background:#e07a5f;"></span>
+                      </div>
+                      <span class="attendee-count">+38 going</span>
+                    </div>
+                    <button class="btn-attend">RSVP <i class="fa-solid fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Featured Card 2 -->
+              <div class="event-card featured">
+                <div class="event-card-thumb">
+                  <img
+                    src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80"
+                    alt="Surulere Food Festival"
+                  />
+                  <span class="event-date-badge">
+                    <span class="badge-day">28</span>
+                    <span class="badge-month">Sep</span>
+                  </span>
+                  <span class="event-category-badge">Food & Culture</span>
+                </div>
+                <div class="event-card-body">
+                  <h3 class="event-title">Surulere Street Food Festival</h3>
+                  <div class="event-meta-row">
+                    <span><i class="fa-regular fa-clock"></i> Sun, 11:00 AM – 7:00 PM</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Adeniran Ogunsanya St.</span>
+                  </div>
+                  <p class="event-desc">
+                    Sample jollof rice, suya, puff-puff, and dozens of local dishes from
+                    over 30 neighbourhood vendors. Live Afrobeats music all day.
+                  </p>
+                  <div class="event-footer">
+                    <div class="event-attendees">
+                      <div class="attendee-avatars">
+                        <span class="attendee-dot" style="background:#6d597a;"></span>
+                        <span class="attendee-dot" style="background:#36a036;"></span>
+                        <span class="attendee-dot" style="background:#e27d60;"></span>
+                      </div>
+                      <span class="attendee-count">+91 going</span>
+                    </div>
+                    <button class="btn-attend">RSVP <i class="fa-solid fa-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Next 7 Days -->
+            <div class="events-section-label" style="margin-top:25px;">
+              <i class="fa-solid fa-calendar-week"></i> Next 7 Days
+            </div>
+            <div class="events-list">
+
+              <!-- Compact Event 1 -->
+              <div class="event-list-item">
+                <div class="event-list-date">
+                  <span class="list-day">30</span>
+                  <span class="list-month">Sep</span>
+                </div>
+                <div class="event-list-info">
+                  <h4>Community Tree Planting Drive</h4>
+                  <div class="event-list-meta">
+                    <span><i class="fa-regular fa-clock"></i> Mon, 7:00 AM – 10:00 AM</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Alaka Estate Open Ground</span>
+                  </div>
+                  <span class="event-list-tag">Environment</span>
+                </div>
+                <div class="event-list-action">
+                  <span class="event-list-going">12 going</span>
+                  <button class="btn-attend-sm">RSVP</button>
+                </div>
+              </div>
+
+              <!-- Compact Event 2 -->
+              <div class="event-list-item">
+                <div class="event-list-date">
+                  <span class="list-day">01</span>
+                  <span class="list-month">Oct</span>
+                </div>
+                <div class="event-list-info">
+                  <h4>Nigeria Independence Day Block Party</h4>
+                  <div class="event-list-meta">
+                    <span><i class="fa-regular fa-clock"></i> Tue, 4:00 PM – 10:00 PM</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Bode Thomas Street Junction</span>
+                  </div>
+                  <span class="event-list-tag">Community</span>
+                </div>
+                <div class="event-list-action">
+                  <span class="event-list-going">54 going</span>
+                  <button class="btn-attend-sm">RSVP</button>
+                </div>
+              </div>
+
+              <!-- Compact Event 3 -->
+              <div class="event-list-item">
+                <div class="event-list-date">
+                  <span class="list-day">02</span>
+                  <span class="list-month">Oct</span>
+                </div>
+                <div class="event-list-info">
+                  <h4>Tech Skills Workshop for Youth</h4>
+                  <div class="event-list-meta">
+                    <span><i class="fa-regular fa-clock"></i> Wed, 10:00 AM – 2:00 PM</span>
+                    <span><i class="fa-solid fa-location-dot"></i> GreenBite Cafe, Adeniran Ogunsanya</span>
+                  </div>
+                  <span class="event-list-tag">Education</span>
+                </div>
+                <div class="event-list-action">
+                  <span class="event-list-going">31 going</span>
+                  <button class="btn-attend-sm">RSVP</button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ─── TAB 2: ALL EVENTS (grouped by date) ─── -->
+          <section id="tab-all" class="events-pane">
+
+            <!-- Date Group: September 27 -->
+            <div class="date-group">
+              <div class="date-group-label">
+                <span class="dg-day">Saturday, 27 September 2026</span>
+              </div>
+              <div class="events-list">
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">27</span>
+                    <span class="list-month">Sep</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Surulere Youth Football Tournament</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 9:00 AM – 6:00 PM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> National Stadium Practice Pitch</span>
+                    </div>
+                    <span class="event-list-tag">Sports</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">38 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">27</span>
+                    <span class="list-month">Sep</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Neighbourhood Watch Briefing</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 5:00 PM – 6:30 PM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> Surulere Town Hall</span>
+                    </div>
+                    <span class="event-list-tag">Security</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">19 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date Group: September 28 -->
+            <div class="date-group">
+              <div class="date-group-label">
+                <span class="dg-day">Sunday, 28 September 2026</span>
+              </div>
+              <div class="events-list">
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">28</span>
+                    <span class="list-month">Sep</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Surulere Street Food Festival</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 11:00 AM – 7:00 PM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> Adeniran Ogunsanya St.</span>
+                    </div>
+                    <span class="event-list-tag">Food & Culture</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">91 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">28</span>
+                    <span class="list-month">Sep</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Sunday Morning Yoga in the Park</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 7:00 AM – 8:30 AM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> Randle Avenue Park</span>
+                    </div>
+                    <span class="event-list-tag">Health & Fitness</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">22 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date Group: September 30 -->
+            <div class="date-group">
+              <div class="date-group-label">
+                <span class="dg-day">Monday, 30 September 2026</span>
+              </div>
+              <div class="events-list">
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">30</span>
+                    <span class="list-month">Sep</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Community Tree Planting Drive</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 7:00 AM – 10:00 AM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> Alaka Estate Open Ground</span>
+                    </div>
+                    <span class="event-list-tag">Environment</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">12 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date Group: October 1 -->
+            <div class="date-group">
+              <div class="date-group-label">
+                <span class="dg-day">Tuesday, 1 October 2026</span>
+                <span class="dg-badge">Independence Day 🇳🇬</span>
+              </div>
+              <div class="events-list">
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">01</span>
+                    <span class="list-month">Oct</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Nigeria Independence Day Block Party</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 4:00 PM – 10:00 PM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> Bode Thomas Street Junction</span>
+                    </div>
+                    <span class="event-list-tag">Community</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">54 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">01</span>
+                    <span class="list-month">Oct</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Independence Day 5K Fun Run</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 6:30 AM – 9:00 AM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> National Stadium, Surulere</span>
+                    </div>
+                    <span class="event-list-tag">Sports</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">47 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date Group: October 2 -->
+            <div class="date-group">
+              <div class="date-group-label">
+                <span class="dg-day">Wednesday, 2 October 2026</span>
+              </div>
+              <div class="events-list">
+                <div class="event-list-item">
+                  <div class="event-list-date">
+                    <span class="list-day">02</span>
+                    <span class="list-month">Oct</span>
+                  </div>
+                  <div class="event-list-info">
+                    <h4>Tech Skills Workshop for Youth</h4>
+                    <div class="event-list-meta">
+                      <span><i class="fa-regular fa-clock"></i> 10:00 AM – 2:00 PM</span>
+                      <span><i class="fa-solid fa-location-dot"></i> GreenBite Cafe, Adeniran Ogunsanya</span>
+                    </div>
+                    <span class="event-list-tag">Education</span>
+                  </div>
+                  <div class="event-list-action">
+                    <span class="event-list-going">31 going</span>
+                    <button class="btn-attend-sm">RSVP</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item active">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      // Create dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".create-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("createToggle");
+        const dropdown = document.getElementById("createDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+
+      // Account profile dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".account-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("accountToggle");
+        const dropdown = document.getElementById("accountDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+
+        var logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabBtns = document.querySelectorAll(".events-tab-btn");
+        const panes = document.querySelectorAll(".events-pane");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-tab");
+
+            tabBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            panes.forEach((p) => {
+              if (p.id === `tab-${target}`) {
+                p.classList.add("active");
+              } else {
+                p.classList.remove("active");
+              }
+            });
+          });
+        });
+
+        // RSVP Buttons toggle
+        document.querySelectorAll(".btn-attend, .btn-attend-sm").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const isAttending = btn.classList.toggle("attending");
+            const parent = btn.closest(".event-card, .event-list-item");
+            const countEl = parent ? parent.querySelector(".attendee-count, .event-list-going") : null;
+
+            if (isAttending) {
+              btn.innerHTML = '<i class="fa-solid fa-check"></i> Going';
+              btn.style.background = "var(--accent)";
+              btn.style.color = "#fff";
+              if (countEl) {
+                const match = countEl.textContent.match(/\d+/);
+                if (match) {
+                  const num = parseInt(match[0]) + 1;
+                  countEl.textContent = `${num} going`;
+                }
+              }
+            } else {
+              btn.innerHTML = 'RSVP';
+              btn.style.background = "";
+              btn.style.color = "";
+              if (countEl) {
+                const match = countEl.textContent.match(/\d+/);
+                if (match) {
+                  const num = Math.max(0, parseInt(match[0]) - 1);
+                  countEl.textContent = `${num} going`;
+                }
+              }
+            }
+          });
+        });
+
+        // Search shortcut key /
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+            e.preventDefault();
+            const searchInput = document.querySelector(".header-search input");
+            if (searchInput) searchInput.focus();
+          }
+        });
+      });
+    </script>
+
+    <div class="msg-window" id="msgWindow">
+      <div class="msg-header">
+        <div class="msg-title">
+          <i class="fa-solid fa-comments"></i>
+          <span>Messenger</span>
+        </div>
+        <button class="msg-close" id="msgClose">&times;</button>
+      </div>
+      <div class="msg-content">
+        <div class="msg-contacts" id="msgContacts">
+          <!-- Contacts injected by JS -->
+        </div>
+        <div class="msg-chat">
+          <div class="msg-messages" id="msgMessages">
+            <div class="message received">
+              <div class="msg-bubble">
+                Hey! How's your community project going?
+              </div>
+              <span class="msg-time">10:24 AM</span>
+            </div>
+          </div>
+          <div class="msg-input-area">
+            <input type="text" id="msgInput" placeholder="Type a message..." />
+            <button id="msgSend"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Messenger toggle & logic
+      (function () {
+        var toggleBtn = document.getElementById("messengerToggle");
+        var msgWindow = document.getElementById("msgWindow");
+        var closeBtn = document.getElementById("msgClose");
+        var contactsEl = document.getElementById("msgContacts");
+        var messagesEl = document.getElementById("msgMessages");
+        var inputEl = document.getElementById("msgInput");
+        var sendBtn = document.getElementById("msgSend");
+
+        if (!toggleBtn || !msgWindow) return;
+
+        var contacts = [
+          {
+            id: "sarah",
+            name: "Sarah M.",
+            initial: "S",
+            lastMsg: "See you at the event tomorrow!",
+            messages: [
+              { text: "Hey! How's your community project going?", time: "10:24 AM", sent: false },
+              { text: "Going well, thanks! Just finished the new group.", time: "10:25 AM", sent: true },
+              { text: "Nice, let me know if you need any help.", time: "10:27 AM", sent: false },
+              { text: "Will do, thanks!", time: "10:28 AM", sent: true },
+            ],
+          },
+          {
+            id: "michael",
+            name: "Michael R.",
+            initial: "M",
+            lastMsg: "The event is confirmed for Saturday.",
+            messages: [
+              { text: "Did you finalize the event details?", time: "9:10 AM", sent: false },
+              { text: "Yes, it's confirmed for Saturday at 2pm.", time: "9:12 AM", sent: true },
+              { text: "Great, I'll bring the supplies.", time: "9:15 AM", sent: false },
+              { text: "Perfect, see you there!", time: "9:16 AM", sent: true },
+            ],
+          },
+          {
+            id: "aisha",
+            name: "Aisha K.",
+            initial: "A",
+            lastMsg: "The market is open every Thursday now.",
+            messages: [
+              { text: "Have you seen the new market schedule?", time: "8:30 AM", sent: false },
+              { text: "Yes, it's every Thursday starting next week.", time: "8:35 AM", sent: true },
+              { text: "Awesome, I'll spread the word.", time: "8:37 AM", sent: false },
+            ],
+          },
+          {
+            id: "chidi",
+            name: "Chidi O.",
+            initial: "C",
+            lastMsg: "The community garden looks amazing!",
+            messages: [
+              { text: "Did you check out the community garden?", time: "7:00 PM", sent: false },
+              { text: "Yes, the garden looks amazing!", time: "7:05 PM", sent: true },
+              { text: "I'll volunteer this weekend.", time: "7:10 PM", sent: false },
+            ],
+          },
+        ];
+
+        var currentContact = null;
+
+        function renderContacts() {
+          contactsEl.innerHTML = contacts
+            .map(function (c) {
+              return (
+                '<div class="contact-item' +
+                (c.id === currentContact ? " active" : "") +
+                '" data-id="' +
+                c.id +
+                '">' +
+                '<div class="contact-avatar">' +
+                c.initial +
+                '</div>' +
+                '<div class="contact-info">' +
+                '<div class="contact-name">' +
+                c.name +
+                '</div>' +
+                '<div class="contact-last-msg">' +
+                c.lastMsg +
+                '</div>' +
+                '</div>' +
+                "</div>"
+              );
+            })
+            .join("");
+          contactsEl
+            .querySelectorAll(".contact-item")
+            .forEach(function (el) {
+              el.addEventListener("click", function () {
+                selectContact(this.getAttribute("data-id"));
+              });
+            });
+        }
+
+        function selectContact(id) {
+          currentContact = id;
+          renderContacts();
+          var contact = contacts.find(function (c) {
+            return c.id === id;
+          });
+          if (!contact) return;
+          messagesEl.innerHTML = contact.messages
+            .map(function (m) {
+              return (
+                '<div class="message ' +
+                (m.sent ? "sent" : "received") +
+                '">' +
+                '<div class="msg-bubble">' +
+                m.text +
+                '</div>' +
+                '<span class="msg-time">' +
+                m.time +
+                '</span>' +
+                "</div>"
+              );
+            })
+            .join("");
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function sendMessage() {
+          var text = inputEl.value.trim();
+          if (!text || !currentContact) return;
+          var contact = contacts.find(function (c) {
+            return c.id === currentContact;
+          });
+          if (!contact) return;
+          var now = new Date();
+          var time = now.getHours() + ":" + (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
+          contact.messages.push({ text: text, time: time, sent: true });
+          contact.lastMsg = text;
+          inputEl.value = "";
+          selectContact(currentContact);
+          renderContacts();
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          msgWindow.classList.add("open");
+          toggleBtn.style.display = "none";
+        });
+        closeBtn.addEventListener("click", function () {
+          msgWindow.classList.remove("open");
+          toggleBtn.style.display = "";
+        });
+
+        if (sendBtn) {
+          sendBtn.addEventListener("click", sendMessage);
+        }
+        if (inputEl) {
+          inputEl.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") sendMessage();
+          });
+        }
+
+        renderContacts();
+      })();
+    </script>
+  </body>
+</html>

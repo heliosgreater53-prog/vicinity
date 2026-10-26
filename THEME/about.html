@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - About</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <a href="notifications.html" class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"><span class="notification-dot"></span></i>
+          </a>
+          <a href="settings.html" class="user-btn" aria-label="User Profile"><i class="fa-regular fa-user"></i></a>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html"
+          ><i class="fa-solid fa-people-roof"></i>Communities</a
+        >
+        <a href="events.html"
+          ><i class="fa-solid fa-calendar-days"></i>Events</a
+        >
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html"
+          ><i class="fa-solid fa-bell"></i>Notifications</a
+        >
+        <a href="about.html" class="current"
+          ><i class="fa-solid fa-info-circle"></i>About Vicinity</a
+        >
+        <a href="create-post.html" class="create-post"
+          ><i class="fa-solid fa-leaf"></i>Create Post</a
+        >
+      </aside>
+
+      <div class="main-container about-container">
+        <div class="about-content">
+          <!-- Hero Section -->
+          <section class="about-hero">
+            <div class="about-hero-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h1>About Vicinity</h1>
+            <p class="about-tagline">Your Community, Connected</p>
+            <p class="about-description">
+              Vicinity is a hyperlocal community platform that helps neighbors
+              connect, share information, discover local businesses, and
+              participate in community events — all in one place.
+            </p>
+            <div class="about-version">
+              <span>Version 2.4.0</span>
+              <span>Released September 2026</span>
+            </div>
+          </section>
+
+          <!-- Mission Section -->
+          <section class="about-section">
+            <h2>Our Mission</h2>
+            <div class="mission-content">
+              <p>
+                We believe that strong communities are built on connection.
+                Vicinity was created to bridge the gap between neighbors who
+                live on the same street but have never met, between local
+                business owners and the customers who need them, and between
+                community organizers and the volunteers who want to help.
+              </p>
+              <p>
+                Whether it's finding a trusted mechanic, joining a weekend
+                running group, getting alerts about water supply interruptions,
+                or organizing a neighborhood cleanup — Vicinity makes it
+                effortless to stay informed and engaged with the place you call
+                home.
+              </p>
+            </div>
+          </section>
+
+          <!-- Values Section -->
+          <section class="about-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <h3>Trust First</h3>
+                <p>
+                  Verified profiles, community moderation, and transparent
+                  reviews build trust between neighbors.
+                </p>
+              </article>
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h3>Hyperlocal Focus</h3>
+                <p>
+                  Content is organized by LGA and neighborhood — you only see
+                  what's relevant to your area.
+                </p>
+              </article>
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <h3>Community Owned</h3>
+                <p>
+                  Groups are created and managed by residents. Vicinity provides
+                  the tools, you provide the community.
+                </p>
+              </article>
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Safety & Privacy</h3>
+                <p>
+                  Granular privacy controls, secure messaging, and proactive
+                  safety features protect every member.
+                </p>
+              </article>
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3>Local Economy</h3>
+                <p>
+                  Supporting neighborhood businesses keeps money circulating in
+                  the community.
+                </p>
+              </article>
+              <article class="value-card">
+                <div class="value-icon">
+                  <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3>Inclusive by Design</h3>
+                <p>
+                  Multi-language support, accessibility features, and low-data
+                  mode ensure everyone can participate.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Features Section -->
+          <section class="about-section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <h3>Community Feed</h3>
+                <p>
+                  Real-time posts from your neighbors — announcements,
+                  recommendations, lost & found, discussions.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-people-roof"></i>
+                </div>
+                <h3>Groups & Communities</h3>
+                <p>
+                  Join or create groups for security watches, hobbies, markets,
+                  faith groups, and more.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <h3>Local Events</h3>
+                <p>
+                  Discover and RSVP to neighborhood events — markets, festivals,
+                  workshops, cleanups, meetings.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-store"></i>
+                </div>
+                <h3>Business Directory</h3>
+                <p>
+                  Verified local businesses with reviews, hours, photos, and
+                  direct contact options.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-bookmark"></i>
+                </div>
+                <h3>Save for Later</h3>
+                <p>
+                  Bookmark posts, businesses, and events to revisit anytime from
+                  your Saved page.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-bell"></i>
+                </div>
+                <h3>Smart Notifications</h3>
+                <p>
+                  Customizable alerts for posts, events, security updates, and
+                  group activity.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Stats Section -->
+          <section class="about-section stats-section">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">12,400+</span>
+                <span class="stat-label">Active Neighbors</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">340+</span>
+                <span class="stat-label">Community Groups</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">890+</span>
+                <span class="stat-label">Local Businesses</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">1,200+</span>
+                <span class="stat-label">Events Hosted</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Team/Credits Section -->
+          <section class="about-section">
+            <h2>Built With Care</h2>
+            <div class="credits-content">
+              <p>
+                Vicinity is developed by a small team passionate about
+                strengthening local communities across Africa.
+              </p>
+              <!-- <div class="tech-stack">
+                <h4>Technology Stack</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">Vanilla JS</span>
+                  <span class="tech-tag">Font Awesome</span>
+                  <span class="tech-tag">Poppins Font</span>
+                  <span class="tech-tag">Unsplash Images</span>
+                </div>
+              </div>
+              <div class="acknowledgements">
+                <h4>Acknowledgements</h4>
+                <ul>
+                  <li>Icons by <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome</a></li>
+                  <li>Photos by <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> contributors</li>
+                  <li>Font by <a href="https://fonts.google.com/specimen/Poppins" target="_blank" rel="noopener">Google Fonts</a></li>
+                </ul>
+              </div> -->
+            </div>
+          </section>
+
+          <!-- Legal Links -->
+          <section class="about-section legal-links">
+            <h2>Legal & Support</h2>
+            <div class="legal-grid">
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-file-contract"></i>
+                <div>
+                  <h4>Terms of Service</h4>
+                  <p>Guidelines for using Vicinity</p>
+                </div>
+              </a>
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-user-shield"></i>
+                <div>
+                  <h4>Privacy Policy</h4>
+                  <p>How we protect your data</p>
+                </div>
+              </a>
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-gavel"></i>
+                <div>
+                  <h4>Community Guidelines</h4>
+                  <p>Rules for respectful interaction</p>
+                </div>
+              </a>
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-circle-question"></i>
+                <div>
+                  <h4>Help Center</h4>
+                  <p>FAQs and troubleshooting</p>
+                </div>
+              </a>
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <h4>Contact Us</h4>
+                  <p>Get in touch with our team</p>
+                </div>
+              </a>
+              <a href="#" class="legal-card">
+                <i class="fa-solid fa-bug"></i>
+                <div>
+                  <h4>Report a Bug</h4>
+                  <p>Help us improve Vicinity</p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <!-- Footer Note -->
+          <section class="about-footer">
+            <p>&copy; 2026 Vicinity. All rights reserved.</p>
+            <p>
+              Made with
+              <i class="fa-solid fa-heart" style="color: #c0392b"></i> for
+              communities across Nigeria
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      (function () {
+        const createWrapper = document.querySelector(".create-wrapper");
+        const createBtn = document.getElementById("createToggle");
+        if (createWrapper && createBtn) {
+          createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            createWrapper.classList.toggle("open");
+            const isOpen = createWrapper.classList.contains("open");
+            createBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        const accountWrapper = document.querySelector(".account-wrapper");
+        const accountBtn = document.getElementById("accountToggle");
+        if (accountWrapper && accountBtn) {
+          accountBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            accountWrapper.classList.toggle("open");
+            const isOpen = accountWrapper.classList.contains("open");
+            accountBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        document.addEventListener("click", function (e) {
+          if (createWrapper && !createWrapper.contains(e.target)) {
+            createWrapper.classList.remove("open");
+            if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+          }
+          if (accountWrapper && !accountWrapper.contains(e.target)) {
+            accountWrapper.classList.remove("open");
+            if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (createWrapper) {
+              createWrapper.classList.remove("open");
+              if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+            }
+            if (accountWrapper) {
+              accountWrapper.classList.remove("open");
+              if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+          if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+            const searchInput = document.querySelector(".header-search input");
+            if (searchInput) {
+              e.preventDefault();
+              searchInput.focus();
+            }
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

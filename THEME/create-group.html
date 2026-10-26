@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Create Group</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button class="create-btn" id="createToggle" aria-label="Create" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <a href="notifications.html" class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"><span class="notification-dot"></span></i>
+          </a>
+          <a href="settings.html" class="user-btn" aria-label="User Profile"><i class="fa-regular fa-user"></i></a>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <aside>
+        <div class="LGA">
+          <div class="LGA-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="LGA-info">
+            <p class="LGA-title">My Community</p>
+            <p class="LGA-name">Surulere LGA, Lagos State</p>
+          </div>
+        </div>
+        <a href="index.html"><i class="fa-solid fa-home"></i>Home</a>
+        <a href="business.html"><i class="fa-solid fa-store"></i>Business</a>
+        <a href="community.html" class="current"><i class="fa-solid fa-people-roof"></i>Communities</a>
+        <a href="events.html"><i class="fa-solid fa-calendar-days"></i>Events</a>
+        <a href="saved.html"><i class="fa-solid fa-bookmark"></i>Saved</a>
+        <a href="settings.html"><i class="fa-solid fa-gear"></i>Settings</a>
+        <a href="notifications.html"><i class="fa-solid fa-bell"></i>Notifications</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i>About Vicinity</a>
+        <a href="create-post.html" class="create-post"><i class="fa-solid fa-leaf"></i>Create Post</a>
+      </aside>
+
+      <div class="main-container community-container">
+        <div class="community-content">
+          <!-- Create Group Hero -->
+          <section class="create-hero">
+            <div class="create-hero-content">
+              <span class="hero-tag">
+                <i class="fa-solid fa-people-roof"></i> Neighborhood Groups
+              </span>
+              <h1>Create a New Group</h1>
+              <p class="create-hero-subtitle">
+                Bring neighbors together around shared interests, causes, or activities.
+              </p>
+            </div>
+            <div class="create-hero-icon">
+              <i class="fa-solid fa-people-roof"></i>
+            </div>
+          </section>
+
+          <!-- Breadcrumbs -->
+          <nav class="create-breadcrumbs" aria-label="Breadcrumb">
+            <a href="community.html">Communities</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="#">Create Group</a>
+          </nav>
+
+          <!-- Create Group Form -->
+          <div class="create-form-container">
+            <form class="create-form" id="groupForm">
+              <div class="form-section">
+                <h3 class="section-title">Basic Information</h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="groupName" class="field-label">Group Name *</label>
+                    <div class="field-container">
+                      <input type="text" id="groupName" placeholder="e.g., Surulere Runners Club" />
+                    </div>
+                    <p class="field-hint">Choose a clear, descriptive name (max 50 characters)</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="groupCategory" class="field-label">Category *</label>
+                    <div class="field-container">
+                      <select id="groupCategory">
+                        <option value="">Select category</option>
+                        <option value="sports">Sports & Fitness</option>
+                        <option value="business">Business & Trade</option>
+                        <option value="environment">Environment & Sustainability</option>
+                        <option value="arts">Arts & Culture</option>
+                        <option value="food">Food & Cooking</option>
+                        <option value="tech">Technology</option>
+                        <option value="education">Education & Learning</option>
+                        <option value="health">Health & Wellness</option>
+                        <option value="security">Security & Safety</option>
+                        <option value="faith">Faith & Spirituality</option>
+                        <option value="hobby">Hobbies & Interests</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="groupDescription" class="field-label">Description *</label>
+                  <div class="field-container textarea-container">
+                    <textarea id="groupDescription" rows="4" placeholder="What is this group about? What will members do together?"></textarea>
+                  </div>
+                  <p class="field-hint">Describe the group's purpose and activities (max 500 characters)</p>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="groupLocation" class="field-label">Location / Area</label>
+                    <div class="field-container">
+                      <input type="text" id="groupLocation" placeholder="e.g., Surulere, Lagos" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="groupMeetingFrequency" class="field-label">Meeting Frequency</label>
+                    <div class="field-container">
+                      <select id="groupMeetingFrequency">
+                        <option value="">Select frequency</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="biweekly">Bi-weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="online">Online only</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3 class="section-title">Group Settings</h3>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Privacy</h4>
+                    <p>Who can see and join this group</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="radio-option">
+                      <input type="radio" name="privacy" value="public" checked />
+                      <span class="radio-custom"></span>
+                      <span>Public - Anyone can see and join</span>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="privacy" value="private" />
+                      <span class="radio-custom"></span>
+                      <span>Private - Request to join, admin approval required</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Post Permissions</h4>
+                    <p>Who can post in this group</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="radio-option">
+                      <input type="radio" name="postPermission" value="all" checked />
+                      <span class="radio-custom"></span>
+                      <span>All members can post</span>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="postPermission" value="admins" />
+                      <span class="radio-custom"></span>
+                      <span>Only admins and moderators can post</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Group Visibility</h4>
+                    <p>Show group in Discover and search results</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="checkbox-option">
+                      <input type="checkbox" name="visibility" checked />
+                      <span class="checkbox-custom"></span>
+                      <span>Make group discoverable</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <div class="setting-info">
+                    <h4>Member Invites</h4>
+                    <p>Allow members to invite others</p>
+                  </div>
+                  <div class="setting-control">
+                    <label class="checkbox-option">
+                      <input type="checkbox" name="invites" checked />
+                      <span class="checkbox-custom"></span>
+                      <span>Enable member invitations</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3 class="section-title">Group Cover Image</h3>
+                <div class="cover-upload">
+                  <div class="cover-preview" id="coverPreview">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Drag & drop or click to upload</span>
+                  </div>
+                  <input type="file" id="coverImage" accept="image/*" class="file-input" />
+                  <p class="field-hint">JPG, PNG, or GIF. Recommended: 1200x400px. Max 5MB.</p>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <a href="community.html" class="btn-secondary">Cancel</a>
+                <button type="submit" class="btn-primary">
+                  <i class="fa-solid fa-people-roof"></i> Create Group
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Preview Section -->
+          <div class="preview-section" id="previewSection">
+            <h2 class="preview-title">Group Preview</h2>
+            <div class="group-card preview-card" id="previewCard">
+              <div class="group-banner" id="previewBanner">
+                <span class="group-category" id="previewCategory">Category</span>
+              </div>
+              <div class="group-card-body">
+                <h3 class="group-title" id="previewTitle">Group Name</h3>
+                <p class="group-meta" id="previewMeta">
+                  <i class="fa-solid fa-map-marker-alt"></i> Location &bull; <span id="previewFrequency">Weekly meetings</span>
+                </p>
+                <p class="group-desc" id="previewDesc">
+                  Group description will appear here...
+                </p>
+                <div class="preview-badges">
+                  <span class="preview-badge public"><i class="fa-solid fa-globe"></i> Public</span>
+                  <span class="preview-badge"><i class="fa-solid fa-users"></i> All members can post</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("groupForm");
+        const coverInput = document.getElementById("coverImage");
+        const coverPreview = document.getElementById("coverPreview");
+
+        form.addEventListener("input", updatePreview);
+        form.addEventListener("change", updatePreview);
+
+        coverPreview.addEventListener("click", () => coverInput.click());
+        coverPreview.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          coverPreview.classList.add("dragover");
+        });
+        coverPreview.addEventListener("dragleave", () => {
+          coverPreview.classList.remove("dragover");
+        });
+        coverPreview.addEventListener("drop", (e) => {
+          e.preventDefault();
+          coverPreview.classList.remove("dragover");
+          if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            coverInput.files = e.dataTransfer.files;
+            const event = new Event("change");
+            coverInput.dispatchEvent(event);
+          }
+        });
+
+        coverInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              coverPreview.innerHTML = `<img src="${event.target.result}" alt="Cover preview">`;
+              const previewBanner = document.getElementById("previewBanner");
+              if (previewBanner) {
+                previewBanner.style.backgroundImage = `url(${event.target.result})`;
+                previewBanner.style.backgroundSize = "cover";
+                previewBanner.style.backgroundPosition = "center";
+              }
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        function updatePreview() {
+          const name = document.getElementById("groupName").value || "Group Name";
+          const category = document.getElementById("groupCategory").value;
+          const location = document.getElementById("groupLocation").value;
+          const frequency = document.getElementById("groupMeetingFrequency").value;
+          const desc = document.getElementById("groupDescription").value || "Group description will appear here...";
+          const privacy = document.querySelector('input[name="privacy"]:checked').value;
+          const postPerm = document.querySelector('input[name="postPermission"]:checked').value;
+
+          const categories = {
+            sports: "Sports & Fitness",
+            business: "Business & Trade",
+            environment: "Environment & Sustainability",
+            arts: "Arts & Culture",
+            food: "Food & Cooking",
+            tech: "Technology",
+            education: "Education & Learning",
+            health: "Health & Wellness",
+            security: "Security & Safety",
+            faith: "Faith & Spirituality",
+            hobby: "Hobbies & Interests",
+            other: "Other"
+          };
+
+          const freqLabels = {
+            daily: "Daily meetings",
+            weekly: "Weekly meetings",
+            biweekly: "Bi-weekly meetings",
+            monthly: "Monthly meetings",
+            occasionally: "Occasional meetings",
+            online: "Online only"
+          };
+
+          document.getElementById("previewTitle").textContent = name;
+          document.getElementById("previewCategory").textContent = categories[category] || "Category";
+          document.getElementById("previewMeta").innerHTML = `
+            <i class="fa-solid fa-map-marker-alt"></i> ${location || "Location"} &bull; 
+            <span>${freqLabels[frequency] || "Meeting frequency"}</span>
+          `;
+          document.getElementById("previewDesc").textContent = desc.substring(0, 100) + (desc.length > 100 ? "..." : "");
+
+          const badges = document.querySelector(".preview-badges");
+          badges.innerHTML = `
+            <span class="preview-badge ${privacy === 'public' ? 'public' : 'private'}">
+              <i class="fa-solid ${privacy === 'public' ? 'fa-globe' : 'fa-lock'}"></i> 
+              ${privacy === 'public' ? 'Public' : 'Private'}
+            </span>
+            <span class="preview-badge">
+              <i class="fa-solid fa-users"></i> 
+              ${postPerm === 'all' ? 'All members can post' : 'Admins only can post'}
+            </span>
+          `;
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("groupName").value;
+          const category = document.getElementById("groupCategory").value;
+          const desc = document.getElementById("groupDescription").value;
+
+          if (!name || !category || !desc) {
+            alert("Please fill in all required fields (marked with *)");
+            return;
+          }
+
+          if (confirm("Create this group? You'll become the admin and can invite members.")) {
+            alert("Group created successfully! Redirecting to your new group...");
+            window.location.href = "community.html";
+          }
+        });
+
+        updatePreview();
+      });
+
+      // Header dropdowns toggle
+      (function () {
+        const createWrapper = document.querySelector(".create-wrapper");
+        const createBtn = document.getElementById("createToggle");
+        if (createWrapper && createBtn) {
+          createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            createWrapper.classList.toggle("open");
+            const isOpen = createWrapper.classList.contains("open");
+            createBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        const accountWrapper = document.querySelector(".account-wrapper");
+        const accountBtn = document.getElementById("accountToggle");
+        if (accountWrapper && accountBtn) {
+          accountBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            accountWrapper.classList.toggle("open");
+            const isOpen = accountWrapper.classList.contains("open");
+            accountBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+        }
+
+        document.addEventListener("click", function (e) {
+          if (createWrapper && !createWrapper.contains(e.target)) {
+            createWrapper.classList.remove("open");
+            if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+          }
+          if (accountWrapper && !accountWrapper.contains(e.target)) {
+            accountWrapper.classList.remove("open");
+            if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            if (createWrapper) {
+              createWrapper.classList.remove("open");
+              if (createBtn) createBtn.setAttribute("aria-expanded", "false");
+            }
+            if (accountWrapper) {
+              accountWrapper.classList.remove("open");
+              if (accountBtn) accountBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+          if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+            const searchInput = document.querySelector(".header-search input");
+            if (searchInput) {
+              e.preventDefault();
+              searchInput.focus();
+            }
+          }
+        });
+
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+    </script>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item active">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+  </body>
+</html>

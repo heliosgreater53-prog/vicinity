@@ -1,0 +1,96 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var Core\Router $router */
+
+use App\Controllers\AuthController;
+use App\Controllers\BusinessController;
+use App\Controllers\CommunityController;
+use App\Controllers\EventController;
+use App\Controllers\HomeController;
+use App\Controllers\NotificationController;
+use App\Controllers\PageController;
+use App\Controllers\PostController;
+use App\Controllers\SavedController;
+use App\Controllers\SettingsController;
+use App\Middleware\AuthMiddleware;
+use App\Middleware\CsrfMiddleware;
+use App\Middleware\GuestMiddleware;
+
+// -----------------------------------------------------------------------------
+// Public & Informational
+// -----------------------------------------------------------------------------
+$router->get('/', [HomeController::class, 'index'])->name('home');
+$router->get('/about', [PageController::class, 'about'])->name('about');
+$router->get('/landing', [PageController::class, 'landing'])->name('landing');
+$router->get('/welcome', [PageController::class, 'landing']);
+
+// -----------------------------------------------------------------------------
+// Authentication
+// -----------------------------------------------------------------------------
+$router->get('/login', [AuthController::class, 'login'])
+    ->middleware('GuestMiddleware')
+    ->name('login');
+
+$router->post('/login', [AuthController::class, 'attemptLogin'])
+    ->middleware('CsrfMiddleware');
+
+$router->get('/signup', [AuthController::class, 'signup'])
+    ->middleware('GuestMiddleware')
+    ->name('signup');
+
+$router->post('/signup', [AuthController::class, 'register'])
+    ->middleware('CsrfMiddleware');
+
+$router->get('/logout', [AuthController::class, 'logout'])->name('logout');
+$router->post('/logout', [AuthController::class, 'logout']);
+
+// -----------------------------------------------------------------------------
+// Businesses
+// -----------------------------------------------------------------------------
+$router->get('/businesses', [BusinessController::class, 'index'])->name('businesses.index');
+$router->get('/businesses/create', [BusinessController::class, 'create'])->name('businesses.create');
+$router->post('/businesses', [BusinessController::class, 'store'])
+    ->middleware('CsrfMiddleware')
+    ->name('businesses.store');
+$router->get('/businesses/:id', [BusinessController::class, 'detail'])->name('businesses.detail');
+
+// -----------------------------------------------------------------------------
+// Communities / Neighborhood Groups
+// -----------------------------------------------------------------------------
+$router->get('/community', [CommunityController::class, 'index'])->name('community.index');
+$router->get('/community/create', [CommunityController::class, 'create'])->name('community.create');
+$router->post('/community', [CommunityController::class, 'store'])
+    ->middleware('CsrfMiddleware')
+    ->name('community.store');
+
+// -----------------------------------------------------------------------------
+// Events
+// -----------------------------------------------------------------------------
+$router->get('/events', [EventController::class, 'index'])->name('events.index');
+$router->get('/events/create', [EventController::class, 'create'])->name('events.create');
+$router->post('/events', [EventController::class, 'store'])
+    ->middleware('CsrfMiddleware')
+    ->name('events.store');
+
+// -----------------------------------------------------------------------------
+// Posts
+// -----------------------------------------------------------------------------
+$router->get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+$router->post('/posts', [PostController::class, 'store'])
+    ->middleware('CsrfMiddleware')
+    ->name('posts.store');
+
+// -----------------------------------------------------------------------------
+// User Profile, Saved & Notifications
+// -----------------------------------------------------------------------------
+$router->get('/saved', [SavedController::class, 'index'])->name('saved.index');
+$router->get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+$router->post('/settings', [SettingsController::class, 'update'])
+    ->middleware('CsrfMiddleware')
+    ->name('settings.update');
+
+$router->get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+$router->post('/notifications/read-all', [NotificationController::class, 'markAllRead'])
+    ->middleware('CsrfMiddleware');

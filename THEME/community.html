@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vicinity - Communities</title>
+    <link rel="stylesheet" href="modern.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Top Header -->
+    <header>
+      <div class="header-top">
+        <div class="logo">
+          <div class="logo-img">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="logo-text">
+            <h2><a href="index.html">Vicinity</a></h2>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="create-wrapper">
+            <button
+              class="create-btn"
+              id="createToggle"
+              aria-label="Create"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-plus plus-icon"></i>
+              <span>Create</span>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="create-dropdown" id="createDropdown" role="menu">
+              <span class="create-section-label">Create</span>
+              <a href="create-post.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-pen"></i>
+                <span>Post</span>
+              </a>
+              <a href="events.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Event</span>
+              </a>
+              <a href="business.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-store"></i>
+                <span>Business</span>
+              </a>
+              <div class="create-divider"></div>
+              <a href="community.html" class="create-item" role="menuitem">
+                <i class="fa-solid fa-people-roof"></i>
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+          <button class="messenger-btn" id="messengerToggle" aria-label="Messenger" title="Messenger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="msg-badge"></span>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell">
+              <span class="notification-dot"></span>
+            </i>
+          </button>
+          <button class="user-btn" aria-label="User Profile">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="account-wrapper">
+            <button class="account-profile" id="accountToggle" aria-label="Account menu" aria-haspopup="true" aria-expanded="false">
+              <p class="profile-initial">JD</p>
+              <p class="profile-name">John Doe</p>
+              <i class="fa-solid fa-chevron-down acc-chevron"></i>
+            </button>
+            <div class="account-dropdown" id="accountDropdown" role="menu">
+              <div class="acc-user">
+                <div class="acc-avatar">JD</div>
+                <div>
+                  <div class="acc-name">John Doe</div>
+                  <div class="acc-email">john.doe@example.com</div>
+                </div>
+              </div>
+              <a href="notifications.html" class="acc-item notifications" role="menuitem">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <span class="notif-count">2</span>
+              </a>
+              <a href="settings.html" class="acc-item" role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+              <div class="acc-divider"></div>
+              <button class="acc-item danger" id="logoutBtn" role="menuitem">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search communities, topics..." />
+          <p class="kbd-shortcut">/</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Dedicated Community Left Sidebar -->
+      <aside class="community-sidebar">
+        <!-- Back to Main Feed link -->
+        <a href="index.html" class="sidebar-back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Main Feed
+        </a>
+
+        <!-- Community Sidebar Title -->
+        <div class="community-sidebar-brand">
+          <div class="community-brand-icon">
+            <i class="fa-solid fa-people-roof"></i>
+          </div>
+          <div class="community-brand-text">
+            <h3>Communities</h3>
+            <p>Surulere Hub</p>
+          </div>
+        </div>
+
+        <!-- 4 Custom Navigation Items -->
+        <a href="#feed" class="tab-nav current" data-tab="feed">
+          <i class="fa-solid fa-square-rss"></i> Feed
+        </a>
+        <a href="#discover" class="tab-nav" data-tab="discover">
+          <i class="fa-solid fa-compass"></i> Discover
+        </a>
+        <a href="#my-groups" class="tab-nav" data-tab="my-groups">
+          <i class="fa-solid fa-users"></i> My Groups
+          <span class="notif-count">3</span>
+        </a>
+        <a href="#invitations" class="tab-nav" data-tab="invitations">
+          <i class="fa-solid fa-envelope-open-text"></i> Invitations
+          <span class="notif-count">2</span>
+        </a>
+
+        <a href="create-group.html" class="create-post" style="border: none; margin-top: 10px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <i class="fa-solid fa-plus"></i> Create Group
+        </a>
+      </aside>
+
+      <!-- Main Content Container -->
+      <div class="main-container community-container">
+        <div class="community-content">
+          <!-- 1. FEED TAB -->
+          <section id="tab-feed" class="community-tab-pane active">
+            <!-- Composer for Community Posts -->
+            <div class="composer">
+              <div class="composer-upper">
+                <div class="composer-profile">
+                  <p class="profile-initial">JD</p>
+                </div>
+                <div class="composer-link">
+                  <a href="#">Post an update to your groups...</a>
+                </div>
+              </div>
+              <div class="composer-lower">
+                <button class="composer-button">
+                  <i class="fa-solid fa-image"></i>
+                  <span>Photo</span>
+                </button>
+                <button class="composer-button">
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <span>Event</span>
+                </button>
+                <button class="composer-button">
+                  <i class="fa-solid fa-poll"></i>
+                  <span>Poll</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Feed Posts -->
+            <div class="posts">
+              <!-- Post 1 -->
+              <article class="post">
+                <div class="post-header">
+                  <div class="post-user-info">
+                    <div class="post-profile" style="background-color: #2b7a78">
+                      <p class="profile-initials">BT</p>
+                    </div>
+                    <div class="post-info">
+                      <p class="name">
+                        Babatunde Adeleke
+                        <span class="community-group-badge">
+                          <i class="fa-solid fa-users"></i> Bode Thomas Security
+                          Watch
+                        </span>
+                      </p>
+                      <p class="post-meta">
+                        Surulere Central &bull; 1 hour ago
+                      </p>
+                    </div>
+                  </div>
+                  <span class="post-tag">Security Update</span>
+                </div>
+                <div class="post-content">
+                  <p class="post-text">
+                    Good evening members. The new solar streetlights on
+                    Alaka-Bode Thomas connector road are now fully operational.
+                    Patrol schedules for this week have been posted in the group
+                    files section. Stay alert and stay safe!
+                  </p>
+                </div>
+                <div class="post-actions">
+                  <button class="post-action-btn">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <span>34 Likes</span>
+                  </button>
+                  <button class="post-action-btn">
+                    <i class="fa-regular fa-comment"></i>
+                    <span>12 Comments</span>
+                  </button>
+                  <button class="post-action-btn">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <span>Share</span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Post 2 with Image -->
+              <article class="post">
+                <div class="post-header">
+                  <div class="post-user-info">
+                    <div class="post-profile" style="background-color: #e07a5f">
+                      <p class="profile-initials">KO</p>
+                    </div>
+                    <div class="post-info">
+                      <p class="name">
+                        Kehinde Osoba
+                        <span class="community-group-badge">
+                          <i class="fa-solid fa-users"></i> Surulere Tech
+                          Enthusiasts
+                        </span>
+                      </p>
+                      <p class="post-meta">
+                        Adeniran Ogunsanya &bull; 3 hours ago
+                      </p>
+                    </div>
+                  </div>
+                  <span class="post-tag">Meetup</span>
+                </div>
+                <div class="post-content">
+                  <p class="post-text">
+                    Recap from our Saturday frontend pair-programming session at
+                    GreenBite Cafe! We covered modern CSS Grid and state
+                    management. Huge shoutout to everyone who made it. Next
+                    workshop is in two weeks! 💻🚀
+                  </p>
+                  <div class="post-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80"
+                      alt="Tech Workshop"
+                    />
+                  </div>
+                </div>
+                <div class="post-actions">
+                  <button class="post-action-btn">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <span>58 Likes</span>
+                  </button>
+                  <button class="post-action-btn">
+                    <i class="fa-regular fa-comment"></i>
+                    <span>19 Comments</span>
+                  </button>
+                  <button class="post-action-btn">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <span>Share</span>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- 2. DISCOVER TAB -->
+          <section id="tab-discover" class="community-tab-pane">
+            <div class="pane-header">
+              <h2>Discover Groups</h2>
+              <p class="pane-subtitle">
+                Find and join active communities tailored to your interests in
+                Surulere
+              </p>
+            </div>
+
+            <div class="pane-actions">
+              <a href="create-group.html" class="btn-create-group">
+                <i class="fa-solid fa-plus"></i> Create Group
+              </a>
+            </div>
+
+            <div class="group-grid">
+              <!-- Group 1 -->
+              <div class="group-card">
+                <div class="group-banner">
+                  <img
+                    src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80"
+                    alt="Sports"
+                  />
+                  <span class="group-category">Sports & Fitness</span>
+                </div>
+                <div class="group-card-body">
+                  <h3 class="group-title">Surulere Runners & Fitness Club</h3>
+                  <p class="group-meta">
+                    <i class="fa-solid fa-users"></i> 340 members &bull; 15
+                    posts/week
+                  </p>
+                  <p class="group-desc">
+                    Weekend 5K and 10K morning jogs around National Stadium,
+                    nutrition tips, and fitness challenges.
+                  </p>
+                  <button class="btn-join">
+                    <i class="fa-solid fa-user-plus"></i> Join Group
+                  </button>
+                </div>
+              </div>
+
+              <!-- Group 2 -->
+              <div class="group-card">
+                <div class="group-banner">
+                  <img
+                    src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+                    alt="Small Business"
+                  />
+                  <span class="group-category">Business & Trade</span>
+                </div>
+                <div class="group-card-body">
+                  <h3 class="group-title">Surulere Entrepreneurs Network</h3>
+                  <p class="group-meta">
+                    <i class="fa-solid fa-users"></i> 512 members &bull; 28
+                    posts/week
+                  </p>
+                  <p class="group-desc">
+                    Collaboration, networking, cross-promotions, and business
+                    resources for local shop owners and freelancers.
+                  </p>
+                  <button class="btn-join">
+                    <i class="fa-solid fa-user-plus"></i> Join Group
+                  </button>
+                </div>
+              </div>
+
+              <!-- Group 3 -->
+              <div class="group-card">
+                <div class="group-banner">
+                  <img
+                    src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80"
+                    alt="Gardening"
+                  />
+                  <span class="group-category">Environment</span>
+                </div>
+                <div class="group-card-body">
+                  <h3 class="group-title">Clean & Green Surulere Initiative</h3>
+                  <p class="group-meta">
+                    <i class="fa-solid fa-users"></i> 210 members &bull; 8
+                    posts/week
+                  </p>
+                  <p class="group-desc">
+                    Neighborhood tree planting, community drainage clearing
+                    drives, and urban gardening enthusiasts.
+                  </p>
+                  <button class="btn-join">
+                    <i class="fa-solid fa-user-plus"></i> Join Group
+                  </button>
+                </div>
+              </div>
+
+              <!-- Group 4 -->
+              <div class="group-card">
+                <div class="group-banner">
+                  <img
+                    src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+                    alt="Book Club"
+                  />
+                  <span class="group-category">Arts & Culture</span>
+                </div>
+                <div class="group-card-body">
+                  <h3 class="group-title">Surulere Book & Literature Club</h3>
+                  <p class="group-meta">
+                    <i class="fa-solid fa-users"></i> 185 members &bull; 6
+                    posts/week
+                  </p>
+                  <p class="group-desc">
+                    Monthly book reviews, African contemporary fiction
+                    discussions, and creative writing exchange.
+                  </p>
+                  <button class="btn-join">
+                    <i class="fa-solid fa-user-plus"></i> Join Group
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. MY GROUPS TAB -->
+          <section id="tab-my-groups" class="community-tab-pane">
+            <div class="pane-header">
+              <h2>My Groups</h2>
+              <p class="pane-subtitle">
+                Groups you are actively participating in
+              </p>
+            </div>
+
+            <div class="pane-actions">
+              <a href="create-group.html" class="btn-create-group">
+                <i class="fa-solid fa-plus"></i> Create Group
+              </a>
+            </div>
+
+            <div class="my-groups-list">
+              <!-- Item 1 -->
+              <div class="my-group-item">
+                <div class="my-group-icon" style="background-color: #2b7a78">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="my-group-info">
+                  <h4>Bode Thomas Security Watch</h4>
+                  <p class="my-group-meta">
+                    <span class="role-badge admin">Admin</span> &bull; 248
+                    Members &bull; Active today
+                  </p>
+                  <p class="my-group-preview">
+                    Last post: "The new solar streetlights are operational..."
+                  </p>
+                </div>
+                <button class="btn-open-group">Visit Group</button>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="my-group-item">
+                <div class="my-group-icon" style="background-color: #e07a5f">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="my-group-info">
+                  <h4>Surulere Tech Enthusiasts</h4>
+                  <p class="my-group-meta">
+                    <span class="role-badge member">Member</span> &bull; 410
+                    Members &bull; 3 new posts
+                  </p>
+                  <p class="my-group-preview">
+                    Last post: "Recap from our Saturday frontend workshop..."
+                  </p>
+                </div>
+                <button class="btn-open-group">Visit Group</button>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="my-group-item">
+                <div class="my-group-icon" style="background-color: #36a036">
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div class="my-group-info">
+                  <h4>Adeniran Market Traders & Buyers</h4>
+                  <p class="my-group-meta">
+                    <span class="role-badge member">Member</span> &bull; 630
+                    Members &bull; Active 2h ago
+                  </p>
+                  <p class="my-group-preview">
+                    Last post: "Fresh organic tomatoes batch arrived this
+                    morning..."
+                  </p>
+                </div>
+                <button class="btn-open-group">Visit Group</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. INVITATIONS TAB -->
+          <section id="tab-invitations" class="community-tab-pane">
+            <div class="pane-header">
+              <h2>Group Invitations</h2>
+              <p class="pane-subtitle">
+                Invitations you have received from neighbors and friends
+              </p>
+            </div>
+
+            <div class="invitations-list">
+              <!-- Invitation 1 -->
+              <div class="invitation-card">
+                <div
+                  class="invitation-avatar"
+                  style="background-color: #6d597a"
+                >
+                  <i class="fa-solid fa-futbol"></i>
+                </div>
+                <div class="invitation-body">
+                  <div class="invitation-header">
+                    <h4>Surulere Football Fanatics</h4>
+                    <span class="invitation-time">2 days ago</span>
+                  </div>
+                  <p class="invitation-text">
+                    <strong>Tunde Balogun</strong> invited you to join this
+                    group.
+                  </p>
+                  <p class="invitation-desc">
+                    Weekly matches, stadium meetups, Premier League banter, and
+                    local tournaments.
+                  </p>
+                  <p class="invitation-members">
+                    <i class="fa-solid fa-user-group"></i> 194 members &bull; 8
+                    mutual connections
+                  </p>
+                  <div class="invitation-actions">
+                    <button class="btn-accept">
+                      <i class="fa-solid fa-check"></i> Accept Invitation
+                    </button>
+                    <button class="btn-decline">Decline</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Invitation 2 -->
+              <div class="invitation-card">
+                <div
+                  class="invitation-avatar"
+                  style="background-color: #e27d60"
+                >
+                  <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div class="invitation-body">
+                  <div class="invitation-header">
+                    <h4>Surulere Foodies & Home Chefs</h4>
+                    <span class="invitation-time">Yesterday</span>
+                  </div>
+                  <p class="invitation-text">
+                    <strong>Chidinma Okoro</strong> invited you to join this
+                    group.
+                  </p>
+                  <p class="invitation-desc">
+                    Sharing secret local recipes, honest restaurant reviews, and
+                    weekend potlucks across Surulere.
+                  </p>
+                  <p class="invitation-members">
+                    <i class="fa-solid fa-user-group"></i> 325 members &bull; 14
+                    mutual connections
+                  </p>
+                  <div class="invitation-actions">
+                    <button class="btn-accept">
+                      <i class="fa-solid fa-check"></i> Accept Invitation
+                    </button>
+                    <button class="btn-decline">Decline</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Navigation (Mobile) -->
+    <nav class="floating-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="business.html" class="nav-item">
+        <i class="fa-solid fa-store"></i>
+        <span>Business</span>
+      </a>
+      <a href="community.html" class="nav-item active">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+      <a href="events.html" class="nav-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
+      <a href="saved.html" class="nav-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <script>
+      // Create dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".create-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("createToggle");
+        const dropdown = document.getElementById("createDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+
+      // Account profile dropdown toggle
+      (function () {
+        const wrapper = document.querySelector(".account-wrapper");
+        if (!wrapper) return;
+        const btn = document.getElementById("accountToggle");
+        const dropdown = document.getElementById("accountDropdown");
+
+        function open() {
+          wrapper.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+        function close() {
+          wrapper.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+        function toggle() {
+          wrapper.classList.contains("open") ? close() : open();
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!wrapper.contains(e.target)) close();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+
+        var logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Logged out (demo).");
+          });
+        }
+      })();
+
+      // Simple, Clean Tab Switching Logic
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabLinks = document.querySelectorAll(
+          ".community-sidebar .tab-nav",
+        );
+        const tabPanes = document.querySelectorAll(".community-tab-pane");
+
+        tabLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetTab = link.getAttribute("data-tab");
+
+            // Update sidebar active link
+            tabLinks.forEach((l) => l.classList.remove("current"));
+            link.classList.add("current");
+
+            // Switch active pane
+            tabPanes.forEach((pane) => {
+              if (pane.id === `tab-${targetTab}`) {
+                pane.classList.add("active");
+              } else {
+                pane.classList.remove("active");
+              }
+            });
+
+            // Update URL hash without jump
+            history.replaceState(null, null, `#${targetTab}`);
+          });
+        });
+
+        // Handle initial hash if present
+        const currentHash = window.location.hash.replace("#", "");
+        if (currentHash) {
+          const matchingLink = document.querySelector(
+            `.community-sidebar .tab-nav[data-tab="${currentHash}"]`,
+          );
+          if (matchingLink) matchingLink.click();
+        }
+
+        // Join Group button toggle
+        document.querySelectorAll(".btn-join").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const isJoined = btn.classList.toggle("joined");
+            if (isJoined) {
+              btn.innerHTML = '<i class="fa-solid fa-check"></i> Joined';
+              btn.style.background = "var(--accent)";
+              btn.style.color = "#fff";
+            } else {
+              btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> Join Group';
+              btn.style.background = "";
+              btn.style.color = "";
+            }
+          });
+        });
+
+        // Invitations Accept & Decline
+        document.querySelectorAll(".btn-accept").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const card = btn.closest(".invitation-card");
+            if (!card) return;
+            btn.innerHTML = '<i class="fa-solid fa-check-double"></i> Accepted';
+            btn.style.background = "#267c26";
+            const declineBtn = card.querySelector(".btn-decline");
+            if (declineBtn) declineBtn.style.display = "none";
+            setTimeout(() => {
+              card.style.opacity = "0";
+              card.style.transform = "translateX(20px)";
+              card.style.transition = "0.3s ease";
+              setTimeout(() => {
+                card.remove();
+                const countBadge = document.querySelector('.community-sidebar .tab-nav[data-tab="invitations"] .notif-count');
+                const remaining = document.querySelectorAll(".invitation-card").length;
+                if (countBadge) {
+                  countBadge.textContent = remaining;
+                  if (remaining === 0) countBadge.style.display = "none";
+                }
+              }, 280);
+            }, 700);
+          });
+        });
+
+        document.querySelectorAll(".btn-decline").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const card = btn.closest(".invitation-card");
+            if (!card) return;
+            card.style.opacity = "0";
+            card.style.transform = "translateX(20px)";
+            card.style.transition = "0.3s ease";
+            setTimeout(() => {
+              card.remove();
+              const countBadge = document.querySelector('.community-sidebar .tab-nav[data-tab="invitations"] .notif-count');
+              const remaining = document.querySelectorAll(".invitation-card").length;
+              if (countBadge) {
+                countBadge.textContent = remaining;
+                if (remaining === 0) countBadge.style.display = "none";
+              }
+            }, 280);
+          });
+        });
+      });
+    </script>
+
+    <div class="msg-window" id="msgWindow">
+      <div class="msg-header">
+        <div class="msg-title">
+          <i class="fa-solid fa-comments"></i>
+          <span>Messenger</span>
+        </div>
+        <button class="msg-close" id="msgClose">&times;</button>
+      </div>
+      <div class="msg-content">
+        <div class="msg-contacts" id="msgContacts">
+          <!-- Contacts injected by JS -->
+        </div>
+        <div class="msg-chat">
+          <div class="msg-messages" id="msgMessages">
+            <div class="message received">
+              <div class="msg-bubble">
+                Hey! How's your community project going?
+              </div>
+              <span class="msg-time">10:24 AM</span>
+            </div>
+          </div>
+          <div class="msg-input-area">
+            <input type="text" id="msgInput" placeholder="Type a message..." />
+            <button id="msgSend"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Messenger toggle & logic
+      (function () {
+        var toggleBtn = document.getElementById("messengerToggle");
+        var msgWindow = document.getElementById("msgWindow");
+        var closeBtn = document.getElementById("msgClose");
+        var contactsEl = document.getElementById("msgContacts");
+        var messagesEl = document.getElementById("msgMessages");
+        var inputEl = document.getElementById("msgInput");
+        var sendBtn = document.getElementById("msgSend");
+
+        if (!toggleBtn || !msgWindow) return;
+
+        var contacts = [
+          {
+            id: "sarah",
+            name: "Sarah M.",
+            initial: "S",
+            lastMsg: "See you at the event tomorrow!",
+            messages: [
+              { text: "Hey! How's your community project going?", time: "10:24 AM", sent: false },
+              { text: "Going well, thanks! Just finished the new group.", time: "10:25 AM", sent: true },
+              { text: "Nice, let me know if you need any help.", time: "10:27 AM", sent: false },
+              { text: "Will do, thanks!", time: "10:28 AM", sent: true },
+            ],
+          },
+          {
+            id: "michael",
+            name: "Michael R.",
+            initial: "M",
+            lastMsg: "The event is confirmed for Saturday.",
+            messages: [
+              { text: "Did you finalize the event details?", time: "9:10 AM", sent: false },
+              { text: "Yes, it's confirmed for Saturday at 2pm.", time: "9:12 AM", sent: true },
+              { text: "Great, I'll bring the supplies.", time: "9:15 AM", sent: false },
+              { text: "Perfect, see you there!", time: "9:16 AM", sent: true },
+            ],
+          },
+          {
+            id: "aisha",
+            name: "Aisha K.",
+            initial: "A",
+            lastMsg: "The market is open every Thursday now.",
+            messages: [
+              { text: "Have you seen the new market schedule?", time: "8:30 AM", sent: false },
+              { text: "Yes, it's every Thursday starting next week.", time: "8:35 AM", sent: true },
+              { text: "Awesome, I'll spread the word.", time: "8:37 AM", sent: false },
+            ],
+          },
+          {
+            id: "chidi",
+            name: "Chidi O.",
+            initial: "C",
+            lastMsg: "The community garden looks amazing!",
+            messages: [
+              { text: "Did you check out the community garden?", time: "7:00 PM", sent: false },
+              { text: "Yes, the garden looks amazing!", time: "7:05 PM", sent: true },
+              { text: "I'll volunteer this weekend.", time: "7:10 PM", sent: false },
+            ],
+          },
+        ];
+
+        var currentContact = null;
+
+        function renderContacts() {
+          contactsEl.innerHTML = contacts
+            .map(function (c) {
+              return (
+                '<div class="contact-item' +
+                (c.id === currentContact ? " active" : "") +
+                '" data-id="' +
+                c.id +
+                '">' +
+                '<div class="contact-avatar">' +
+                c.initial +
+                '</div>' +
+                '<div class="contact-info">' +
+                '<div class="contact-name">' +
+                c.name +
+                '</div>' +
+                '<div class="contact-last-msg">' +
+                c.lastMsg +
+                '</div>' +
+                '</div>' +
+                "</div>"
+              );
+            })
+            .join("");
+          contactsEl
+            .querySelectorAll(".contact-item")
+            .forEach(function (el) {
+              el.addEventListener("click", function () {
+                selectContact(this.getAttribute("data-id"));
+              });
+            });
+        }
+
+        function selectContact(id) {
+          currentContact = id;
+          renderContacts();
+          var contact = contacts.find(function (c) {
+            return c.id === id;
+          });
+          if (!contact) return;
+          messagesEl.innerHTML = contact.messages
+            .map(function (m) {
+              return (
+                '<div class="message ' +
+                (m.sent ? "sent" : "received") +
+                '">' +
+                '<div class="msg-bubble">' +
+                m.text +
+                '</div>' +
+                '<span class="msg-time">' +
+                m.time +
+                '</span>' +
+                "</div>"
+              );
+            })
+            .join("");
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function sendMessage() {
+          var text = inputEl.value.trim();
+          if (!text || !currentContact) return;
+          var contact = contacts.find(function (c) {
+            return c.id === currentContact;
+          });
+          if (!contact) return;
+          var now = new Date();
+          var time = now.getHours() + ":" + (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
+          contact.messages.push({ text: text, time: time, sent: true });
+          contact.lastMsg = text;
+          inputEl.value = "";
+          selectContact(currentContact);
+          renderContacts();
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          msgWindow.classList.add("open");
+          toggleBtn.style.display = "none";
+        });
+        closeBtn.addEventListener("click", function () {
+          msgWindow.classList.remove("open");
+          toggleBtn.style.display = "";
+        });
+
+        if (sendBtn) {
+          sendBtn.addEventListener("click", sendMessage);
+        }
+        if (inputEl) {
+          inputEl.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") sendMessage();
+          });
+        }
+
+        renderContacts();
+      })();
+    </script>
+  </body>
+</html>
