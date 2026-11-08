@@ -24,9 +24,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
     `media_url` VARCHAR(255) NULL,
     `likes_count` INT UNSIGNED NOT NULL DEFAULT 0,
     `comments_count` INT UNSIGNED NOT NULL DEFAULT 0,
+    `feed` ENUM('main','group') NOT NULL DEFAULT 'main',
+    `community_id` INT UNSIGNED NULL DEFAULT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT `fk_posts_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+    INDEX `idx_posts_feed` (`feed`),
+    INDEX `idx_posts_community_id` (`community_id`),
+    CONSTRAINT `fk_posts_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `fk_posts_community` FOREIGN KEY (`community_id`) REFERENCES `communities` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Businesses Table

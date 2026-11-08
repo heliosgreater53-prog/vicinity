@@ -1,4 +1,4 @@
-<?php $this->extend('layouts.main'); ?>
+﻿<?php $this->extend('layouts.main'); ?>
 
 <?php $this->section('container_class'); ?>feed-container<?php $this->endSection(); ?>
 
@@ -87,20 +87,15 @@
                   <div class="field-container">
                     <select id="postDestination" name="destination">
                       <option value="feed">Main Community Feed</option>
-                      <optgroup label="Your Groups">
-                        <option value="group-1">
-                          Bode Thomas Security Watch
-                        </option>
-                        <option value="group-2">
-                          Surulere Tech Enthusiasts
-                        </option>
-                        <option value="group-3">
-                          Adeniran Market Traders & Buyers
-                        </option>
-                      </optgroup>
-                      <option value="new-group">
-                        Create New Group Instead
-                      </option>
+                      <?php if (!empty($communities)): ?>
+                        <optgroup label="Your Groups">
+                          <?php foreach ($communities as $community): ?>
+                            <option value="<?= (int) $community->id ?>">
+                              <?= e($community->name) ?>
+                            </option>
+                          <?php endforeach; ?>
+                        </optgroup>
+                      <?php endif; ?>
                     </select>
                   </div>
                   <p class="field-hint">Choose where this post will appear</p>
@@ -226,7 +221,7 @@
                   <div class="post-info">
                     <p class="name" id="previewAuthor"><?= e(auth()->user()->name ?? 'John Doe') ?></p>
                     <p class="post-meta" id="previewMeta">
-                      Surulere Central &bull; Just now
+                      Main Community Feed &bull; Just now
                     </p>
                   </div>
                 </div>
@@ -259,19 +254,21 @@
 <?php $this->section('scripts'); ?>
 <script>
   (function () {
-    const postForm = document.getElementById("postForm");
-    const postType = document.getElementById("postType");
-    const postTitle = document.getElementById("postTitle");
-    const postContent = document.getElementById("postContent");
-    const anonCheckbox = document.querySelector('input[name="anonymousPost"]');
-    const postImages = document.getElementById("postImages");
-    const mediaPreview = document.getElementById("mediaPreview");
-    const previewTag = document.getElementById("previewTag");
-    const previewText = document.getElementById("previewText");
+    const destSelect    = document.getElementById("postDestination");
+    const postForm      = document.getElementById("postForm");
+    const postType      = document.getElementById("postType");
+    const postTitle     = document.getElementById("postTitle");
+    const postContent   = document.getElementById("postContent");
+    const anonCheckbox  = document.querySelector('input[name="anonymousPost"]');
+    const postImages    = document.getElementById("postImages");
+    const mediaPreview  = document.getElementById("mediaPreview");
+    const previewTag    = document.getElementById("previewTag");
+    const previewText   = document.getElementById("previewText");
+    const previewMeta   = document.getElementById("previewMeta");
     const previewAuthor = document.getElementById("previewAuthor");
-    const previewProfile = document.getElementById("previewProfile");
-    const previewMedia = document.getElementById("previewMedia");
-    const defaultAuthor = "<?= e(auth()->user()->name ?? 'John Doe') ?>";
+    const previewProfile= document.getElementById("previewProfile");
+    const previewMedia  = document.getElementById("previewMedia");
+    const defaultAuthor  = "<?= e(auth()->user()->name ?? 'John Doe') ?>";
     const defaultInitial = "<?= e(strtoupper(substr(auth()->user()->name ?? 'JD', 0, 2))) ?>";
 
     const typeLabels = {
@@ -287,25 +284,26 @@
     };
 
     function escapeHTML(str) {
-      return str.replace(/[&<>'"]/g, 
-        tag => ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          "'": '&#39;',
-          '"': '&quot;'
-        }[tag] || tag)
-      );
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
     }
 
     function updatePreview() {
       if (!previewTag || !previewText) return;
 
-      // Type
+      // Post type tag
       const selectedType = postType ? postType.value : "";
       previewTag.textContent = typeLabels[selectedType] || "General";
 
-      // Author
+      // Destination meta — show selected group name or "Main Community Feed"
+      if (previewMeta && destSelect) {
+        const selOpt    = destSelect.options[destSelect.selectedIndex];
+        const destLabel = selOpt ? selOpt.text.trim() : "Main Community Feed";
+        previewMeta.innerHTML = escapeHTML(destLabel) + " &bull; Just now";
+      }
+
+      // Author (anonymous toggle)
       const isAnon = anonCheckbox && anonCheckbox.checked;
       if (previewAuthor) {
         previewAuthor.textContent = isAnon ? "Anonymous Neighbor" : defaultAuthor;
@@ -314,8 +312,8 @@
         previewProfile.innerHTML = `<p class="profile-initials">${isAnon ? '?' : defaultInitial}</p>`;
       }
 
-      // Text / Content
-      const titleVal = postTitle ? postTitle.value.trim() : "";
+      // Post text / title
+      const titleVal   = postTitle   ? postTitle.value.trim()   : "";
       const contentVal = postContent ? postContent.value.trim() : "";
 
       if (titleVal || contentVal) {
@@ -333,7 +331,7 @@
     }
 
     if (postForm) {
-      postForm.addEventListener("input", updatePreview);
+      postForm.addEventListener("input",  updatePreview);
       postForm.addEventListener("change", updatePreview);
     }
 
@@ -355,9 +353,9 @@
             if (previewMedia) {
               const previewImg = document.createElement("img");
               previewImg.src = e.target.result;
-              previewImg.style.maxHeight = "240px";
+              previewImg.style.maxHeight    = "240px";
               previewImg.style.borderRadius = "8px";
-              previewImg.style.marginTop = "0.5rem";
+              previewImg.style.marginTop    = "0.5rem";
               previewMedia.appendChild(previewImg);
             }
           };

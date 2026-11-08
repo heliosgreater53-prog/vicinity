@@ -20,7 +20,8 @@ class HomeController extends Controller
         $businesses = [];
 
         try {
-            $posts      = Post::hydrateAll(Post::query()->latest()->limit(10)->get());
+            // Only show posts destined for the main community feed
+            $posts      = Post::hydrateAll(Post::where('feed', 'main')->latest()->limit(20)->get());
             $events     = Event::hydrateAll(Event::query()->latest('event_date')->limit(3)->get());
             $businesses = Business::hydrateAll(Business::query()->latest()->limit(4)->get());
         } catch (\Throwable $e) {

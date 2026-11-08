@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\Community;
+use App\Models\Post;
 use Core\Controller;
+use Core\Database;
 use Core\Request;
 use Core\Response;
 
@@ -13,16 +15,28 @@ class CommunityController extends Controller
 {
     public function index(Request $request): Response
     {
-        $communities = [];
+        $communities    = [];
+        $communityPosts = [];
+
         try {
             $communities = Community::hydrateAll(Community::query()->latest()->get());
         } catch (\Throwable $e) {
             // graceful fallback
         }
 
+        try {
+            // Load all posts destined for group feeds, newest first
+            $communityPosts = Post::hydrateAll(
+                Post::where('feed', 'group')->latest()->limit(50)->get()
+            );
+        } catch (\Throwable $e) {
+            // graceful fallback — view shows placeholder content
+        }
+
         return $this->view('community.index', [
-            'title'       => 'Neighborhood Communities – Vicinity',
-            'communities' => $communities,
+            'title'          => 'Neighborhood Communities – Vicinity',
+            'communities'    => $communities,
+            'communityPosts' => $communityPosts,
         ]);
     }
 
@@ -50,7 +64,7 @@ class CommunityController extends Controller
         }
 
         try {
-            Community::create([
+            $community = Community::create([
                 'user_id'       => auth()->id() ?? 1,
                 'name'          => $request->post('name'),
                 'category'      => $request->post('category'),
@@ -60,6 +74,16 @@ class CommunityController extends Controller
                 'members_count' => 1,
             ]);
             session()->flash('success', 'Community group created successfully!');
+
+            // Auto-add the creator as admin member
+            try {
+                Database::getInstance()->table('community_members')->insert([
+                    'community_id' => (int) $community->id,
+                    'user_id'      => auth()->id() ?? 1,
+                    'role'         => 'admin',
+                    'joined_at'    => now(),
+                ]);
+            } catch (\Throwable) { /* ignore if already exists */ }
         } catch (\Throwable $e) {
             session()->flash('success', 'Community group created successfully!');
         }

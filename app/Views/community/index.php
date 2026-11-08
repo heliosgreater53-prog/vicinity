@@ -2,6 +2,294 @@
 
 <?php $this->section('container_class'); ?>community-container<?php $this->endSection(); ?>
 
+<?php $this->section('styles'); ?>
+<style>
+/* ── Group Pane Overlay ──────────────────────────────────────────── */
+.group-pane-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 400;
+  overflow-y: auto;
+  animation: paneFadeIn .2s var(--ease-out);
+}
+@keyframes paneFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.group-pane {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+.group-pane-close {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: .5rem .75rem;
+  border-radius: var(--r-md);
+  margin-bottom: 1.25rem;
+  transition: background .15s;
+}
+.group-pane-close:hover { background: var(--accent-light); }
+.group-pane-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .group-pane-body { grid-template-columns: 1fr; }
+}
+.group-card-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.group-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem .75rem;
+  border-bottom: 1px solid var(--border-light);
+  gap: .75rem;
+}
+.group-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0 0 .15rem;
+}
+.group-panel-sub {
+  font-size: .78rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.group-panel-desc {
+  font-size: .85rem;
+  color: var(--text-2);
+  padding: .75rem 1.25rem .5rem;
+  margin: 0;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border-light);
+}
+.group-member-count {
+  font-size: .78rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+  padding: .2rem .6rem;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.chat-live-dot {
+  font-size: .78rem;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+/* Members */
+.members-list {
+  padding: .5rem .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  max-height: calc(100vh - 320px);
+  overflow-y: auto;
+}
+.members-loading {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-3);
+}
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .55rem .5rem;
+  border-radius: var(--r-md);
+  transition: background .12s;
+}
+.member-row:hover { background: var(--surface-2); }
+.member-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+.member-initials {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.member-online-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+.member-online-dot.online  { background: #22c55e; }
+.member-online-dot.offline { background: var(--border); }
+.member-info { flex: 1; min-width: 0; }
+.member-name {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.role-pill {
+  font-size: .68rem;
+  font-weight: 700;
+  padding: .15rem .45rem;
+  border-radius: var(--r-full);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+}
+.role-pill.admin     { background: hsl(36,90%,93%); color: hsl(36,80%,35%); }
+.role-pill.moderator { background: var(--info-light); color: var(--info); }
+.role-pill.member    { background: var(--surface-3); color: var(--text-3); }
+/* Chat */
+.group-chat-panel {
+  height: calc(100vh - 180px);
+  min-height: 480px;
+}
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  scroll-behavior: smooth;
+}
+.chat-empty {
+  text-align: center;
+  color: var(--text-3);
+  font-size: .88rem;
+  padding: 2rem;
+  margin: auto;
+}
+.chat-bubble-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: .6rem;
+}
+.chat-bubble-wrap.mine { flex-direction: row-reverse; }
+.chat-bubble-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-size: .68rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.chat-bubble-col { max-width: 70%; }
+.chat-bubble-col.mine { align-items: flex-end; display: flex; flex-direction: column; }
+.chat-name {
+  font-size: .7rem;
+  color: var(--text-3);
+  margin-bottom: .2rem;
+  padding: 0 .25rem;
+}
+.chat-bubble {
+  background: var(--surface-2);
+  color: var(--text-1);
+  padding: .6rem .9rem;
+  border-radius: 18px 18px 18px 4px;
+  font-size: .88rem;
+  line-height: 1.5;
+  word-break: break-word;
+  box-shadow: var(--shadow-xs);
+}
+.chat-bubble.mine {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 18px 18px 4px 18px;
+}
+.chat-bubble-time {
+  font-size: .65rem;
+  color: var(--text-3);
+  margin-top: .2rem;
+  padding: 0 .25rem;
+}
+.chat-composer {
+  display: flex;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--border-light);
+  background: var(--surface);
+}
+.chat-input {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-full);
+  padding: .6rem 1rem;
+  font-size: .9rem;
+  background: var(--surface-2);
+  color: var(--text-1);
+  outline: none;
+  transition: border-color .15s;
+  font-family: inherit;
+}
+.chat-input:focus { border-color: var(--accent); background: var(--surface); }
+.chat-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: .95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .15s, transform .1s;
+}
+.chat-send-btn:hover  { background: var(--accent-dark); }
+.chat-send-btn:active { transform: scale(.93); }
+.chat-send-btn:disabled { opacity: .5; cursor: not-allowed; }
+/* Dynamic my-groups items */
+.my-group-item { cursor: pointer; transition: background .12s; }
+.my-group-item:hover { background: var(--surface-2); border-radius: var(--r-md); }
+.groups-loading { color: var(--text-3); font-size: .88rem; padding: 1rem .5rem; }
+</style>
+<?php $this->endSection(); ?>
+
 <?php $this->section('sidebar'); ?>
 <aside class="community-sidebar">
   <!-- Back to Main Feed link -->
@@ -75,14 +363,23 @@
     <div class="posts">
       <?php if (!empty($communityPosts)): ?>
         <?php foreach ($communityPosts as $post): ?>
+          <?php $postAuthor = $post->user(); ?>
+          <?php $postGroup  = $post->community(); ?>
           <article class="post">
             <div class="post-header">
               <div class="post-user-info">
                 <div class="post-profile">
-                  <p class="profile-initials"><?= strtoupper(substr($post->user()->name ?? 'U', 0, 2)) ?></p>
+                  <p class="profile-initials"><?= strtoupper(substr($postAuthor->name ?? 'U', 0, 2)) ?></p>
                 </div>
                 <div class="post-info">
-                  <p class="name"><?= e($post->user()->name ?? 'Community Member') ?></p>
+                  <p class="name">
+                    <?= e($postAuthor->name ?? 'Community Member') ?>
+                    <?php if ($postGroup): ?>
+                      <span class="community-group-badge">
+                        <i class="fa-solid fa-users"></i> <?= e($postGroup->name) ?>
+                      </span>
+                    <?php endif; ?>
+                  </p>
                   <p class="post-meta"><?= date('M j, Y', strtotime($post->created_at)) ?></p>
                 </div>
               </div>
@@ -94,6 +391,11 @@
             </div>
             <div class="post-content">
               <p class="post-text"><?= nl2br(e($post->content)) ?></p>
+              <?php if (!empty($post->media_url)): ?>
+                <div class="post-image">
+                  <img src="<?= e($post->media_url) ?>" alt="Post image" />
+                </div>
+              <?php endif; ?>
             </div>
             <div class="post-actions">
               <button class="post-action-btn">
@@ -360,56 +662,9 @@
       </a>
     </div>
 
-    <div class="my-groups-list">
-      <!-- Item 1 -->
-      <div class="my-group-item">
-        <div class="my-group-icon" style="background-color: #2b7a78">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-        <div class="my-group-info">
-          <h4>Bode Thomas Security Watch</h4>
-          <p class="my-group-meta">
-            <span class="role-badge admin">Admin</span> &bull; 248 Members &bull; Active today
-          </p>
-          <p class="my-group-preview">
-            Last post: "The new solar streetlights are operational..."
-          </p>
-        </div>
-        <button class="btn-open-group">Visit Group</button>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="my-group-item">
-        <div class="my-group-icon" style="background-color: #e07a5f">
-          <i class="fa-solid fa-laptop-code"></i>
-        </div>
-        <div class="my-group-info">
-          <h4>Surulere Tech Enthusiasts</h4>
-          <p class="my-group-meta">
-            <span class="role-badge member">Member</span> &bull; 410 Members &bull; 3 new posts
-          </p>
-          <p class="my-group-preview">
-            Last post: "Recap from our Saturday frontend workshop..."
-          </p>
-        </div>
-        <button class="btn-open-group">Visit Group</button>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="my-group-item">
-        <div class="my-group-icon" style="background-color: #36a036">
-          <i class="fa-solid fa-basket-shopping"></i>
-        </div>
-        <div class="my-group-info">
-          <h4>Adeniran Market Traders &amp; Buyers</h4>
-          <p class="my-group-meta">
-            <span class="role-badge member">Member</span> &bull; 630 Members &bull; Active 2h ago
-          </p>
-          <p class="my-group-preview">
-            Last post: "Fresh organic tomatoes batch arrived this morning..."
-          </p>
-        </div>
-        <button class="btn-open-group">Visit Group</button>
+    <div class="my-groups-list" id="myGroupsList">
+      <div class="groups-loading" id="groupsLoading">
+        <i class="fa-solid fa-spinner fa-spin"></i> Loading your groups...
       </div>
     </div>
   </section>
@@ -484,6 +739,58 @@
   </section>
 </div>
 
+<!-- ── Group Page Pane (dynamic overlay, no reload) ──────────────── -->
+<div class="group-pane-overlay" id="groupPaneOverlay" style="display:none;" aria-hidden="true">
+  <div class="group-pane">
+    <button class="group-pane-close" id="closePaneBtn" aria-label="Back to communities">
+      <i class="fa-solid fa-arrow-left"></i> Back to Communities
+    </button>
+
+    <div class="group-pane-body">
+      <!-- LEFT CARD: Group info + Members -->
+      <div class="group-card-panel group-members-panel">
+        <div class="group-panel-header">
+          <div style="min-width:0;">
+            <h2 class="group-panel-title" id="panelGroupName">Group</h2>
+            <p class="group-panel-sub"  id="panelGroupCategory"></p>
+          </div>
+          <span class="group-member-count" id="panelMemberCount"></span>
+        </div>
+        <p class="group-panel-desc" id="panelGroupDesc"></p>
+        <div class="members-list" id="panelMembersList">
+          <div class="members-loading"><i class="fa-solid fa-spinner fa-spin"></i></div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD: Chat -->
+      <div class="group-card-panel group-chat-panel">
+        <div class="group-panel-header">
+          <h2 class="group-panel-title">Group Chat</h2>
+          <span class="chat-live-dot">
+            <i class="fa-solid fa-circle" style="color:var(--accent);font-size:.5rem;"></i> Live
+          </span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-empty">No messages yet. Be the first to say hello! 👋</div>
+        </div>
+        <div class="chat-composer">
+          <input
+            type="text"
+            class="chat-input"
+            id="chatInput"
+            placeholder="Write a message..."
+            autocomplete="off"
+            maxlength="1000"
+          />
+          <button class="chat-send-btn" id="chatSendBtn" aria-label="Send">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php $this->section('scripts'); ?>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -518,5 +825,257 @@
       if (matchingLink) matchingLink.click();
     }
   });
+
+  // ── Group Pane / Chatroom ──────────────────────────────────────────
+  (function () {
+    const overlay      = document.getElementById('groupPaneOverlay');
+    const closeBtn     = document.getElementById('closePaneBtn');
+    const panelName    = document.getElementById('panelGroupName');
+    const panelCat     = document.getElementById('panelGroupCategory');
+    const panelDesc    = document.getElementById('panelGroupDesc');
+    const panelCount   = document.getElementById('panelMemberCount');
+    const membersList  = document.getElementById('panelMembersList');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput    = document.getElementById('chatInput');
+    const sendBtn      = document.getElementById('chatSendBtn');
+    const myGroupsList = document.getElementById('myGroupsList');
+
+    let currentGroupId  = null;
+    let lastMessageId   = 0;
+    let pollTimer       = null;
+    let memberTimer     = null;
+    let heartTimer      = null;
+    const meId          = <?= (int)(auth()->id() ?? 0) ?>;
+    const csrfToken     = '<?= csrf_token() ?>';
+
+    // ── Utility ────────────────────────────────────────────────────────
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c =>
+        ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])
+      );
+    }
+    function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+    // ── Load My Groups ─────────────────────────────────────────────────
+    async function loadMyGroups() {
+      try {
+        const res  = await fetch('/api/groups/mine', { credentials: 'same-origin' });
+        const data = await res.json();
+        if (!myGroupsList) return;
+
+        if (!Array.isArray(data) || data.length === 0) {
+          myGroupsList.innerHTML = '<p style="color:var(--text-3);font-size:.88rem;padding:.75rem .5rem;">No groups yet. <a href="/community/create" style="color:var(--accent);">Create one!</a></p>';
+          return;
+        }
+
+        const colors = ['#2b7a78','#e07a5f','#36a036','#6d597a','#e27d60','#1a6b8a'];
+        myGroupsList.innerHTML = data.map((g, i) => `
+          <div class="my-group-item" style="display:flex;align-items:center;gap:.75rem;padding:.7rem .5rem;border-radius:var(--r-md);" data-gid="${g.id}">
+            <div class="my-group-icon" style="background-color:${colors[i % colors.length]};width:42px;height:42px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0;">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="my-group-info" style="flex:1;min-width:0;">
+              <h4 style="font-size:.9rem;font-weight:600;margin:0 0 .15rem;color:var(--text-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(g.name)}</h4>
+              <p style="font-size:.75rem;color:var(--text-3);margin:0;">
+                <span class="role-pill ${g.role || 'member'}">${cap(g.role || 'member')}</span>
+                &bull; ${parseInt(g.members_count) || 1} members
+              </p>
+            </div>
+            <button class="btn-open-group" data-gid="${g.id}" style="font-size:.78rem;padding:.4rem .85rem;">Visit Group</button>
+          </div>
+        `).join('');
+
+        myGroupsList.querySelectorAll('[data-gid]').forEach(el => {
+          el.addEventListener('click', e => {
+            const gid = e.currentTarget.dataset.gid || e.target.closest('[data-gid]')?.dataset.gid;
+            if (gid) openGroup(gid);
+          });
+        });
+      } catch (err) {
+        console.warn('loadMyGroups error', err);
+        if (myGroupsList) myGroupsList.innerHTML = '<p style="color:var(--text-3);font-size:.88rem;padding:.75rem .5rem;">Could not load groups.</p>';
+      }
+    }
+
+    // ── Open Group Pane ────────────────────────────────────────────────
+    async function openGroup(gid) {
+      currentGroupId = gid;
+      lastMessageId  = 0;
+
+      overlay.style.display = 'block';
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      overlay.scrollTop = 0;
+
+      panelName.textContent  = 'Loading…';
+      panelCat.textContent   = '';
+      panelDesc.textContent  = '';
+      panelCount.textContent = '';
+      membersList.innerHTML  = '<div class="members-loading"><i class="fa-solid fa-spinner fa-spin"></i></div>';
+      chatMessages.innerHTML = '<div class="chat-empty"><i class="fa-solid fa-spinner fa-spin"></i> Loading…</div>';
+
+      // Group info
+      try {
+        const r = await fetch(`/api/groups/${gid}`, { credentials: 'same-origin' });
+        const g = await r.json();
+        panelName.textContent  = g.name        || 'Group';
+        panelCat.textContent   = g.category    || '';
+        panelDesc.textContent  = g.description || '';
+        panelCount.textContent = (g.members_count || 0) + ' members';
+      } catch(e) {}
+
+      await loadMembers(gid);
+      await loadMessages(gid, true);
+
+      clearTimers();
+      pollTimer  = setInterval(() => loadMessages(gid, false), 3000);
+      memberTimer= setInterval(() => loadMembers(gid), 15000);
+      heartTimer = setInterval(heartbeat, 25000);
+      heartbeat();
+    }
+
+    function clearTimers() {
+      clearInterval(pollTimer);
+      clearInterval(memberTimer);
+      clearInterval(heartTimer);
+    }
+
+    // ── Close pane ─────────────────────────────────────────────────────
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      clearTimers();
+      currentGroupId = null;
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.style.display !== 'none') closeBtn.click();
+    });
+
+    // ── Members ────────────────────────────────────────────────────────
+    async function loadMembers(gid) {
+      try {
+        const r    = await fetch(`/api/groups/${gid}/members`, { credentials: 'same-origin' });
+        const data = await r.json();
+        if (!Array.isArray(data)) return;
+
+        membersList.innerHTML = data.length === 0
+          ? '<p style="color:var(--text-3);font-size:.85rem;text-align:center;padding:1rem;">No members yet.</p>'
+          : data.map(m => `
+            <div class="member-row">
+              <div class="member-avatar">
+                <div class="member-initials">${esc(m.initials)}</div>
+                <span class="member-online-dot ${m.is_online ? 'online' : 'offline'}" title="${m.is_online ? 'Online' : 'Offline'}"></span>
+              </div>
+              <div class="member-info">
+                <div class="member-name">${esc(m.name)}</div>
+              </div>
+              <span class="role-pill ${m.role}">${cap(m.role)}</span>
+            </div>
+          `).join('');
+      } catch(e) {}
+    }
+
+    // ── Messages ───────────────────────────────────────────────────────
+    function isNearBottom() {
+      const el = chatMessages;
+      return el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    }
+
+    async function loadMessages(gid, full) {
+      try {
+        const url  = full
+          ? `/api/groups/${gid}/messages`
+          : `/api/groups/${gid}/messages?since=${lastMessageId}`;
+        const r    = await fetch(url, { credentials: 'same-origin' });
+        const data = await r.json();
+        if (!Array.isArray(data) || data.length === 0) return;
+
+        const bottom = isNearBottom();
+        if (full) chatMessages.innerHTML = '';
+        const empty = chatMessages.querySelector('.chat-empty');
+        if (empty) empty.remove();
+
+        data.forEach(msg => {
+          if (msg.id > lastMessageId) lastMessageId = msg.id;
+          const mine = msg.user_id == meId;
+          const wrap = document.createElement('div');
+          wrap.className = 'chat-bubble-wrap' + (mine ? ' mine' : '');
+          wrap.innerHTML = `
+            <div class="chat-bubble-avatar">${esc(msg.initials)}</div>
+            <div class="chat-bubble-col${mine ? ' mine' : ''}">
+              ${!mine ? `<div class="chat-name">${esc(msg.name)}</div>` : ''}
+              <div class="chat-bubble${mine ? ' mine' : ''}">${esc(msg.message)}</div>
+              <div class="chat-bubble-time">${esc(msg.time_ago)}</div>
+            </div>
+          `;
+          chatMessages.appendChild(wrap);
+        });
+
+        if (full || bottom) chatMessages.scrollTop = chatMessages.scrollHeight;
+      } catch(e) {}
+    }
+
+    // ── Send message ───────────────────────────────────────────────────
+    async function doSend() {
+      const text = chatInput.value.trim();
+      if (!text || !currentGroupId) return;
+      chatInput.value  = '';
+      sendBtn.disabled = true;
+      try {
+        const r = await fetch(`/api/groups/${currentGroupId}/messages`, {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRF-TOKEN': csrfToken,
+          },
+          body: `message=${encodeURIComponent(text)}&_csrf_token=${encodeURIComponent(csrfToken)}`,
+        });
+        const msg = await r.json();
+        if (msg.id) {
+          if (msg.id > lastMessageId) lastMessageId = msg.id;
+          const empty = chatMessages.querySelector('.chat-empty');
+          if (empty) empty.remove();
+          const wrap = document.createElement('div');
+          wrap.className = 'chat-bubble-wrap mine';
+          wrap.innerHTML = `
+            <div class="chat-bubble-avatar">${esc(msg.initials)}</div>
+            <div class="chat-bubble-col mine">
+              <div class="chat-bubble mine">${esc(msg.message)}</div>
+              <div class="chat-bubble-time">${esc(msg.time_ago)}</div>
+            </div>
+          `;
+          chatMessages.appendChild(wrap);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      } catch(e) {}
+      sendBtn.disabled = false;
+      chatInput.focus();
+    }
+
+    sendBtn.addEventListener('click', doSend);
+    chatInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); doSend(); }
+    });
+
+    // ── Heartbeat ──────────────────────────────────────────────────────
+    async function heartbeat() {
+      try {
+        await fetch('/api/groups/heartbeat', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRF-TOKEN': csrfToken,
+          },
+          body: `_csrf_token=${encodeURIComponent(csrfToken)}`,
+        });
+      } catch(e) {}
+    }
+
+    // ── Boot ───────────────────────────────────────────────────────────
+    loadMyGroups();
+  })();
 </script>
 <?php $this->endSection(); ?>

@@ -8,6 +8,7 @@ use App\Controllers\AuthController;
 use App\Controllers\BusinessController;
 use App\Controllers\CommunityController;
 use App\Controllers\EventController;
+use App\Controllers\GroupController;
 use App\Controllers\HomeController;
 use App\Controllers\NotificationController;
 use App\Controllers\PageController;
@@ -68,6 +69,23 @@ $router->post('/businesses', [BusinessController::class, 'store'])
 $router->get('/businesses/:id', [BusinessController::class, 'detail'])
     ->middleware('AuthMiddleware')
     ->name('businesses.detail');
+
+// -----------------------------------------------------------------------------
+// Group API (JSON) – literal-path routes MUST come before /:id wildcard
+// -----------------------------------------------------------------------------
+$router->get('/api/groups/mine', [GroupController::class, 'mine'])
+    ->middleware('AuthMiddleware');
+$router->post('/api/groups/heartbeat', [GroupController::class, 'heartbeat'])
+    ->middleware('AuthMiddleware');
+$router->get('/api/groups/:id', [GroupController::class, 'show'])
+    ->middleware('AuthMiddleware');
+$router->get('/api/groups/:id/members', [GroupController::class, 'members'])
+    ->middleware('AuthMiddleware');
+$router->get('/api/groups/:id/messages', [GroupController::class, 'messages'])
+    ->middleware('AuthMiddleware');
+$router->post('/api/groups/:id/messages', [GroupController::class, 'sendMessage'])
+    ->middleware('AuthMiddleware')
+    ->middleware('CsrfMiddleware');
 
 // -----------------------------------------------------------------------------
 // Communities / Neighborhood Groups
