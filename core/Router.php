@@ -122,14 +122,15 @@ class Router
 
     public function middleware(string|array $middleware): static
     {
-        if ($this->lastRoute === null) {
+        if (empty($this->lastMethod) || empty($this->routes[$this->lastMethod])) {
             return $this;
         }
 
         $middleware = (array) $middleware;
-        $this->routes[$this->lastMethod][\array_key_last($this->routes[$this->lastMethod])]['middleware']
+        $idx = \array_key_last($this->routes[$this->lastMethod]);
+        $this->routes[$this->lastMethod][$idx]['middleware']
             = array_merge(
-                $this->routes[$this->lastMethod][\array_key_last($this->routes[$this->lastMethod])]['middleware'],
+                $this->routes[$this->lastMethod][$idx]['middleware'],
                 $middleware
             );
 
@@ -138,7 +139,7 @@ class Router
 
     public function name(string $name): static
     {
-        if ($this->lastRoute === null) {
+        if (empty($this->lastMethod) || empty($this->routes[$this->lastMethod])) {
             return $this;
         }
 
@@ -226,6 +227,7 @@ class Router
         ];
 
         $this->lastMethod = $method;
+        $this->lastRoute  = &$this->routes[$method][\array_key_last($this->routes[$method])];
 
         return $this;
     }

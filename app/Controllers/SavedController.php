@@ -15,7 +15,7 @@ class SavedController extends Controller
     {
         $savedItems = [];
         try {
-            $savedItems = SavedItem::query()->where('user_id', auth()->id() ?? 1)->latest()->get();
+            $savedItems = SavedItem::hydrateAll(SavedItem::query()->where('user_id', auth()->id() ?? 1)->latest()->get());
         } catch (\Throwable $e) {
             // graceful fallback
         }

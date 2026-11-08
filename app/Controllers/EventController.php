@@ -15,7 +15,7 @@ class EventController extends Controller
     {
         $events = [];
         try {
-            $events = Event::query()->latest('event_date')->get();
+            $events = Event::hydrateAll(Event::query()->latest('event_date')->get());
         } catch (\Throwable $e) {
             // graceful fallback
         }

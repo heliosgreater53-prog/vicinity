@@ -19,7 +19,7 @@
 
           <!-- Breadcrumbs -->
           <nav class="create-breadcrumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
+            <a href="/home">Home</a>
             <i class="fa-solid fa-chevron-right"></i>
             <a href="#">Create Post</a>
           </nav>
@@ -203,7 +203,7 @@
               </div>
 
               <div class="form-actions">
-                <a href="/" class="btn-secondary">Cancel</a>
+                <a href="/home" class="btn-secondary">Cancel</a>
                 <button type="button" class="btn-ghost" id="saveDraft">
                   <i class="fa-solid fa-floppy-disk"></i> Save Draft
                 </button>

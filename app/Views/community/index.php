@@ -5,7 +5,7 @@
 <?php $this->section('sidebar'); ?>
 <aside class="community-sidebar">
   <!-- Back to Main Feed link -->
-  <a href="/" class="sidebar-back-link">
+  <a href="/home" class="sidebar-back-link">
     <i class="fa-solid fa-arrow-left"></i> Back to Main Feed
   </a>
 

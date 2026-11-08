@@ -20,9 +20,9 @@ class HomeController extends Controller
         $businesses = [];
 
         try {
-            $posts = Post::query()->latest()->limit(10)->get();
-            $events = Event::query()->latest('event_date')->limit(3)->get();
-            $businesses = Business::query()->latest()->limit(4)->get();
+            $posts      = Post::hydrateAll(Post::query()->latest()->limit(10)->get());
+            $events     = Event::hydrateAll(Event::query()->latest('event_date')->limit(3)->get());
+            $businesses = Business::hydrateAll(Business::query()->latest()->limit(4)->get());
         } catch (\Throwable $e) {
             // Database not yet configured or connection offline - views handle sample data gracefully
         }

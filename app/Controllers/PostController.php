@@ -43,6 +43,6 @@ class PostController extends Controller
             session()->flash('success', 'Post shared successfully!');
         }
 
-        return $this->redirect('/');
+        return $this->redirect('/home');
     }
 }

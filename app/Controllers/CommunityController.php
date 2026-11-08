@@ -15,7 +15,7 @@ class CommunityController extends Controller
     {
         $communities = [];
         try {
-            $communities = Community::query()->latest()->get();
+            $communities = Community::hydrateAll(Community::query()->latest()->get());
         } catch (\Throwable $e) {
             // graceful fallback
         }

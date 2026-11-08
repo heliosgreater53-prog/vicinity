@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" fill="none">
+  <rect width="1200" height="480" fill="url(#lg_cover)"/>
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.4" opacity="0.15"/>
+  </pattern>
+  <rect width="1200" height="480" fill="url(#grid)"/>
+  <!-- Large centered icon group -->
+  <g transform="translate(530, 120)">
+    <!-- Store building -->
+    <rect x="20" y="80" width="100" height="20" rx="4" fill="#4ADE80" opacity="0.9"/>
+    <path d="M10 100 L10 70 Q10 60 20 60 L120 60 Q130 60 130 70 L130 100" fill="#86EFAC" opacity="0.8"/>
+    <path d="M0 110 Q0 96 10 96 L130 96 Q140 96 140 110 L140 128 Q140 140 130 140 L10 140 Q0 140 0 128 Z" fill="#4ADE80" opacity="0.9"/>
+    <!-- Awning stripes -->
+    <path d="M22 96 L16 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <path d="M44 96 L38 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <path d="M66 96 L60 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <path d="M88 96 L82 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <path d="M110 96 L104 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <path d="M130 96 L124 140" stroke="#22C55E" stroke-width="2.5" opacity="0.4"/>
+    <!-- Building body -->
+    <rect x="8" y="140" width="124" height="100" rx="3" fill="#DCFCE7" opacity="0.9"/>
+    <rect x="8" y="140" width="124" height="100" rx="3" stroke="#86EFAC" stroke-width="2" fill="none"/>
+    <!-- Door -->
+    <rect x="52" y="180" width="36" height="60" rx="4" fill="#4ADE80"/>
+    <circle cx="82" cy="210" r="3" fill="#15803D"/>
+    <!-- Windows -->
+    <rect x="16" y="150" width="28" height="20" rx="3" fill="#BBF7D0"/>
+    <rect x="96" y="150" width="28" height="20" rx="3" fill="#BBF7D0"/>
+    <line x1="30" y1="150" x2="30" y2="170" stroke="#86EFAC" stroke-width="1.5"/>
+    <line x1="16" y1="160" x2="44" y2="160" stroke="#86EFAC" stroke-width="1.5"/>
+    <line x1="110" y1="150" x2="110" y2="170" stroke="#86EFAC" stroke-width="1.5"/>
+    <line x1="96" y1="160" x2="124" y2="160" stroke="#86EFAC" stroke-width="1.5"/>
+  </g>
+  <!-- Label text -->
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="22" font-weight="600" fill="#15803D" opacity="0.75" letter-spacing="0.5">
+    Business Cover Image
+  </text>
+  <text x="600" y="398" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" fill="#16a34a" opacity="0.5">
+    Upload a cover photo to make your listing stand out
+  </text>
+  <defs>
+    <linearGradient id="lg_cover" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0FDF4"/>
+      <stop offset="50%" stop-color="#DCFCE7"/>
+      <stop offset="100%" stop-color="#BBF7D0"/>
+    </linearGradient>
+  </defs>
+</svg>
+

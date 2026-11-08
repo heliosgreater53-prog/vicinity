@@ -52,7 +52,7 @@ class Response
      */
     public static function back(int $status = 302): static
     {
-        $referer = $_SERVER['HTTP_REFERER'] ?? '/';
+        $referer = $_SERVER['HTTP_REFERER'] ?? '/home';
         return static::redirect($referer, $status);
     }
 

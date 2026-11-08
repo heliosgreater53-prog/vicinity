@@ -109,7 +109,7 @@ if (!function_exists('back')) {
      */
     function back(): Response
     {
-        $previous = $_SERVER['HTTP_REFERER'] ?? '/';
+        $previous = $_SERVER['HTTP_REFERER'] ?? '/home';
         return redirect($previous);
     }
 }
@@ -262,7 +262,7 @@ if (!function_exists('abort')) {
 
         $msg = $message !== '' ? $message : $title;
 
-        echo "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>{$code} - {$title}</title><style>body{font-family:system-ui,-apple-system,sans-serif;background:#0f172a;color:#f8fafc;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center}h1{font-size:3rem;margin:0 0 .5rem}p{color:#94a3b8;font-size:1.1rem;margin-bottom:1.5rem}a{display:inline-block;padding:.75rem 1.5rem;background:#16a34a;color:#fff;text-decoration:none;border-radius:8px;font-weight:600}</style></head><body><div><h1>{$code}</h1><p>{$msg}</p><a href='/'>Return to Feed</a></div></body></html>";
+        echo "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>{$code} - {$title}</title><style>body{font-family:system-ui,-apple-system,sans-serif;background:#0f172a;color:#f8fafc;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center}h1{font-size:3rem;margin:0 0 .5rem}p{color:#94a3b8;font-size:1.1rem;margin-bottom:1.5rem}a{display:inline-block;padding:.75rem 1.5rem;background:#16a34a;color:#fff;text-decoration:none;border-radius:8px;font-weight:600}</style></head><body><div><h1>{$code}</h1><p>{$msg}</p><a href='/home'>Return to Feed</a></div></body></html>";
         exit;
     }
 }

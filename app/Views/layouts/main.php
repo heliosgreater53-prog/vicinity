@@ -43,7 +43,7 @@
             <i class="fa-solid fa-users"></i>
           </div>
           <div class="logo-text">
-            <h2><a href="/">Vicinity</a></h2>
+            <h2><a href="/home">Vicinity</a></h2>
           </div>
         </div>
         <div class="header-right">
@@ -166,7 +166,7 @@
           </div>
         </div>
         <?php $currentUri = request()->uri(); ?>
-        <a href="/" class="<?= $currentUri === '/' ? 'current' : '' ?>">
+        <a href="/home" class="<?= $currentUri === '/home' ? 'current' : '' ?>">
           <i class="fa-solid fa-home"></i>Home
         </a>
         <a href="/businesses" class="<?= str_starts_with($currentUri, '/businesses') ? 'current' : '' ?>">
@@ -204,7 +204,7 @@
 
       <!-- Floating Bottom Nav for Mobile -->
       <nav class="floating-nav">
-        <a href="/" class="nav-item <?= $currentUri === '/' ? 'active' : '' ?>">
+        <a href="/home" class="nav-item <?= $currentUri === '/home' ? 'active' : '' ?>">
           <i class="fa-solid fa-home"></i>
           <span>Home</span>
         </a>
@@ -256,7 +256,7 @@
         </div>
 
         <div class="sidebar-nav">
-          <a href="/" class="<?= $currentUri === '/' ? 'current' : '' ?>">
+          <a href="/home" class="<?= $currentUri === '/home' ? 'current' : '' ?>">
             <i class="fa-solid fa-home"></i>Home
           </a>
           <a href="/businesses" class="<?= str_starts_with($currentUri, '/businesses') ? 'current' : '' ?>">

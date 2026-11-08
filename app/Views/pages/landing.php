@@ -1076,7 +1076,7 @@
               for your neighborhood. No algorithm manipulation, just real community
               voices from people who live where you live.
             </p>
-            <a href="/" class="feature-link">
+            <a href="/home" class="feature-link">
               Explore the feed <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -1124,7 +1124,7 @@
               Private messaging with your neighbors. Coordinate, collaborate, and
               build real friendships within your trusted community space.
             </p>
-            <a href="/" class="feature-link">
+            <a href="/home" class="feature-link">
               Start chatting <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -1280,7 +1280,7 @@
           <nav class="footer-col" aria-label="Platform links">
             <h4>Platform</h4>
             <ul>
-              <li><a href="/">Home Feed</a></li>
+              <li><a href="/home">Home Feed</a></li>
               <li><a href="/businesses">Business Directory</a></li>
               <li><a href="/community">Groups</a></li>
               <li><a href="/events">Events</a></li>

@@ -42,7 +42,7 @@ class AuthController extends Controller
         }
 
         session()->flash('success', 'Welcome back!');
-        $intended = session()->get('_intended_url', '/');
+        $intended = session()->get('_intended_url', '/home');
         session()->forget('_intended_url');
 
         return $this->redirect($intended);
@@ -79,7 +79,7 @@ class AuthController extends Controller
         auth()->login($user);
         session()->flash('success', 'Welcome to Vicinity! Your account has been created.');
 
-        return $this->redirect('/');
+        return $this->redirect('/home');
     }
 
     public function logout(): Response

@@ -60,7 +60,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave" title="Remove bookmark">
                     <i class="fa-solid fa-bookmark"></i>
                   </button>
@@ -86,7 +86,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave" title="Remove bookmark">
                     <i class="fa-solid fa-bookmark"></i>
                   </button>
@@ -112,7 +112,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave" title="Remove bookmark">
                     <i class="fa-solid fa-bookmark"></i>
                   </button>
@@ -261,7 +261,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
                 </div>
               </div>
@@ -283,7 +283,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
                 </div>
               </div>
@@ -305,7 +305,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
                 </div>
               </div>
@@ -327,7 +327,7 @@
                   </p>
                 </div>
                 <div class="saved-item-actions">
-                  <a href="/" class="btn-saved-view">View</a>
+                  <a href="/home" class="btn-saved-view">View</a>
                   <button class="btn-unsave"><i class="fa-solid fa-bookmark"></i></button>
                 </div>
               </div>

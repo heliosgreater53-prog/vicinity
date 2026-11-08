@@ -25,10 +25,15 @@
 
           <!-- Directory Section -->
           <section class="business-directory" id="directory">
+            <?php if (!empty($dbError)): ?>
+              <div style="background:hsl(0,72%,95%);border:1px solid hsl(0,72%,75%);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;">
+                <p style="color:hsl(0,72%,40%);font-weight:600;margin:0;"><i class="fa-solid fa-triangle-exclamation"></i> Database error: <?= e($dbError) ?></p>
+              </div>
+            <?php endif; ?>
             <div class="directory-header">
               <div class="directory-title-row">
                 <h2>Featured Directory</h2>
-                <span class="directory-count"><?= !empty($businesses) ? count($businesses) : 6 ?> Businesses Found</span>
+                <span class="directory-count"><?= count($businesses) ?> Business<?= count($businesses) !== 1 ? 'es' : '' ?> Found</span>
               </div>
               <div class="directory-filters">
                 <button class="filter-pill active">All</button>
@@ -48,7 +53,7 @@
                   <div class="business-card">
                     <div class="card-thumb">
                       <img
-                        src="<?= e($b->image ?: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80') ?>"
+                        src="<?= e($b->image ?: '/img/placeholder-cover.svg') ?>"
                         alt="<?= e($b->name) ?>"
                       />
                       <?php
@@ -59,6 +64,14 @@
                           'Beauty & Wellness'  => 'fa-spa',
                           'Fashion & Tailoring'=> 'fa-scissors',
                           'Sports & Fitness'   => 'fa-dumbbell',
+                          'Electronics & Tech' => 'fa-laptop-code',
+                          'Food Delivery'      => 'fa-bag-shopping',
+                          'Health & Pharmacy'  => 'fa-kit-medical',
+                          'Markets & Grocery'  => 'fa-basket-shopping',
+                          'Auto Services'      => 'fa-car',
+                          'Home & Garden'      => 'fa-house',
+                          'Repairs & Services' => 'fa-screwdriver-wrench',
+                          'Clothing & Fashion' => 'fa-shirt',
                         ];
                         $catIcon = $catIcons[$b->category] ?? 'fa-shop';
                       ?>
@@ -75,7 +88,7 @@
                       </h3>
                       <div class="card-rating">
                         <i class="fa-solid fa-star"></i>
-                        <span><strong><?= number_format((float) ($b->rating ?? 4.8), 1) ?></strong> (<?= (int) ($b->reviews_count ?? 25) ?> reviews)</span>
+                        <span><strong><?= number_format((float) ($b->rating ?? 5.0), 1) ?></strong> (<?= (int) ($b->reviews_count ?? 0) ?> reviews)</span>
                       </div>
                       <p class="card-location">
                         <i class="fa-solid fa-location-dot"></i>
@@ -94,239 +107,22 @@
                   </div>
                 <?php endforeach; ?>
               <?php else: ?>
-                <!-- Business Card 1 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
-                      alt="GreenBite Cafe & Bakery"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-utensils"></i> Cafes & Dining</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>GreenBite Cafe & Bakery</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.9</strong> (64 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>14 Adeniran Ogunsanya, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      Artisanal coffees, fresh sourdough bread, healthy pastries,
-                      and a peaceful co-working vibe with fast Wi-Fi.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦₦ • Moderate</span>
-                    <a href="/businesses/1" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
+                <!-- Empty State -->
+                <div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--text-muted,#6b7280);">
+                  <i class="fa-solid fa-store" style="font-size:3rem;margin-bottom:1rem;opacity:0.4;display:block;"></i>
+                  <?php if (!empty($search) || !empty($category)): ?>
+                    <h3 style="margin:0 0 .5rem;">No businesses found</h3>
+                    <p style="margin:0 0 1.5rem;">Try a different search term or category.</p>
+                    <a href="/businesses" style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:var(--primary,#16a34a);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">
+                      <i class="fa-solid fa-arrow-left"></i> Clear Filters
                     </a>
-                  </div>
-                </div>
-
-                <!-- Business Card 2 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=800&q=80"
-                      alt="Surulere TechFix & Gadgets"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-laptop-code"></i> Tech & Repairs</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>Surulere TechFix & Gadgets</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.8</strong> (92 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>52 Bode Thomas Street, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      Specialized laptop and smartphone repairs, screen
-                      replacements, diagnostic fixes, and certified electronics
-                      accessories.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦₦ • Affordable</span>
-                    <a href="/businesses/2" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
+                  <?php else: ?>
+                    <h3 style="margin:0 0 .5rem;">No businesses listed yet</h3>
+                    <p style="margin:0 0 1.5rem;">Be the first to register your local business!</p>
+                    <a href="/businesses/create" style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:var(--primary,#16a34a);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">
+                      <i class="fa-solid fa-plus"></i> List Your Business
                     </a>
-                  </div>
-                </div>
-
-                <!-- Business Card 3 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=80"
-                      alt="Apex Fresh Supermarket"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-basket-shopping"></i> Groceries & Retail</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>Apex Fresh Supermarket</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.7</strong> (110 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>88 Ogunlana Drive, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      Farm-fresh local produce, organic food staples, household
-                      provisions, and convenient same-day neighborhood deliveries.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦ • Budget-Friendly</span>
-                    <a href="/businesses/3" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Business Card 4 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
-                      alt="Royal Touch Spa & Unisex Salon"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-spa"></i> Beauty & Wellness</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>Royal Touch Spa & Salon</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.9</strong> (45 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>22 Akerele Street, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      Modern hairstyling, executive beard grooming, revitalizing
-                      skin treatments, and deep relaxation massage therapy.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦₦₦ • Premium</span>
-                    <a href="/businesses/4" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Business Card 5 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80"
-                      alt="Urban Thread Bespoke Tailors"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-shirt"></i> Fashion & Tailoring</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>Urban Thread Bespoke</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.8</strong> (38 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>19 Shitta Road, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      Custom-fit Nigerian traditional outfits, sharp formal suits,
-                      premium fabric sourcing, and swift alterations.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦₦ • Moderate</span>
-                    <a href="/businesses/5" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Business Card 6 -->
-                <div class="business-card">
-                  <div class="card-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
-                      alt="Zenith Fitness & Wellness Hub"
-                    />
-                    <span class="card-badge"><i class="fa-solid fa-dumbbell"></i> Sports & Fitness</span>
-                    <span class="card-status"><i class="fa-solid fa-circle"></i> Open Now</span>
-                    <button class="card-save-btn" title="Save Business" aria-label="Save Business">
-                      <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="card-title">
-                      <span>Zenith Fitness Hub</span>
-                      <i class="fa-solid fa-circle-check verified-badge" title="Verified Local Business"></i>
-                    </h3>
-                    <div class="card-rating">
-                      <i class="fa-solid fa-star"></i>
-                      <span><strong>4.6</strong> (53 reviews)</span>
-                    </div>
-                    <p class="card-location">
-                      <i class="fa-solid fa-location-dot"></i>
-                      <span>Near National Stadium, Surulere</span>
-                    </p>
-                    <p class="card-desc">
-                      State-of-the-art gym equipment, group spin and HIIT classes,
-                      certified personal coaching, and organic smoothie bar.
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <span class="card-price-range">₦₦ • Subscription</span>
-                    <a href="/businesses/6" class="btn-view">
-                      View Business <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                  </div>
+                  <?php endif; ?>
                 </div>
               <?php endif; ?>
             </div>

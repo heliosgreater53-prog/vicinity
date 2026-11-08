@@ -16,7 +16,7 @@ class GuestMiddleware implements Middleware
     public function handle(Request $request): ?Response
     {
         if (auth()->check()) {
-            return redirect('/');
+            return redirect('/home');
         }
 
         return null;

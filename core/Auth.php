@@ -58,8 +58,12 @@ class Auth
         }
 
         /** @var User|null $user */
-        $user = User::find($id);
-        $this->cachedUser = $user;
+        try {
+            $user = User::find($id);
+            $this->cachedUser = $user;
+        } catch (\Throwable $e) {
+            $user = null;
+        }
 
         return $user;
     }
@@ -69,12 +73,13 @@ class Auth
      */
     public function attempt(string $email, string $password): bool
     {
-        /** @var User|null $user */
-        $user = User::where('email', $email)->first();
+        $row = User::query()->where('email', $email)->first();
 
-        if ($user === null) {
+        if ($row === null) {
             return false;
         }
+
+        $user = User::hydrate($row);
 
         if (!password_verify($password, (string) $user->password)) {
             return false;
